@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,7 @@ use App\Http\Controllers\Backend;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+// Backend
 Route::group([
     'namespace' => 'Backend',
     'prefix' => 'admin',
@@ -26,4 +24,23 @@ Route::group([
     'as' => 'backend.'
 ], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('index');
+
+    Route::group([
+        'prefix' => 'product',
+        'as' => 'product.'
+    ], function () {
+        Route::get('/', 'ProductController@index')->name('index');
+        Route::get('/create', 'ProductController@create')->name('create');
+        Route::post('/store', 'ProductController@store')->name('store');
+    });
+});
+
+//Frontend
+Route::group([
+    'namespace' => 'Frontend',
+    'as' => 'frontend.',
+    'prefix' => ''
+], function() {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/category', 'HomeController@category')->name('category');
 });
