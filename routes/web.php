@@ -32,6 +32,20 @@ Route::group([
         Route::get('/', 'ProductController@index')->name('index');
         Route::get('/create', 'ProductController@create')->name('create');
         Route::post('/store', 'ProductController@store')->name('store');
+        Route::get('/{product}/edit', 'ProductController@edit')->name('edit');
+        Route::match(['put', 'patch'], '/{product}', 'ProductController@update')->name('update');
+    });
+
+    Route::group([
+        'prefix' => 'category',
+        'as' => 'category.'
+    ], function () {
+        Route::get('/', 'CategoryController@index')->name('index');
+        Route::get('/create', 'CategoryController@create')->name('create');
+        Route::post('/store', 'CategoryController@store')->name('store');
+        Route::get('/{category}/edit', 'CategoryController@edit')->name('edit');
+        Route::match(['put', 'patch'], '/{category}', 'CategoryController@update')->name('update');
+        Route::delete('/{category}', 'CategoryController@destroy')->name('delete');
     });
 });
 
