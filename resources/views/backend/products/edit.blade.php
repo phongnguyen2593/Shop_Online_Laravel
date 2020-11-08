@@ -34,11 +34,12 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="review-tab-pro-inner">
                             <ul id="myTab3" class="tab-review-design">
-                                <li class="active"><a href="#description"><i class="fa fa-plus" aria-hidden="true"></i> Thêm
-                                        mới</a></li>
+                                <li class="active"><a href="#description"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                        Chỉnh sửa</a></li>
                             </ul>
 
-                            <form action="{{ route('backend.product.store') }}" method="POST" role="form">
+                            <form action="{{ route('backend.product.update', $product->id) }}" method="POST" role="form">
+                                @method('PUT')
                                 @csrf
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
@@ -49,7 +50,7 @@
                                                         <span class="input-group-addon"><i class="fa fa-cube"
                                                                 aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" placeholder="Tên sản phẩm"
-                                                            name="name" value="{{ old('name') }}">
+                                                            name="name" value="{{ $product->name }}">
                                                     </div>
                                                     @error('name')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -65,7 +66,8 @@
                                                         class="form-control pro-edt-select form-control-primary ">
                                                         <option value="">-- Chọn danh mục --</option>
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
+                                                            <option value="{{ $category->id }}">
+                                                                {{ $category->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -97,7 +99,7 @@
                                                         <span class="input-group-addon"><i class="fa fa-cubes"
                                                                 aria-hidden="true"></i></span>
                                                         <input type="number" class="form-control" placeholder="Số lượng"
-                                                            name="quantity" value="{{ old('quantity') }}">
+                                                            name="quantity" value="{{ $product->quantity }}">
                                                     </div>
                                                     @error('quantity')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -110,7 +112,7 @@
                                                         <span class="input-group-addon"><i class="icon nalika-user"
                                                                 aria-hidden="true"></i></span>
                                                         <input type="number" class="form-control" placeholder="Giá nhập"
-                                                            name="" value="{{ old('quantity') }}">
+                                                            name="" value="">
                                                     </div>
                                                     @error('')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -126,7 +128,7 @@
                                                         <span class="input-group-addon"><i class="icon nalika-user"
                                                                 aria-hidden="true"></i></span>
                                                         <input type="number" class="form-control" placeholder="Giá gốc"
-                                                            name="origin_price" value="{{ old('origin_price') }}">
+                                                            name="origin_price" value="{{ $product->origin_price }}">
                                                     </div>
                                                     @error('origin_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -139,7 +141,7 @@
                                                         <span class="input-group-addon"><i class="fa fa-share"
                                                                 aria-hidden="true"></i></span>
                                                         <input type="number" class="form-control" placeholder="Giá bán"
-                                                            name="sale_price" value="{{ old('sale_price') }}">
+                                                            name="sale_price" value="{{ $product->sale_price }}">
                                                     </div>
                                                     @error('sale_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -165,8 +167,7 @@
                                                 <div class="review-content-section">
                                                     <div class="">
                                                         <textarea name="content" id="ckeditor"
-                                                            style="background-color: #152036; color: white; width: 100%"
-                                                            placeholder="Mô tả sản phẩm"></textarea>
+                                                            style="background-color: #152036; color: white; width: 100%">{{ $product->content }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,11 +177,13 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="text-center custom-pro-edt-ds">
                                                     <button type="submit"
-                                                        class="btn btn-ctl-bt waves-effect waves-light m-r-10">Tạo mới
+                                                        class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu
                                                     </button>
-                                                    <button type="reset" class="btn btn-ctl-bt waves-effect waves-light">Xóa
-                                                        dữ liệu
-                                                    </button>
+                                                    <a href="{{ route('backend.product.index') }}" style="color: white">
+                                                        <button type="button"
+                                                            class="btn btn-ctl-bt waves-effect waves-light">Hủy
+                                                        </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

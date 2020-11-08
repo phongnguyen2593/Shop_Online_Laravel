@@ -66,8 +66,8 @@
                             <td>{{ $product->discount_percent }}</td>
                             <td>{{ $product->sale_price }}</td>
                             <td>
-                                <button data-toggle="tooltip" title="Chỉnh sửa" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <button data-toggle="tooltip" title="Xóa" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <a href="{{ route('backend.product.edit', $product->id) }}" style="color: white"><button title="Chỉnh sửa" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                <a href="" style="color: white"><button title="Xóa" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
                             </td>
                         </tr>
                         @endforeach

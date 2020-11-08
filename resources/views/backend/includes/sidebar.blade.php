@@ -46,8 +46,8 @@
                                 class="fa fa-list fa-fw fa-lg"></i> <span
                                 class="mini-click-non">Quản lý danh mục</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Category List" href="file-manager.html"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a title="Create Category" href="blog.html"><span class="mini-sub-pro">Thêm mới</span></a></li>
+                            <li><a title="Category List" href="{{ route('backend.category.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
+                            <li><a title="Create Category" href="{{ route('backend.category.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
                         </ul>
                     </li>
 
@@ -57,7 +57,7 @@
                                 class="mini-click-non">Quản lý sản phẩm</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Product List" href="{{ route('backend.product.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a title="Create Product" href=""><span class="mini-sub-pro">Thêm mới</span></a></li>
+                            <li><a title="Create Product" href="{{ route('backend.product.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
                             <li><a title="Deactive Product" href=""><span class="mini-sub-pro">Đã khóa</span></a></li>
                         </ul>
                     </li>
