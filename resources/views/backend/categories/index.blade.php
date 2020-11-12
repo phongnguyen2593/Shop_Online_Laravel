@@ -80,3 +80,50 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('.btn-delete').click(function(e) {
+                e.preventDefault();
+                let id = $(this).attr('data-id');
+                Swal.fire({
+                    title: 'Bạn có chắc chắn muốn xóa không ?',
+                    text: "Dữ liệu bị xóa không thể phục hồi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Xóa',
+                    cancelButtonText: 'Đóng',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'delete',
+                            url: '/admin/category/' + id,
+                            success: function(res) {
+                                if (!res.error) {
+                                    Swal.fire(
+                                        'Đã xóa!',
+                                        res.message,
+                                        'success'
+                                    );
+                                    location.reload();
+                                } else {
+                                    console.log(res.message);
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+@endsection

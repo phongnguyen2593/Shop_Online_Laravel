@@ -2,39 +2,35 @@
 <div class="footer">
     <div class="container">
         <div class="col-md-3 footer-grid">
-            <h3>About Us</h3>
-            <p>Nam libero tempore, cum soluta nobis est eligendi
-                optio cumque nihil impedit quo minus id quod maxime
-                placeat facere possimus.</p>
+            <h3>Về chúng tôi</h3>
+            <p>Với phương châm hoạt động “Tất cả vì Khách Hàng”, The Big Store luôn không ngừng nỗ lực nâng cao chất lượng dịch
+                vụ và sản phẩm, từ đó mang đến trải nghiệm mua sắm trọn vẹn cho khách hàng.</p>
         </div>
         <div class="col-md-3 footer-grid ">
-            <h3>Menu</h3>
+            <h3>Danh sách</h3>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="kitchen.html">Kitchen</a></li>
-                <li><a href="care.html">Personal Care</a></li>
-                <li><a href="hold.html">Household</a></li>
-                <li><a href="codes.html">Short Codes</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
+                <li><a href="kitchen.html">Danh mục</a></li>
+                <li><a href="care.html">Sẩn phẩm</a></li>
+                <li><a href="hold.html">Khuyến mãi</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-grid ">
-            <h3>Customer Services</h3>
+            <h3>Hỗ trợ khách hàng</h3>
             <ul>
                 <li><a href="shipping.html">Shipping</a></li>
-                <li><a href="terms.html">Terms & Conditions</a></li>
-                <li><a href="faqs.html">Faqs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="offer.html">Online Shopping</a></li>
+                <li><a href="terms.html">Chính sách và điều khoản</a></li>
+                <li><a href="faqs.html">Các câu hỏi thường gặp</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+                <li><a href="offer.html">Mua sắm trực tuyến</a></li>
 
             </ul>
         </div>
         <div class="col-md-3 footer-grid">
-            <h3>My Account</h3>
+            <h3>Tài khoản</h3>
             <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="login.html">Đăng nhập</a></li>
+                <li><a href="register.html">Đăng ký</a></li>
 
             </ul>
         </div>

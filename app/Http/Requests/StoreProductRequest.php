@@ -28,9 +28,10 @@ class StoreProductRequest extends FormRequest
             'name' => ['required', 'min:10', 'max:50'],
             'category_id' => 'required',
             'status' => 'required',
-            'quantity' => ['required', 'max:3'], 
-            'origin_price' => ['required','numeric', 'min:4'],
-            'sale_price'   => ['required', 'numeric', 'min:4'],
+            'quantity' => ['required', 'max:3'],
+            'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:400']
+            // 'origin_price' => ['required','numeric', 'min:4'],
+            // 'sale_price'   => ['required', 'numeric', 'min:4'],
         ];
     }
 
@@ -40,9 +41,10 @@ class StoreProductRequest extends FormRequest
             'name' => 'Tên sản phẩm',
             'category_id' => 'danh mục',
             'quantity' => 'Số lượng',
-            'origin_price' => 'Giá gốc',
-            'sale_price' => 'Giá bán',
-            'status' => 'trạng thái'
+            'thumbnail' => 'Ảnh đại diện',
+            // 'origin_price' => 'Giá gốc',
+            // 'sale_price' => 'Giá bán',
+            'status' => 'trạng thái',
         ];
     }
 
@@ -56,13 +58,16 @@ class StoreProductRequest extends FormRequest
             'status.required' => 'Chọn :attribute cho sản phẩm',
             'quantity.required' => ':attribute không được để trống',
             'quantity.max' => ':attribute quá lớn',
-            'origin_price.required' => ':attribute không được để trống',
-            'origin_price.numeric' => ':attribute phải là số',
-            'origin_price.min' => ':attribute phải lớn hơn 1,000',
+            'thumbnail.required' => ' Chọn :attribute cho sản phẩm',
+            'thumbnail.mimes' => ':attribute không đúng định dạng',
+            'thumbnail.max' => ' Kích thước :attribute phải nhỏ hơn :max KB',
+            // 'origin_price.required' => ':attribute không được để trống',
+            // 'origin_price.numeric' => ':attribute phải là số',
+            // 'origin_price.min' => ':attribute phải lớn hơn 1,000',
             // 'origin_price.max' => ':attribute phải nhỏ hơn 1,000,000',
-            'sale_price.required' => ':attribute không được để trống',
-            'sale_price.numeric' => ':attribute phải là số',
-            'sale_price.min' => ':attribute phải lớn hơn 1,000',
+            // 'sale_price.required' => ':attribute không được để trống',
+            // 'sale_price.numeric' => ':attribute phải là số',
+            // 'sale_price.min' => ':attribute phải lớn hơn 1,000',
             // 'sale_price.max' => ':attribute phải nhỏ hơn 1,000,000',
         ];
     }

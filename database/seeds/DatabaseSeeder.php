@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+// namespace Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            CategoriesTableSeeder::class,
+            ProductTableSeeder::class,
+            UsersTableSeeder::class,
+        ]);
     }
 }

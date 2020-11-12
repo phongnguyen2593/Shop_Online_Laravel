@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="logo">
-            <h1><a href="index.html"><b>T<br>H<br>E</b>Big Store<span>Siêu Thị Số Một Tại Hà Nội</span></a></h1>
+            <h1><a href="{{ route('frontend.index') }}"><b>T<br>H<br>E</b>Big Store<span>Siêu Thị Số Một Tại Hà Nội</span></a></h1>
         </div>
         <div class="head-t">
             <ul class="card">
@@ -13,7 +13,7 @@
                     <li><a href="{{ route('register') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a>
                     </li>
                 @else
-                    <li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
+                    <li><a href="{{ route('frontend.user.wishlist') }}"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
                     <li><a href="about.html"><i class="fa fa-file-text-o" aria-hidden="true"></i>Lịch sử mua hàng</a></li>
                     <li><a href="shipping.html"><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>
                     <li>

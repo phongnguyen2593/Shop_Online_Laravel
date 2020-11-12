@@ -18,10 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('quantity');
-            $table->integer('origin_price');
-            $table->integer('sale_price');
-            $table->integer('discount_percent')->nullable();
-            $table->text('content')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->text('description')->nullable();
             $table->integer('user_id')->referenced('id')->on('users');
             $table->integer('category_id')->referenced('id')->on('categories');
             $table->integer('status');

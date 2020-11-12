@@ -14,6 +14,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('categories')->truncate();
         DB::table('categories')->insert([
             [
                 'name' => 'Thực phẩm',
@@ -34,35 +35,42 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => '2020-10-28 07:21:22'
             ],
             [
-                'name' => 'Bia rượu',
+                'name' => 'Thực phẩm bổ dưỡng',
                 'slug' => Str::random(10),
                 'depth' => 1,
-                'updated_at' => '2020-10-28 18:11:22'
+                'updated_at' => '2020-10-28 10:11:22'
+            ],
+            [
+                'name' => 'Đồ uống - Giải khát',
+                'slug' => Str::random(10),
+                'depth' => 1,
+                'updated_at' => '2020-10-28 10:11:22'
+
             ],
             [
                 'name' => 'Đồ uống có gas',
                 'slug' => Str::random(10),
-                'depth' => 1,
+                'depth' => 2,
                 'updated_at' => '2020-10-28 22:11:22'
             ],
             [
                 'name' => 'Đồ uống không gas',
                 'slug' => Str::random(10),
-                'depth' => 1,
+                'depth' => 2,
                 'updated_at' => '2020-10-28 13:11:22'
             ],
             [
                 'name' => 'Đồ uống pha chế',
                 'slug' => Str::random(10),
-                'depth' => 1,
+                'depth' => 2,
                 'updated_at' => '2020-10-28 07:11:22'
             ],
             [
-                'name' => 'Thực phẩm bổ dưỡng',
+                'name' => 'Bia rượu',
                 'slug' => Str::random(10),
-                'depth' => 1,
-                'updated_at' => '2020-10-28 10:11:22'
-            ]
+                'depth' => 2,
+                'updated_at' => '2020-10-28 18:11:22'
+            ],
         ]);
     }
 }

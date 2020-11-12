@@ -1,5 +1,13 @@
 @extends('backend.layouts.master')
 
+@section('css')
+    <style>
+        label {
+        color: #fff;
+    }
+    </style>
+@endsection
+
 @section('title')
     <div class="breadcome-area">
         <div class="container-fluid">
@@ -38,7 +46,7 @@
                                         mới</a></li>
                             </ul>
 
-                            <form action="{{ route('backend.product.store') }}" method="POST" role="form">
+                            <form action="{{ route('backend.product.store') }}" method="POST" role="form" enctype="multipart/form-data">
                                 @csrf
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
@@ -46,10 +54,9 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-cube"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Tên sản phẩm"
-                                                            name="name" value="{{ old('name') }}">
+                                                        <label for="#name">Tên sản phẩm</label>
+                                                        <input id="name" type="text" class="form-control"
+                                                            name="name">
                                                     </div>
                                                     @error('name')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -61,7 +68,8 @@
                                         <div class="row mg-b-pro-edt">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-                                                    <select name="category_id"
+                                                    <label for="#category">Danh mục</label>
+                                                    <select id="category" name="category_id"
                                                         class="form-control pro-edt-select form-control-primary ">
                                                         <option value="">-- Chọn danh mục --</option>
                                                         @foreach ($categories as $category)
@@ -74,11 +82,45 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="row mg-b-pro-edt">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group">
+                                                         <label for="#thumbnail">Ảnh nhỏ</label>
+                                                        <input type="file" id="thumbnail"  class="form-control"
+                                                            name="thumbnail">
+                                                    </div>
+                                                    @error('thumbnail')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mg-b-pro-edt">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group">
+                                                         <label for="#images">Ảnh cho sản phẩm</label>
+                                                        <input type="file" id="images"  class="form-control"
+                                                            name="images[]" multiple>
+                                                    </div>
+                                                    @error('images')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
+                                                    <label for="#status">Trạng thái</label>
                                                     <select name="status"
-                                                        class="form-control pro-edt-select form-control-primary ">
-                                                        <option value="">-- Trạng thái --</option>
+                                                        class="form-control pro-edt-select form-control-primary" id="status">
+                                                        <option value="">-- Chọn trạng thái --</option>
                                                         <option value="0">Hết hàng</option>
                                                         <option value="1">Còn hàng</option>
                                                         <option value="2">Ngừng kinh doanh</option>
@@ -88,45 +130,27 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-cubes"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="number" class="form-control" placeholder="Số lượng"
-                                                            name="quantity" value="{{ old('quantity') }}">
+                                                        <label for="#quantity">Số lượng</label>
+                                                        <input type="number" id="quantity" class="form-control" 
+                                                            name="quantity">
                                                     </div>
                                                     @error('quantity')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                                <div class="review-content-section">
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-user"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="number" class="form-control" placeholder="Giá nhập"
-                                                            name="" value="{{ old('quantity') }}">
-                                                    </div>
-                                                    @error('')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-user"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="number" class="form-control" placeholder="Giá gốc"
-                                                            name="origin_price" value="{{ old('origin_price') }}">
+                                                        <label for="#origin-price">Giá gốc</label>
+                                                        <input type="number" class="form-control" id="origin-price"
+                                                            name="origin_price">
                                                     </div>
                                                     @error('origin_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -136,21 +160,24 @@
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-share"
-                                                                aria-hidden="true"></i></span>
-                                                        <input type="number" class="form-control" placeholder="Giá bán"
-                                                            name="sale_price" value="{{ old('sale_price') }}">
+                                                        <label for="#sale-price">Giá bán</label>
+                                                        <input type="number" class="form-control" id="sale-price"
+                                                            name="sale_price">
                                                     </div>
                                                     @error('sale_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                                 <div class="review-content-section">
-                                                    <select name="discount_percent"
+                                                    <label for="#discount_percent">Phần trăm giảm giá</label>
+                                                    <select name="discount_percent" id="discount_percent"
                                                         class="form-control pro-edt-select form-control-primary mg-b-pro-edt">
-                                                        <option value="">-- Phần trăm giảm giá --</option>
+                                                        <option value="">-- Chọn phần trăm giảm giá --</option>
                                                         <option value="5">5%</option>
                                                         <option value="10">10%</option>
                                                         <option value="15">15%</option>
@@ -164,13 +191,14 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="review-content-section">
                                                     <div class="">
+                                                        <label for="#ckeditor">Mô tả sản phẩm</label>
                                                         <textarea name="content" id="ckeditor"
-                                                            style="background-color: #152036; color: white; width: 100%"
-                                                            placeholder="Mô tả sản phẩm"></textarea>
+                                                            style="background-color: #152036; color: white; width: 100%"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
 
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
