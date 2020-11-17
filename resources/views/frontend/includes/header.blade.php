@@ -13,7 +13,7 @@
                     <li><a href="{{ route('register') }}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a>
                     </li>
                 @else
-                    <li><a href="{{ route('frontend.user.wishlist') }}"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
+                    <li><a href=""><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
                     <li><a href="about.html"><i class="fa fa-file-text-o" aria-hidden="true"></i>Lịch sử mua hàng</a></li>
                     <li><a href="shipping.html"><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>
                     <li>
@@ -63,7 +63,7 @@
                         <li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
 
                         <li class="dropdown ">
-                            <a href="" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Kitchen<b
+                            <a href="" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
                                         class="caret"></b></span></a>
                             <ul class="dropdown-menu multi">
                                 <div class="row">
@@ -123,7 +123,7 @@
                         </li>
                         <li class="dropdown">
 
-                            <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown"><span> Personal Care <b
+                            <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown"><span> Sản phẩm <b
                                         class="caret"></b></span></a>
                             <ul class="dropdown-menu multi multi1">
                                 <div class="row">
@@ -170,11 +170,6 @@
 
                                         </ul>
                                     </div>
-                                    <div class="col-sm-3 w3l">
-                                        <a href="care.html"><img src="/frontend/shop/images/me1.png"
-                                                class="img-responsive" alt=""></a>
-                                    </div>
-                                    <div class="clearfix"></div>
                                 </div>
                             </ul>
                         </li>
@@ -226,17 +221,12 @@
 
                                         </ul>
                                     </div>
-                                    <div class="col-sm-3 w3l">
-                                        <a href="hold.html"><img src="/frontend/shop/images/me2.png"
-                                                class="img-responsive" alt=""></a>
-                                    </div>
-                                    <div class="clearfix"></div>
                                 </div>
                             </ul>
                         </li>
 
-                        <li><a href="codes.html" class="hyper"> <span>Codes</span></a></li>
-                        <li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
+                        <li><a href="{{ route('frontend.lookup') }}" class="hyper"> <span>Tra cứu đơn hàng</span></a></li>
+                        <li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
                     </ul>
                 </div>
             </nav>

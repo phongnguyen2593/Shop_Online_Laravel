@@ -2,9 +2,12 @@
 
 @section('css')
     <style>
-        label {
-        color: #fff;
-    }
+        label { color: #fff; }
+        #name { width: 208%; }
+        #thumbnail { width: 167%; }
+        #images { width: 141%; }
+        #quantity { width: 106%;}
+        #origin-price, #sale-price { width: 109%;}
     </style>
 @endsection
 
@@ -56,7 +59,7 @@
                                                     <div class="input-group">
                                                         <label for="#name">Tên sản phẩm</label>
                                                         <input id="name" type="text" class="form-control"
-                                                            name="name">
+                                                            name="name" value="{{ old('name') }}">
                                                     </div>
                                                     @error('name')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -71,7 +74,7 @@
                                                     <label for="#category">Danh mục</label>
                                                     <select id="category" name="category_id"
                                                         class="form-control pro-edt-select form-control-primary ">
-                                                        <option value="">-- Chọn danh mục --</option>
+                                                        <option>-- Chọn danh mục --</option>
                                                         @foreach ($categories as $category)
                                                             <option value="{{ $category->id }}">{{ $category->name }}
                                                             </option>
@@ -107,7 +110,7 @@
                                                         <input type="file" id="images"  class="form-control"
                                                             name="images[]" multiple>
                                                     </div>
-                                                    @error('images')
+                                                    @error('images[]')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -123,19 +126,19 @@
                                                         <option value="">-- Chọn trạng thái --</option>
                                                         <option value="0">Hết hàng</option>
                                                         <option value="1">Còn hàng</option>
-                                                        <option value="2">Ngừng kinh doanh</option>
+                                                        <option value="-1">Ngừng kinh doanh</option>
                                                     </select>
                                                     @error('status')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
                                                         <label for="#quantity">Số lượng</label>
                                                         <input type="number" id="quantity" class="form-control" 
-                                                            name="quantity">
+                                                            name="quantity" value="{{ old('quantity') }}">
                                                     </div>
                                                     @error('quantity')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -150,7 +153,7 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <label for="#origin-price">Giá gốc</label>
                                                         <input type="number" class="form-control" id="origin-price"
-                                                            name="origin_price">
+                                                            name="origin_price" value="{{ old('origin_price') }}">
                                                     </div>
                                                     @error('origin_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -162,7 +165,7 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <label for="#sale-price">Giá bán</label>
                                                         <input type="number" class="form-control" id="sale-price"
-                                                            name="sale_price">
+                                                            name="sale_price" value="{{ old('sale_price') }}">
                                                     </div>
                                                     @error('sale_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -174,15 +177,8 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                                 <div class="review-content-section">
-                                                    <label for="#discount_percent">Phần trăm giảm giá</label>
-                                                    <select name="discount_percent" id="discount_percent"
-                                                        class="form-control pro-edt-select form-control-primary mg-b-pro-edt">
-                                                        <option value="">-- Chọn phần trăm giảm giá --</option>
-                                                        <option value="5">5%</option>
-                                                        <option value="10">10%</option>
-                                                        <option value="15">15%</option>
-                                                        <option value="20">20%</option>
-                                                    </select>
+                                                    <label for="#discount_percent">Phần trăm giảm giá (%)</label>
+                                                    <input type="number" class="form-control" name="discount_percent" value="{{ old('discount_percent') }}">
                                                 </div>
                                             </div>
                                         </div>

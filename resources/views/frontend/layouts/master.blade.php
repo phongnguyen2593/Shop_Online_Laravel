@@ -6,8 +6,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-
-@include('frontend.includes.head')
+<head>
+    @include('frontend.includes.head')
+    
+    @yield('css')
+</head>
 
 <body>
     {{-- <a href="offer.html"><img src="/frontend/shop/images/download.png"

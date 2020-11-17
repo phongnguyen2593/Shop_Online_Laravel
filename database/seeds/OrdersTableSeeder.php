@@ -16,9 +16,15 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('orders')->truncate();
         DB::table('orders')->insert([
-            'user_id' => 1,
-            'total' => 0
+            'customer_id'   => 1,
+            'approver_id'   => 1,
+            'payment'       => 1,
+            'note'          => 'test',
+            'status'        => 1,
+            'created_at'    => '2020-10-28 07:11:00',
+            'updated_at'    => '2020-10-28 07:11:00',
         ]);
     }
 }

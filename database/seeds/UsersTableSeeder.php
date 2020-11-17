@@ -16,19 +16,21 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate();
         DB::table('users')->insert( [
-            'email' => 'phongnguyen2593@gmail.com',
-            'name' => 'Phong',
-            'role' => '1',
-            'password' => bcrypt('123123123'),
+            'email'=>   'phongnguyen2593@gmail.com',
+            'name' =>   'Phong',
+            'gender'    => 1,
+            'role'      => '1',
+            'password'  => bcrypt('123123123'),
         ]);
 
         //dung vong for de tao nhieu ban ghi
         for ($i=0; $i < 10; $i++) { 
             DB::table('users')->insert( [
-                'email' => Str::random(10) . '@gmail.com',
-                'name' => Str::random(10),
-                'role' => '2',
-                'password' => bcrypt('password')
+                'email'     => Str::random(10) . '@gmail.com',
+                'name'      => Str::random(10),
+                'role'      => '2',
+                'gender'    => 1,
+                'password'  => bcrypt('password')
             ]);
         }
     }

@@ -1,4 +1,4 @@
-<head>
+
     <title>Big store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template| Home :: w3layouts
     </title>
     <!-- for-mobile-apps -->
@@ -72,4 +72,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!---//End-rate---->
 
-</head>
+

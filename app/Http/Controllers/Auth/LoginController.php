@@ -54,7 +54,7 @@ class LoginController extends Controller
           case '1':
             return redirect(route('backend.index')) ;
           case '2':
-            return redirect(route('home')) ;
+            return redirect(route('frontend.index')) ;
           default:
             return redirect(route('login'));
         }

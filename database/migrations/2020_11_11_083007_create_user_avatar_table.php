@@ -15,7 +15,7 @@ class CreateUserAvatarTable extends Migration
     {
         Schema::create('user_avatar', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('user_id')->referenced('id')->on('users');
             $table->string('path');
             $table->timestamps();
         });

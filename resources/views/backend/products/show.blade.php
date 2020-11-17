@@ -52,7 +52,7 @@
                                 <h1>{{ $product->name }}</h1>
                                 
                                 <div class="single-pro-price">
-                                    <span class="single-regular">$150.00</span><span class="single-old"><del>$20.00</del></span>
+                                    <span class="single-regular">{{ number_format($product->sale->sale_price)}}</span><span class="single-old"><del>{{ number_format($product->sale->origin_price) }}</del></span>
                                 </div>
                                 <div class="single-pro-cn">
                                     <h3 style="font-weight: bold">Số lượng tồn</h3>
@@ -61,7 +61,7 @@
                                 <div class="color-quality-pro">
                                     <div class="color-quality-details">
                                         <h5>Danh mục</h5>
-                                        <p style="color: #fff">{{ $product->category_id }}</p>
+                                        <p style="color: #fff">{{ $product->category->name }}</p>
                                     </div>
                                     <div class="clear"></div>
                                 </div>

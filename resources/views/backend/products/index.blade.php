@@ -49,10 +49,12 @@
                             <tr>
                                 <th>Ảnh nhỏ</th>
                                 <th>Tên</th>
+                                <th>Danh mục</th>
+                                <th>Trạng thái</th>
                                 <th>Số Lượng</th>
                                 <th>Giá gốc</th>
-                                <th>%</th>
                                 <th>Giá bán</th>
+                                <th>%</th>
                                 <th></th>
                             </tr>
                             @foreach ($products as $product)
@@ -60,10 +62,21 @@
                                     <td><img src="{{ asset('storage/' . $product->thumbnail) }}" alt="" /></td>
                                     <td><a href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
-                                    <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->origin_price }}</td>
-                                    <td>{{ $product->discount_percent }}</td>
-                                    <td>{{ $product->sale_price }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    @if ($product->status == 0)
+                                        <td>Hết hàng</td>
+                                    @elseif ($product->status == 1)
+                                        <td>Còn hàng</td>
+                                    @endif
+
+                                    @if ($product->status == 1)
+                                        <td>{{ $product->quantity }}</td>
+                                    @else
+                                        <td>-</td>
+                                    @endif
+                                    <td>{{ $product->sale->origin_price }}</td>
+                                    <td>{{ $product->sale->sale_price }}</td>
+                                    <td>{{ $product->sale->discount_percent }}</td>
                                     <td>
                                         <a href="{{ route('backend.product.edit', $product->id) }}"
                                             style="color: white"><button title="Chỉnh sửa" class="pd-setting-ed"><i
@@ -75,7 +88,6 @@
                                 </tr>
                             @endforeach
                         </table>
-
                         <div class="custom-pagination">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
