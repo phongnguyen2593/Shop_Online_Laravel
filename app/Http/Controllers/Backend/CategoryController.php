@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
+use App\Models\User;
 
 class CategoryController extends Controller
 {
@@ -17,8 +19,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'DESC')->get();
-        return view('backend.categories.index', ['categories' => $categories]);
+        $user = Auth::user();
+
+        if ($user->can('viewAny', Category::class)) {
+            $categories = Category::orderBy('created_at', 'DESC')->get();
+            return view('backend.categories.index', ['categories' => $categories]);
+        } else {
+            return redirect()->route('frontend.index');
+        }
+        
+        
     }
 
     /**
@@ -28,8 +38,16 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name', 'ASC')->get();
-        return view('backend.categories.create', ['categories' => $categories]);
+        $user = Auth::user();
+
+        if ($user->can('create', Category::class)) {
+            $categories = Category::orderBy('name', 'ASC')->get();
+            return view('backend.categories.create', ['categories' => $categories]);
+        } else {
+            return redirect()->route('backend.category.index');
+        }
+        
+        
     }
 
     /**
@@ -66,14 +84,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::find($id);
-        $categories = Category::get();
-        return view('backend.categories.edit', [
-            'category' => $category,
-            'categories' => $categories
-            ]);
+        $user = Auth::user();
+
+        if ($user->can('update', $category)) {
+            $categories = Category::get();
+            return view('backend.categories.edit', [
+                'category' => $category,
+                'categories' => $categories
+                ]);
+        } else {
+            return redirect()->route('backend.category.index');
+        }
     }
 
     /**
@@ -100,26 +123,31 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        try {
-            $category = Category::find($id);
-            $success = $category->delete();
+    public function destroy(Category $category)
+    {   
+        $user = Auth::user();
 
-            if($success){
+        if ($user->can('delete', $category)) {
+            try {
+                $success = $category->delete();
+    
+                if($success){
+                    return response()->json([
+                        'error'=>false,
+                        'message'=>"Đã xóa",
+                    ]);
+                    location.reload();
+                }
+    
+            }catch (\Exception $e){
+                $message = "Xóa không thành công";
                 return response()->json([
-                    'error'=>false,
-                    'message'=>"Đã xóa",
+                    'error'=>true,
+                    'message'=>$e->getMessage(),
                 ]);
-                location.reload();
             }
-
-        }catch (\Exception $e){
-            $message = "Xóa không thành công";
-            return response()->json([
-                'error'=>true,
-                'message'=>$e->getMessage(),
-            ]);
+        } else {
+            return redirect()->route('backend.category.index');
         }
     }
 }

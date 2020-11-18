@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -14,7 +18,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        if ($user->can('viewAny', User::class)) {
+            $users = User::orderBy('updated_at', 'DESC')
+                                ->get();
+            return view('backend.users.index', ['users' => $users]);
+        } else {
+            return redirect()->route('frontend.index');
+        }
+        
     }
 
     /**
@@ -24,7 +37,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+
+        if ($user->can('create', User::class)) {
+            return view('backend.users.create');
+        } else {
+            return redirect()->route('frontend.index');
+        }
     }
 
     /**
@@ -57,7 +76,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $model = User::find($id);
+
+        if ($user->can('update', $model)) {
+            return view('backend.users.edit', [
+                'model'       => $model,
+                ]);
+        }else {
+            return redirect()->route('backend.user.index');
+        };
     }
 
     /**
@@ -80,6 +108,31 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        $model = User::find($id);
+
+        if ($user->can('delete', $model)) {
+            try {
+                $success = $model->delete();
+    
+                if($success){
+                    return response()->json([
+                        'error'=>false,
+                        'message'=>"Đã xóa",
+                    ]);
+                    location.reload();
+                }
+    
+            }catch (\Exception $e){
+                $message = "Xóa không thành công";
+                return response()->json([
+                    'error'=>true,
+                    'message'=>$e->getMessage(),
+                ]);
+            }
+        } else {
+            return redirect()->route('backend.user.index');
+        }
+        
     }
 }
