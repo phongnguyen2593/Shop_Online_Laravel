@@ -152,7 +152,7 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <label for="#origin_price">Giá gốc</label>
                                                         <input type="number" class="form-control" id="origin_price"
-                                                            name="origin_price" value="{{ $product->origin_price }}">
+                                                            name="origin_price" value="{{ $sale->origin_price }}">
                                                     </div>
                                                     @error('origin_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -164,7 +164,7 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <label for="#sale-price">Giá bán</label>
                                                         <input type="number" class="form-control" id="sale-price"
-                                                            name="sale_price" value="{{ $product->sale_price }}">
+                                                            name="sale_price" value="{{ $sale->sale_price }}">
                                                     </div>
                                                     @error('sale_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>

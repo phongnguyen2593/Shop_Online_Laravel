@@ -77,12 +77,13 @@
                             </div>
 
                             <br>
+                            @can('update', $product)
                             <div class="single-pro-cn">
                                 <h3 style="font-weight: bold">Hành động</h3>
                                 <a href="{{ route('backend.product.edit', $product->id) }}" style="color: #fff"><button title="Chỉnh sửa" class="pd-setting-ed"><i class="fa fa-pencil-square-o"></i></button></a>
                                 <a href="" style="color: white"><button title="Xóa" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
                             </div>
-                           
+                            @endcan
                         </div>
                     </div>
                 </div>

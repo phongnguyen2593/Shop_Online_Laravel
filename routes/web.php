@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +33,7 @@ Route::group([
         Route::get('/', 'ProductController@index')->name('index');
         Route::get('/create', 'ProductController@create')->name('create');
         Route::post('/store', 'ProductController@store')->name('store');
-        Route::get('/{product}/edit', 'ProductController@edit')->name('edit');
+        Route::get('/edit/{product}', 'ProductController@edit')->name('edit');
         Route::match(['put', 'patch'], '/{product}', 'ProductController@update')->name('update');
         Route::get('/show/{product}', 'ProductController@show')->name('show');
         Route::delete('/{product}', 'ProductController@destroy')->name('delete');
@@ -49,6 +50,19 @@ Route::group([
         Route::match(['put', 'patch'], '/{category}', 'CategoryController@update')->name('update');
         Route::delete('/{category}', 'CategoryController@destroy')->name('delete');
     });
+
+    Route::group([
+        'prefix'    => 'user',
+        'as'        => 'user.'
+    ], function () {
+        Route::get('/', 'UserController@index')->name('index');
+        Route::get('/create', 'UserController@create')->name('create');
+        Route::post('/store', 'UserController@store')->name('store');
+        Route::get('/edit/{user}', 'UserController@edit')->name('edit');
+        Route::match(['put', 'patch'], '/{user}', 'UserController@update')->name('update');
+        Route::delete('/{user}', 'UserController@destroy')->name('delete');
+        Route::get('/show/{user}', 'UserController@show')->name('show');
+    });
 });
 
 //Frontend
@@ -59,6 +73,8 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/category', 'HomeController@category')->name('category');
+    Route::get('/lookup', 'HomeController@lookup')->name('lookup');
+    // Route::post('/lookup', 'HomeController@lookup_action')->name('lookup_action');
 
     Route::group([
         'prefix'        => 'user',

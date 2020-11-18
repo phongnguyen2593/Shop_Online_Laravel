@@ -32,10 +32,10 @@
                                 class="fa fa-user fa-fw fa-lg"></i> <span
                                 class="mini-click-non">Quản lý user</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="User list" href="google-map.html"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a title="Create User" href="data-maps.html"><span class="mini-sub-pro">Thêm mới</span></a></li>
-                            <li><a title="
-                                Waiting for Approval" href="pdf-viewer.html"><span class="mini-sub-pro">Chờ phê duyệt</span></a></li>
+                            <li><a title="User list" href="{{ route('backend.user.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
+                            @can('create', Auth::user())
+                            <li><a title="Create User" href="{{ route('backend.user.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
+                            @endcan
                             <li><a title="Deactive User" href="x-editable.html"><span
                                         class="mini-sub-pro">Đã khóa</span></a></li>
                         </ul>

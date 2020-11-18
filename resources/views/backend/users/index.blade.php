@@ -10,10 +10,10 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="breadcomb-wp">
                                     <div class="breadcomb-icon">
-                                        <i class="fa fa-cube"></i>
+                                        <i class="fa fa-user"></i>
                                     </div>
                                     <div class="breadcomb-ctn">
-                                        <h2 style="margin-top: 16px">Quản Lý Sản Phẩm</h2>
+                                        <h2 style="margin-top: 16px">Quản Lý Thành Viên</h2>
                                     </div>
                                 </div>
                             </div>
@@ -31,11 +31,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Danh sách sản phẩm</h4>
+                        <h4>Danh sách thành viên</h4>
+                        @can('create', Auth::user())
                         <div class="add-product">
-                            <a href="{{ route('backend.product.create') }}">Thêm sản phẩm mới</a>
+                            <a href="{{ route('backend.user.create') }}">Thêm thành viên mới</a>
                         </div>
-                        <div>
+                        @endcan
+                        {{-- <div>
                             <div id="toolbar">
                                 <select class="form-control">
                                     <option value="">-- Sắp xếp theo --</option>
@@ -43,48 +45,43 @@
                                     <option value="selected" selected>Thời gian cập nhật</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <table>
                             <tr>
-                                <th>Ảnh nhỏ</th>
+                                <th>Ảnh đại diện</th>
                                 <th>Tên</th>
-                                <th>Danh mục</th>
-                                <th>Trạng thái</th>
-                                <th>Số Lượng</th>
-                                <th>Giá bán</th>
-                                <th>Người thêm</th>
+                                <th>Email</th>
+                                <th>Chức vụ</th>
                                 <th></th>
                             </tr>
-                            @foreach ($products as $product)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td><img src="{{ asset('storage/' . $product->thumbnail) }}" alt="" /></td>
-                                    <td><a href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
+                                    <td><img src="" alt="" /></td>
+                                    <td><a href="{{ route('backend.user.show', $user->id) }}">{{ $user->name }}</a>
                                     </td>
-                                    <td>{{ $product->category->name }}</td>
-                                    @if ($product->status == 0)
-                                        <td>Hết hàng</td>
-                                    @elseif ($product->status == 1)
-                                        <td>Còn hàng</td>
+                                    <td>{{ $user->email }}</td>
+                                    @if ($user->role == 1)
+                                        <td>Admin</td>
+                                    @elseif ($user->role == 2)
+                                        <td>Moderator</td>
+                                    @elseif ($user->role == 3)
+                                        <td>User</td>
                                     @endif
 
-                                    @if ($product->status == 1)
-                                        <td>{{ $product->quantity }}</td>
-                                    @else
-                                        <td>-</td>
-                                    @endif
-                                    <td>{{ $product->sale->sale_price }}</td>
-                                    <td>{{ $product->user->name }}</td>
-                                    @can('update', $product)
+                                    
                                     <td>
-                                        <a href="{{ route('backend.product.edit', $product->id) }}"
+                                        @can('update', $user)
+                                        <a href="{{ route('backend.user.edit', $user->id) }}"
                                             style="color: white"><button title="Chỉnh sửa" class="pd-setting-ed"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                        
-                                        <button title="Xóa" class="pd-setting-ed btn-delete" data-id="{{ $product->id }}"><i class="fa fa-trash-o"
+                                        @endcan
+                                        @can('delete', Auth::user())
+                                        <button title="Xóa" class="pd-setting-ed btn-delete" data-id="{{ $user->id }}"><i class="fa fa-trash-o"
                                                     aria-hidden="true"></i></button>
+                                        @endcan
                                     </td>
-                                    @endcan
+                                    
                                     
                                 </tr>
                             @endforeach
@@ -130,7 +127,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'delete',
-                            url: '/admin/product/' + id,
+                            url: '/admin/user/' + id,
                             success: function(res) {
                                 if (!res.error) {
                                     Swal.fire(
