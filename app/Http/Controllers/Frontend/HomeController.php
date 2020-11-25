@@ -23,7 +23,11 @@ class HomeController extends Controller
         // $dt= $day . $year . '-' . 'hsdgfhgsd';
         // return $dt;
         
-        $categories = Category::get();
+        // $categories = Category::get();
+        $categories = Cache::remember('categories', 60*60, function () {
+            $categories = Category::get();
+            return $categories;
+        });
         $products = Product::with('sale')->get();
         return view('frontend.home', [
             'products' => $products,
