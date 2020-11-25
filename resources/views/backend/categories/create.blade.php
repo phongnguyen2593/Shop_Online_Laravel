@@ -43,7 +43,6 @@
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                         <div class="row mg-b-pro-edt">
-                                            <div class="col-lg-3"></div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <div class="input-group">
@@ -60,7 +59,15 @@
                                         </div>
 
                                         <div class="row mg-b-pro-edt">
-                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <label for="">Độ sâu danh mục</label>
+                                                    <input type="radio" name="depth">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mg-b-pro-edt">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <select name="parent_id"
@@ -76,7 +83,7 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="text-center custom-pro-edt-ds">
                                                     <button type="submit"
                                                         class="btn btn-ctl-bt waves-effect waves-light m-r-10">Tạo mới
@@ -96,4 +103,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('css')
+    <style>
+        label {
+            color: #fff; !important
+        }
+    </style>
 @endsection

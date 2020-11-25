@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->role == 1 | $user->role == 2){
+        if ($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -31,7 +31,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        if ($user->role == 1 | $user->role == 2){
+        if ($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -44,7 +44,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if ($user->role == 1){
+        if ($user->role->role == 1){
             return true;
         }
     }
@@ -58,7 +58,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        if ($user->role == 1 | $user->role == $model->id){
+        if ($user->role->role == 1 | $user->role->role == $model->id){
             return true;
         }
     }
@@ -72,7 +72,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 
     /**
@@ -84,7 +84,7 @@ class UserPolicy
      */
     public function restore(User $user, User $model)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 
     /**
@@ -96,6 +96,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 }

@@ -18,10 +18,10 @@
         <div class="col-md-3 footer-grid ">
             <h3>Hỗ trợ khách hàng</h3>
             <ul>
-                <li><a href="shipping.html">Shipping</a></li>
+                <li><a href="{{ route('frontend.shipping') }}">Phương thức giao hàng</a></li>
                 <li><a href="terms.html">Chính sách và điều khoản</a></li>
                 <li><a href="faqs.html">Các câu hỏi thường gặp</a></li>
-                <li><a href="contact.html">Liên hệ</a></li>
+                <li><a href="{{ route('frontend.contact') }}">Liên hệ</a></li>
                 <li><a href="offer.html">Mua sắm trực tuyến</a></li>
 
             </ul>

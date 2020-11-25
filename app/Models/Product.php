@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Sale;
 use App\Models\User;
+use App\Models\Brand;
 
 class Product extends Model
 {
@@ -29,12 +30,19 @@ class Product extends Model
     {
         return $this->hasMany(Image::class);
     }
+
     public function sale()
     {
         return $this->hasOne(Sale::class);
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }

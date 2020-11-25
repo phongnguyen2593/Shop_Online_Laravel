@@ -18,7 +18,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        if($user->role == 1 | $user->role == 2){
+        if($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -32,7 +32,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        if ($user->role == 1 | $user->role == 2){
+        if ($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -45,7 +45,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        if($user->role == 1 | $user->role == 2){
+        if($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -59,7 +59,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        if ($user->id === $product->user_id | $user->role == 1) {
+        if ($user->id === $product->user_id | $user->role->role== 1) {
             return true;
         }
     }
@@ -73,7 +73,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        if ($user->id === $product->user_id | $user->role == 1) {
+        if ($user->id === $product->user_id | $user->role->role == 1) {
             return true;
         }
     }

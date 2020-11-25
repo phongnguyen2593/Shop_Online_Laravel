@@ -50,10 +50,12 @@ class LoginController extends Controller
     }
 
     public function authenticated($request , $user){
-        switch ($user->role){
+        switch ($user->role->role){
           case '1':
             return redirect(route('backend.index')) ;
           case '2':
+            return redirect(route('backend.index')) ;
+          case '3':
             return redirect(route('frontend.index')) ;
           default:
             return redirect(route('login'));

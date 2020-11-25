@@ -1,32 +1,52 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-@include('backend.includes.head')
+<head>
+    @include('backend.includes.head')
 
-@yield('css')
+    @yield('head')
+</head>
 
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+<body class="bg-theme bg-theme1">
 
-    @include('backend.includes.sidebar')
+    <!-- start loader -->
+    {{-- <div id="pageloader-overlay" class="visible incoming">
+        <div class="loader-wrapper-outer">
+            <div class="loader-wrapper-inner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div> --}}
+    <!-- end loader -->
 
-    <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
-        
-         @include('backend.includes.navbar')
+    <!-- Start wrapper-->
+    <div id="wrapper">
 
-        @yield('title')
-        
+        <!--Start sidebar-wrapper-->
+        @include('backend.includes.sidebar')
+
+        <!--Start topbar header-->
+        @include('backend.includes.topbar')
+
+        <div class="clearfix"></div>
+
         @yield('content')
         
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+
         @include('backend.includes.footer')
+
+        @include('backend.includes.color-switcher')
     </div>
+    <!--End wrapper-->
 
     @include('backend.includes.script')
 
     @yield('script')
+
+
 </body>
 
 </html>

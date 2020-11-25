@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('user_id')->referenced('id')->on('users');
             $table->integer('category_id')->referenced('id')->on('categories');
+            $table->integer('brand_id')->referenced('id')->on('brands');
             $table->integer('status');
             $table->timestamps();
             $table->softDeletes();

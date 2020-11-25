@@ -11,6 +11,7 @@ use App\Policies\UserPolicy;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {

@@ -21,7 +21,7 @@ Auth::routes();
 Route::group([
     'namespace'     => 'Backend',
     'prefix'        => 'admin',
-    'middleware'    => 'auth', 
+    'middleware'    => ['auth', 'auth.admin'],
     'as'            => 'backend.'
 ], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('index');
@@ -73,8 +73,10 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/category', 'HomeController@category')->name('category');
-    Route::get('/lookup', 'HomeController@lookup')->name('lookup');
-    // Route::post('/lookup', 'HomeController@lookup_action')->name('lookup_action');
+    Route::get('/tracking', 'HomeController@tracking')->name('tracking');
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::get('/shipping', 'HomeController@shipping')->name('shipping');
+    Route::get('/test', 'HomeController@test')->name('test');
 
     Route::group([
         'prefix'        => 'user',

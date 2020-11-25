@@ -29,9 +29,7 @@ class StoreProductRequest extends FormRequest
             'category_id' => 'required',
             'status' => 'required',
             'quantity' => ['required', 'max:3'],
-            'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:400']
-            // 'origin_price' => ['required','numeric', 'min:4'],
-            // 'sale_price'   => ['required', 'numeric', 'min:4'],
+            'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:400'],
         ];
     }
 

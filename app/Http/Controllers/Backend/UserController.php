@@ -23,7 +23,8 @@ class UserController extends Controller
         if ($user->can('viewAny', User::class)) {
             $users = User::orderBy('updated_at', 'DESC')
                                 ->get();
-            return view('backend.users.index', ['users' => $users]);
+            return view('backend.users.index', ['users' => $users,                   
+            ]);
         } else {
             return redirect()->route('frontend.index');
         }

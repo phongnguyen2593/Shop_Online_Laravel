@@ -1,87 +1,108 @@
-<div class="left-sidebar-pro">
-    <nav id="sidebar" class="">
-        <div class="sidebar-header">
-            <a href="index.html"><img class="main-logo" src="/backend/dashboard/img/logo/logo.png" alt="" /></a>
-            <strong><img src="/backend/dashboard/img/logo/logosn.png" alt="" /></strong>
-        </div>
-        <div class="nalika-profile" style="padding-bottom: 0;">
-            <div class="profile-dtl">
-                <a href="#"><img src="/backend/dashboard/img/notification/4.jpg" alt="" /></a>
-                <h2>{{ Auth::user()->name }}</h2>
-                @if (Auth::user()->role == 1)
-                    <span>Administrator</span>
-                @elseif (Auth::user()->role == 2)
-                    <span>Moderator</span>
-                @else
-                    <span>User</span>
-                @endif
+<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+    <div class="brand-logo">
+        <a href="index.html">
+            <img src="/backend/dashboard/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <h5 class="logo-text">The Big Store</h5>
+        </a>
+    </div>
+    <div class="user-details">
+        <div class="media align-items-center user-pointer collapsed" data-toggle="collapse"
+            data-target="#user-dropdown">
+            <div class="avatar"><img class="mr-3 side-user-img" src="https://via.placeholder.com/110x110"
+                    alt="user avatar"></div>
+            <div class="media-body">
+                <h6 class="side-user-name">{{ Auth::user()->name }}</h6>
             </div>
         </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar">
-            <nav class="sidebar-nav left-sidebar-menu-pro">
-                <ul class="metismenu" id="menu1">
-                    <li class="active">
-                        <a  href="{{ route('backend.index') }}">
-                            <i class="fa fa-home fa-fw fa-lg"></i>
-                            <span class="mini-click-non">Trang chủ</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="fa fa-user fa-fw fa-lg"></i> <span
-                                class="mini-click-non">Quản lý user</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="User list" href="{{ route('backend.user.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            @can('create', Auth::user())
-                            <li><a title="Create User" href="{{ route('backend.user.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
-                            @endcan
-                            <li><a title="Deactive User" href="x-editable.html"><span
-                                        class="mini-sub-pro">Đã khóa</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="fa fa-list fa-fw fa-lg"></i> <span
-                                class="mini-click-non">Quản lý danh mục</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Category List" href="{{ route('backend.category.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a title="Create Category" href="{{ route('backend.category.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="fa fa-cube fa-fw fa-lg"></i> <span
-                                class="mini-click-non">Quản lý sản phẩm</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Product List" href="{{ route('backend.product.index') }}"><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a title="Create Product" href="{{ route('backend.product.create') }}"><span class="mini-sub-pro">Thêm mới</span></a></li>
-                            <li><a title="Deactive Product" href=""><span class="mini-sub-pro">Đã khóa</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="fa fa-comment fa-fw fa-lg"></i> <span class="mini-click-non">Bình luận</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a href=""><span class="mini-sub-pro">Danh sách</span></a></li>
-                            <li><a href=""><span class="mini-sub-pro">Chờ phê duyệt</span></a></li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">@csrf<span
-                                class="fa fa-sign-out fa-fw fa-lg"></span>
-                            Đăng xuất</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
-                    </li>
-                </ul>
-            </nav>
+        <div id="user-dropdown" class="collapse">
+            <ul class="user-setting-menu">
+                <li><a href="javaScript:void();"><i class="icon-user"></i> Thông tin</a></li>
+                <li><a href="javaScript:void();"><i class="icon-settings"></i> Cài đặt</a></li>
+                <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="icon-power"></i> Đăng xuất</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </ul>
         </div>
-    </nav>
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ route('backend.index') }}" class="waves-effect">
+
+                <i class="zmdi zmdi-view-dashboard"></i> <span>Thống kê</span>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-layers"></i>
+                <span>Người Dùng</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('backend.user.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh sách</a></li>
+                <li><a href="{{ route('backend.user.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
+                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-card-travel"></i>
+                <span>Danh Mục</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="components-range-slider.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="components-image-carousel.html"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm mới</a></li>
+                <li><a href="components-grid-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-chart"></i> <span>Sản Phẩm</span>
+                <i class="fa fa-angle-left float-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="charts-chartjs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="charts-apex.html"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
+                <li><a href="charts-sparkline.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Xóa</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-widgets"></i> <span>Đơn Hàng</span>
+                <i class="fa fa-angle-left float-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="widgets-static.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a>
+                </li>
+                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Xác Nhận</a></li>
+                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đang Giao</a></li>
+                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Hoàn Thành</a></li>
+                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Hủy</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-format-list-bulleted"></i> <span>Bình Luận</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Duyệt</a>
+                </li>
+                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Xóa</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-lock"></i> <span>Slider</span>
+            </a>
+        </li>
+        <li>
+            <a href="calendar.html" class="waves-effect">
+                <i class="zmdi zmdi-calendar-check"></i> <span>Phân Quyền</span>
+            </a>
+        </li>
+    </ul>
+
 </div>
-
-

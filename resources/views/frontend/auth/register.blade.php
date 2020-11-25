@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('content-top')
+@section('banner')
     <div class="banner-top">
         <div class="container">
             <h3>Đăng ký</h3>
@@ -10,7 +10,7 @@
     </div>
 @endsection
 
-@section('content-mid')
+@section('content')
     <div class="login">
         <div class="main-agileits">
             <div class="form-w3agile form1">

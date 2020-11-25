@@ -18,7 +18,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->role == 1 | $user->role == 2){
+        if ($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -32,7 +32,7 @@ class CategoryPolicy
      */
     public function view(User $user, Category $category)
     {
-        if ($user->role == 1 | $user->role == 2){
+        if ($user->role->role == 1 | $user->role->role == 2){
             return true;
         }
     }
@@ -45,7 +45,7 @@ class CategoryPolicy
      */
     public function create(User $user)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category)
     {
-        return $user->role == 1;
+        return $user->role->role == 1;
     }
 
     /**

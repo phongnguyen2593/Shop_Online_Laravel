@@ -1,150 +1,127 @@
 @extends('backend.layouts.master')
 
-@section('title')
-    <div class="breadcome-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcome-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2 style="margin-top: 16px">Quản Lý Thành Viên</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('head')
+    <link href="/backend/dashboard/assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        type="text/css">
+    <link href="/backend/dashboard/assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css" rel="stylesheet"
+        type="text/css">
 @endsection
 
 @section('content')
-    <div class="product-status mg-b-30">
+    <div class="content-wrapper">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="product-status-wrap">
-                        <h4>Danh sách thành viên</h4>
-                        @can('create', Auth::user())
-                        <div class="add-product">
-                            <a href="{{ route('backend.user.create') }}">Thêm thành viên mới</a>
-                        </div>
-                        @endcan
-                        {{-- <div>
-                            <div id="toolbar">
-                                <select class="form-control">
-                                    <option value="">-- Sắp xếp theo --</option>
-                                    <option value="all">Tên sản phẩm</option>
-                                    <option value="selected" selected>Thời gian cập nhật</option>
-                                </select>
-                            </div>
-                        </div> --}}
-
-                        <table>
-                            <tr>
-                                <th>Ảnh đại diện</th>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Chức vụ</th>
-                                <th></th>
-                            </tr>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td><img src="" alt="" /></td>
-                                    <td><a href="{{ route('backend.user.show', $user->id) }}">{{ $user->name }}</a>
-                                    </td>
-                                    <td>{{ $user->email }}</td>
-                                    @if ($user->role == 1)
-                                        <td>Admin</td>
-                                    @elseif ($user->role == 2)
-                                        <td>Moderator</td>
-                                    @elseif ($user->role == 3)
-                                        <td>User</td>
-                                    @endif
-
-                                    
-                                    <td>
-                                        @can('update', $user)
-                                        <a href="{{ route('backend.user.edit', $user->id) }}"
-                                            style="color: white"><button title="Chỉnh sửa" class="pd-setting-ed"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                        @endcan
-                                        @can('delete', Auth::user())
-                                        <button title="Xóa" class="pd-setting-ed btn-delete" data-id="{{ $user->id }}"><i class="fa fa-trash-o"
-                                                    aria-hidden="true"></i></button>
-                                        @endcan
-                                    </td>
-                                    
-                                    
-                                </tr>
-                            @endforeach
-                        </table>
-                        <div class="custom-pagination">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+            <!-- Breadcrumb-->
+            <div class="row pt-2 pb-2">
+                <div class="col-sm-9">
+                    <h4 class="page-title">Data Tables</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javaScript:void();">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">Người dùng</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+                    </ol>
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn-group float-sm-right">
+                        <button type="button" class="btn btn-light waves-effect waves-light"><i class="fa fa-cog mr-1"></i>
+                            Setting</button>
+                        <button type="button"
+                            class="btn btn-light dropdown-toggle dropdown-toggle-split waves-effect waves-light"
+                            data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="javaScript:void();" class="dropdown-item">Action</a>
+                            <a href="javaScript:void();" class="dropdown-item">Another action</a>
+                            <a href="javaScript:void();" class="dropdown-item">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javaScript:void();" class="dropdown-item">Separated link</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- End Breadcrumb-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header"><i class="fa fa-table"></i> Data Table Example</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="default-datatable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Email</th>
+                                            <th>Giới tính</th>
+                                            <th>Quyền</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user)
+                                            <tr>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                @if ($user->gender == 1)
+                                                    <td>Nam</td>
+                                                @else
+                                                    <td>Nữ</td>
+                                                @endif
+                                                @if ($user->role->role == 1)
+                                                    <td>Admin</td>
+                                                @elseif($user->role->role == 2)
+                                                    <td>Mod</td>
+                                                @else
+                                                    <td>User</td>
+                                                @endif
+                                                <td>
+                                                    <a href="{{ route('backend.user.edit', $user->id) }}"><button title="Chỉnh sửa" class="btn btn-light waves-effect waves-light m-1"> <i class="fa fa-pencil-square-o"></i> </button></a>
+                                                    
+                                                    <button title="Xóa" class="btn btn-light waves-effect waves-light m-1"> <i class="fa fa-trash-o"></i> </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Row-->
+
+            <!--start overlay-->
+            <div class="overlay toggle-menu"></div>
+            <!--end overlay-->
         </div>
-    </div>
-@endsection
+    @endsection
 
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    @section('script')
+        <!--Data Tables js-->
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
 
-            $('.btn-delete').click(function(e) {
-                e.preventDefault();
-                let id = $(this).attr('data-id');
-                Swal.fire({
-                    title: 'Bạn có chắc chắn muốn xóa không ?',
-                    text: "Dữ liệu bị xóa không thể phục hồi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Xóa',
-                    cancelButtonText: 'Hủy',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: 'delete',
-                            url: '/admin/user/' + id,
-                            success: function(res) {
-                                if (!res.error) {
-                                    Swal.fire(
-                                        'Đã xóa!',
-                                        res.message,
-                                        'success'
-                                    );
-                                    location.reload();
-                                } else {
-                                    console.log(res.message);
-                                }
-                            }
-                        });
-                    }
+        <script>
+            $(document).ready(function() {
+                //Default data table
+                $('#default-datatable').DataTable();
+
+
+                var table = $('#example').DataTable({
+                    lengthChange: false,
+                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
                 });
-            });
-        });
 
-    </script>
-@endsection
+                table.buttons().container()
+                    .appendTo('#example_wrapper .col-md-6:eq(0)');
+
+            });
+
+        </script>
+    @endsection

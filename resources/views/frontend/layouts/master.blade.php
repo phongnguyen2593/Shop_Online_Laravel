@@ -27,10 +27,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- /.carousel -->
 
     <!--content-->
-    @yield('content-top')
+    @yield('banner')
 
     <!--content-->
-    @yield('content-mid')
+    @yield('content')
     <!--content-->
 
     <!--content-->

@@ -14,12 +14,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        window.jQuery || document.write('<script src="/frontend/shop/js/vendor/jquery-1.11.1.min.js"><\/script>')
-
-    </script>
-    <script src="/frontend/shop/js/jquery.vide.min.js"></script>
 @endsection
 
 @section('carousel')
@@ -32,24 +26,20 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <a href="kitchen.html"> <img class="first-slide" src="/frontend/shop/images/ba.jpg" alt="First slide"></a>
+                <a href="kitchen.html"> <img src="/frontend/shop/images/ba.jpg" alt="First slide"></a>
 
             </div>
             <div class="item">
-                <a href="care.html"> <img class="second-slide " src="/frontend/shop/images/ba1.jpg" alt="Second slide"></a>
-
+                <a href="care.html"> <img src="/frontend/shop/images/ba1.jpg" alt="Second slide"></a>
             </div>
             <div class="item">
-                <a href="hold.html"><img class="third-slide " src="/frontend/shop/images/ba2.jpg" alt="Third slide"></a>
-
+                <a href="hold.html"><img src="/frontend/shop/images/ba2.jpg" alt="Third slide"></a>
             </div>
         </div>
-
     </div>
-
 @endsection
 
-@section('content-top')
+@section('content')
     <div class="content-top ">
         <div class="container ">
             <div class="spec ">
@@ -63,10 +53,16 @@
             <div class="tab-head ">
                 <nav class="nav-sidebar">
                     <ul class="nav tabs ">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($categories as $category)
+                        <li class="active"><a href="#tab{{ $i }}" data-toggle="tab">{{ $category->name }}</a></li>
+                        @endforeach
+                        {{-- <li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
                         <li class=""><a href="#tab2" data-toggle="tab">Snacks</a></li>
                         <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>
-                        <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li>
+                        <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li> --}}
                     </ul>
                 </nav>
                 <div class=" tab-content tab-content-t ">
@@ -544,10 +540,6 @@
 
         </div>
     </div>
-    </div>
-@endsection
-
-@section('content-mid')
     <div class="content-mid">
         <div class="container">
 
@@ -598,10 +590,6 @@
             <div class="clearfix"></div>
         </div>
     </div>
-
-@endsection
-
-@section('product')
     <div class="product">
         <div class="container">
             <div class="spec ">
@@ -614,78 +602,83 @@
             </div>
             <div class=" con-w3l">
                 @foreach ($products as $product)
-                <div class="col-md-3 pro-1">
-                    <div class="col-m">
-                        <a href="#" data-toggle="modal" data-target="#myModal{{ $product->id }}" class="offer-img">
-                            <img src="/frontend/shop/images/of16.png" class="img-responsive" alt="">
-                        </a>
-                        <div class="mid-1">
-                            <div class="women">
-                                <p><a href="single.html">{{ $product->name }}</a></p>
-                            </div>
-                            <div class="mid-2">
-                                <p><label>{{ number_format($product->sale->origin_price) }}</label><em class="item_price">{{ number_format($product->sale->sale_price) }}</em></p>
-                                <div class="block">
-                                    <div class="starbox small ghosting"> </div>
+                    <div class="col-md-3 pro-1">
+                        <div class="col-m">
+                            <a href="#" data-toggle="modal" data-target="#myModal{{ $product->id }}" class="offer-img">
+                                <img src="/frontend/shop/images/of16.png" class="img-responsive" alt="">
+                            </a>
+                            <div class="mid-1">
+                                <div class="women">
+                                    <p><a href="single.html">{{ $product->name }}</a></p>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="add add-2">
-                                <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                    data-summary="summary 1" data-price="6.00" data-quantity="1"
-                                    data-image="/frontend/shop/images/of16.png">Thêm vào giỏ hàng</button>
+                                <div class="mid-2">
+                                    <p><label>{{ number_format($product->sale->origin_price) }}</label><em
+                                            class="item_price">{{ number_format($product->sale->sale_price) }}</em></p>
+                                    <div class="block">
+                                        <div class="starbox small ghosting"> </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="add add-2">
+                                    <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
+                                        data-summary="summary 1" data-price="6.00" data-quantity="1"
+                                        data-image="/frontend/shop/images/of16.png">Thêm vào giỏ hàng</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-                
+
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
 @endsection
 
+@section('product')
+
+@endsection
+
 @section('modal')
     @foreach ($products as $product)
-    <div class="modal fade" id="myModal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-info">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body modal-spa">
-                    <div class="col-md-5 span-2">
-                        <div class="item">
-                            <img src="/frontend/shop/images/of.png" class="img-responsive" alt="">
-                        </div>
+        <div class="modal fade" id="myModal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="col-md-7 span-1 ">
-                        <h3>{{ $product->name }}</h3>
-                        <div class="price_single">
-                            <span class="reducedfrom ">
-                                {{ number_format($product->sale->sale_price) }}
-                                <del>{{ number_format($product->sale->origin_price) }}</del>
-                            </span>
+                    <div class="modal-body modal-spa">
+                        <div class="col-md-5 span-2">
+                            <div class="item">
+                                <img src="/frontend/shop/images/of.png" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 span-1 ">
+                            <h3>{{ $product->name }}</h3>
+                            <div class="price_single">
+                                <span class="reducedfrom ">
+                                    {{ number_format($product->sale->sale_price) }}
+                                    <del>{{ number_format($product->sale->origin_price) }}</del>
+                                </span>
 
-                            <div class="clearfix"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <h4 class="quick">Mô tả:</h4>
+                            <p class="quick_desc">{{ $product->description }}</p>
+                            <div class="add-to">
+                                <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="1" data-name="Moong"
+                                    data-summary="summary 1" data-price="1.50" data-quantity="1"
+                                    data-image="/frontend/shop/images/of.png">Thêm vào giỏ hàng</button>
+                            </div>
                         </div>
-                        <h4 class="quick">Mô tả:</h4>
-                        <p class="quick_desc">{{ $product->description }}</p>
-                        <div class="add-to">
-                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="1" data-name="Moong"
-                                data-summary="summary 1" data-price="1.50" data-quantity="1"
-                                data-image="/frontend/shop/images/of.png">Thêm vào giỏ hàng</button>
-                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <div class="clearfix"> </div>
                 </div>
             </div>
         </div>
-    </div>
     @endforeach
-    
+
 @endsection
 
 @section('css')
@@ -694,5 +687,14 @@
             color: #fab005;
             font-size: 1.5em;
         }
+
     </style>
+@endsection
+
+@section('script')
+    <script>
+        window.jQuery || document.write('<script src="/frontend/shop/js/vendor/jquery-1.11.1.min.js"><\/script>')
+
+    </script>
+    <script src="/frontend/shop/js/jquery.vide.min.js"></script>
 @endsection

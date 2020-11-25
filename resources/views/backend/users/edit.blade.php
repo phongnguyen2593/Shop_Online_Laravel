@@ -1,41 +1,5 @@
 @extends('backend.layouts.master')
 
-@section('css')
-    <style>
-        label { color: #fff; }
-        #name { width: 208%; }
-        #email { width: 215%;}
-        #avatar { width: 129%; }
-        #phone { width: 177%;}
-        #address { width: 207%;}
-    </style>
-@endsection
-
-@section('title')
-    <div class="breadcome-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcome-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="fa fa-cube"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2 style="margin-top: 16px">Quản Lý Thành Viên</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
 @section('content')
     <div class="single-product-tab-area mg-b-30">
         <!-- Single pro tab review Start-->

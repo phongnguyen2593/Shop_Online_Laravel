@@ -3,16 +3,32 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\Category;
+// use Carbon\Carbon;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 { 
     public function index()
     {
+        // $year =Carbon::now()->year;
+        // $day = Carbon::now()->day;
+        // $dt= $day . $year . '-' . 'hsdgfhgsd';
+        // return $dt;
+        
+        $categories = Category::get();
         $products = Product::with('sale')->get();
-        return view('frontend.home', ['products' => $products]);
+        return view('frontend.home', [
+            'products' => $products,
+            'categories' => $categories
+            ]);
     }
 
     public function category()
@@ -25,23 +41,58 @@ class HomeController extends Controller
         dd('product');
     }
 
-    public function lookup()
+    public function tracking()
     {
-        return view('frontend.lookup');
+        return view('frontend.pages.tracking');
     }
 
-    public function lookup_action()
+    public function contact()
     {
-        dd($_GET('lookup'));
+        $user = Auth::user();
+        return view('frontend.pages.contact', ['user' => $user]);
     }
 
-    public function test()
+    public function shipping()
+    {
+        return view('frontend.pages.shipping');
+    }
+
+    
+
+    public function test(Request $request)
     {
         // Storage::put('file2.txt', 'Contents');
 
         // Storage::disk('public')->put('file5.txt', 'File5');
 
-        $url = Storage::url('file5.txt');
-        dd($url);
+        // $url = Storage::url('file5.txt');
+        // dd($url);
+
+        // $cookie = cookie('hello', '123123123', 1);
+        // Cookie::queue('lalala', '23232323', 30);
+        // return 1;
+        // $value = $request->cookie('lalala');
+        // $value = Cookie::get('lalala');
+        // return response('Helloworld')->cookie($cookie);
+        // dd($value);
+        
+        // Cache::put('categories', 'ahahaha', 30);
+        
+        // $value = Cache::get('categories');
+        // dd($value);
+        // return 1;
+
+        // $categories = Category::get();
+        // dd($categories);
+        // Cache::put('categories', $categories, 300);
+        // $categories = Cache::get('categories');
+        // dd($categories);
+
+        if (!Cache::has('categories')) {
+            $categories = Category::get();
+            Cache::put('categories', $categories, 1);
+        }
+        $categories = Cache::get('categories');
+        dd($categories);
     }
 }

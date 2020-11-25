@@ -1,513 +1,649 @@
 @extends('backend.layouts.master')
 
 @section('content')
-    <div class="section-admin container-fluid">
-        <div class="row admin text-center">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-15">
-                            <h4 class="text-left text-uppercase"><b>Orders</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="col-xs-3 mar-bot-15 text-left">
-                                    <label class="label bg-green">30% <i class="fa fa-level-up"
-                                            aria-hidden="true"></i></label>
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin">10,000</h2>
-                                </div>
-                            </div>
-                            <div class="progress progress-mini">
-                                <div style="width: 78%;" class="progress-bar bg-green"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Tax Deduction</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <label class="label bg-red">15% <i class="fa fa-level-down"
-                                            aria-hidden="true"></i></label>
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin">5,000</h2>
+<div class="content-wrapper">
+            <div class="container-fluid">
+
+                <!--Start Dashboard Content-->
+
+                <div class="card mt-3">
+                    <div class="card-content">
+                        <div class="row row-group m-0">
+                            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                                <div class="card-body">
+                                    <h5 class="text-white mb-0">9526 <span class="float-right"><i
+                                                class="fa fa-shopping-cart"></i></span></h5>
+                                    <div class="progress my-3" style="height:3px;">
+                                        <div class="progress-bar" style="width:55%"></div>
+                                    </div>
+                                    <p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2%
+                                            <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                                 </div>
                             </div>
-                            <div class="progress progress-mini">
-                                <div style="width: 38%;" class="progress-bar progress-bar-danger bg-red"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Revenue</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <label class="label bg-blue">50% <i class="fa fa-level-up"
-                                            aria-hidden="true"></i></label>
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin">$70,000</h2>
+                            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                                <div class="card-body">
+                                    <h5 class="text-white mb-0">8323 <span class="float-right"><i
+                                                class="fa fa-usd"></i></span></h5>
+                                    <div class="progress my-3" style="height:3px;">
+                                        <div class="progress-bar" style="width:55%"></div>
+                                    </div>
+                                    <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2%
+                                            <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                                 </div>
                             </div>
-                            <div class="progress progress-mini">
-                                <div style="width: 60%;" class="progress-bar bg-blue"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Yearly Sales</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <label class="label bg-purple">80% <i class="fa fa-level-up"
-                                            aria-hidden="true"></i></label>
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin">$100,000</h2>
+                            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                                <div class="card-body">
+                                    <h5 class="text-white mb-0">6200 <span class="float-right"><i
+                                                class="fa fa-eye"></i></span></h5>
+                                    <div class="progress my-3" style="height:3px;">
+                                        <div class="progress-bar" style="width:55%"></div>
+                                    </div>
+                                    <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i
+                                                class="zmdi zmdi-long-arrow-up"></i></span></p>
                                 </div>
                             </div>
-                            <div class="progress progress-mini">
-                                <div style="width: 60%;" class="progress-bar bg-purple"></div>
+                            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                                <div class="card-body">
+                                    <h5 class="text-white mb-0">5630 <span class="float-right"><i
+                                                class="fa fa-envira"></i></span></h5>
+                                    <div class="progress my-3" style="height:3px;">
+                                        <div class="progress-bar" style="width:55%"></div>
+                                    </div>
+                                    <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i
+                                                class="zmdi zmdi-long-arrow-up"></i></span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="product-sales-area mg-tb-30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                    <div class="product-sales-chart">
-                        <div class="portlet-title">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="caption pro-sl-hd">
-                                        <span class="caption-subject text-uppercase"><b>Product Sales</b></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="actions graph-rp">
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-grey active">
-                                                <input type="radio" name="options" class="toggle" id="option1"
-                                                    checked="">Today</label>
-                                            <label class="btn btn-grey">
-                                                <input type="radio" name="options" class="toggle" id="option2">Week</label>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">Site Traffic
+                                <div class="card-action">
+                                    <div class="dropdown">
+                                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                            data-toggle="dropdown">
+                                            <i class="icon-options"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void();">Action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="curved-line-chart" class="flot-chart-sts flot-chart curved-chart-statistic"></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="white-box analytics-info-cs mg-b-30 res-mg-t-30">
-                        <h3 class="box-title">Total Visit</h3>
-                        <ul class="list-inline two-part-sp">
-                            <li>
-                                <div id="sparklinedash"></div>
-                            </li>
-                            <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                    class="counter sales-sts-ctn">8659</span></li>
-                        </ul>
-                    </div>
-                    <div class="white-box analytics-info-cs mg-b-30">
-                        <h3 class="box-title">Total Page Views</h3>
-                        <ul class="list-inline two-part-sp">
-                            <li>
-                                <div id="sparklinedash2"></div>
-                            </li>
-                            <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                    class="counter sales-sts-ctn">7469</span></li>
-                        </ul>
-                    </div>
-                    <div class="white-box analytics-info-cs mg-b-30">
-                        <h3 class="box-title">Unique Visitor</h3>
-                        <ul class="list-inline two-part-sp">
-                            <li>
-                                <div id="sparklinedash3"></div>
-                            </li>
-                            <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                    class="counter sales-sts-ctn">6011</span></li>
-                        </ul>
-                    </div>
-                    <div class="white-box analytics-info-cs">
-                        <h3 class="box-title">Bounce Rate</h3>
-                        <ul class="list-inline two-part-sp">
-                            <li>
-                                <div id="sparklinedash4"></div>
-                            </li>
-                            <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span
-                                    class="sales-sts-ctn">18%</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="traffic-analysis-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="white-box tranffic-als-inner">
-                        <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-one"><i
-                                    class="fa fa-sort-asc"></i> 18% last month</small> Site Traffic</h3>
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <h6>Overall Growth</h6>
-                                <b>80.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Montly</h6>
-                                <b>15.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Day</h6>
-                                <b>5.50%</b>
-                            </div>
-                        </div>
-                        <div id="sparkline8"></div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="white-box tranffic-als-inner res-mg-t-30">
-                        <h3 class="box-title"><small class="pull-right m-t-10 text-danger last-month-sc cl-two"><i
-                                    class="fa fa-sort-desc"></i> 18% last month</small>Site Traffic</h3>
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <h6>Overall Growth</h6>
-                                <b>80.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Montly</h6>
-                                <b>15.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Day</h6>
-                                <b>5.50%</b>
-                            </div>
-                        </div>
-                        <div id="sparkline9"></div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="white-box tranffic-als-inner res-mg-t-30">
-                        <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-three"><i
-                                    class="fa fa-sort-asc"></i> 18% last month</small>Site Traffic</h3>
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <h6>Overall Growth</h6>
-                                <b>80.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Montly</h6>
-                                <b>15.40%</b>
-                            </div>
-                            <div class="stat-item">
-                                <h6>Day</h6>
-                                <b>5.50%</b>
-                            </div>
-                        </div>
-                        <div id="sparkline10"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="product-new-list-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-new-trend mg-t-30">
-                        <a href="#"><img src="/backend/dashboard/img/new-product/5.png" alt=""></a>
-                        <div class="overlay-content">
-                            <a href="#">
-                                <h2>$280</h2>
-                            </a>
-                            <a href="#" class="btn-small">Now</a>
-                            <div class="product-action">
-                                <ul>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag"
-                                                aria-hidden="true"></i></a>
+                            <div class="card-body">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>New Visitor
                                     </li>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart"
-                                                aria-hidden="true"></i></a>
+                                    <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Old Visitor
                                     </li>
                                 </ul>
+                                <div class="chart-container-1">
+                                    <canvas id="chart1"></canvas>
+                                </div>
                             </div>
-                            <a class="pro-tlt" href="#">
-                                <h4>Princes Diamond</h4>
-                            </a>
-                            <div class="pro-rating">
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-new-trend mg-t-30">
-                        <a href="#"><img src="/backend/dashboard/img/new-product/5.png" alt=""></a>
-                        <div class="overlay-content">
-                            <a href="#">
-                                <h2>$280</h2>
-                            </a>
-                            <a href="#" class="btn-small">Now</a>
-                            <div class="product-action">
-                                <ul>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="#">
-                                <h4>Princes Diamond</h4>
-                            </a>
-                            <div class="pro-rating">
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-new-trend mg-t-30">
-                        <a href="#"><img src="/backend/dashboard/img/new-product/5.png" alt=""></a>
-                        <div class="overlay-content">
-                            <a href="#">
-                                <h2>$280</h2>
-                            </a>
-                            <a href="#" class="btn-small">Now</a>
-                            <div class="product-action">
-                                <ul>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="#">
-                                <h4>Princes Diamond</h4>
-                            </a>
-                            <div class="pro-rating">
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-new-trend mg-t-30">
-                        <a href="#"><img src="/backend/dashboard/img/new-product/5.png" alt=""></a>
-                        <div class="overlay-content">
-                            <a href="#">
-                                <h2>$280</h2>
-                            </a>
-                            <a href="#" class="btn-small">Now</a>
-                            <div class="product-action">
-                                <ul>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Shopping" href="#"><i class="fa fa-shopping-bag"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" title="Quick view" href="#"><i class="fa fa-heart"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="#">
-                                <h4>Princes Diamond</h4>
-                            </a>
-                            <div class="pro-rating">
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="fa fa-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star color"></i>
-                                <i class="icon nalika-half-filled-rating-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="product-sales-area mg-tb-30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                    <div class="product-sales-chart">
-                        <div class="portlet-title">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="caption pro-sl-hd">
-                                        <span class="caption-subject text-uppercase"><b>Order Statistic</b></span>
+
+                            <div class="row m-0 row-group text-center border-top border-light-3">
+                                <div class="col-12 col-lg-4">
+                                    <div class="p-3">
+                                        <h5 class="mb-0">45.87M</h5>
+                                        <small class="mb-0">Overall Visitor <span> <i class="fa fa-arrow-up"></i>
+                                                2.43%</span></small>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="actions graph-rp">
-                                        <a href="#" class="btn btn-dark-blue btn-circle active tip-top"
-                                            data-toggle="tooltip" title="Upload">
-                                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip"
-                                            title="Refresh">
-                                            <i class="fa fa-reply" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-blue-grey btn-circle active tip-top"
-                                            data-toggle="tooltip" title="Delete">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
+                                <div class="col-12 col-lg-4">
+                                    <div class="p-3">
+                                        <h5 class="mb-0">15:48</h5>
+                                        <small class="mb-0">Visitor Duration <span> <i class="fa fa-arrow-up"></i>
+                                                12.65%</span></small>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="p-3">
+                                        <h5 class="mb-0">245.65</h5>
+                                        <small class="mb-0">Pages/Visit <span> <i class="fa fa-arrow-up"></i>
+                                                5.62%</span></small>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        <div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="analytics-rounded mg-b-30 res-mg-t-30">
-                        <div class="analytics-rounded-content">
-                            <h5>Percentage distribution</h5>
-                            <h2><span class="counter">60</span>/20</h2>
-                            <div class="text-center">
-                                <div id="sparkline51"></div>
+
+                    <div class="col-12 col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-header">Weekly sales
+                                <div class="card-action">
+                                    <div class="dropdown">
+                                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                            data-toggle="dropdown">
+                                            <i class="icon-options"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void();">Action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container-2">
+                                    <canvas id="chart2"></canvas>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table align-items-center">
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa fa-circle text-white mr-2"></i> Direct</td>
+                                            <td>$5856</td>
+                                            <td>+55%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-circle text-light-1 mr-2"></i>Affiliate</td>
+                                            <td>$2602</td>
+                                            <td>+25%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-circle text-light-2 mr-2"></i>E-mail</td>
+                                            <td>$1802</td>
+                                            <td>+15%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-circle text-light-3 mr-2"></i>Other</td>
+                                            <td>$1105</td>
+                                            <td>+5%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="analytics-rounded">
-                        <div class="analytics-rounded-content">
-                            <h5>Percentage division</h5>
-                            <h2><span class="counter">150</span>/<span class="counter">54</span></h2>
-                            <div class="text-center">
-                                <div id="sparkline52"></div>
+                </div>
+                <!--End Row-->
+
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="w_chart easy-dash-chart" data-percent="60">
+                                        <span class="w_percent"></span>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="mb-0">Facebook Followers</h6>
+                                        <small class="mb-0">22.14% <i class="fa fa-arrow-up"></i> Since Last
+                                            Week</small>
+                                    </div>
+                                    <i class="fa fa-facebook text-white text-right fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="w_chart easy-dash-chart" data-percent="65">
+                                        <span class="w_percent"></span>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="mb-0">Twitter Tweets</h6>
+                                        <small class="mb-0">32.15% <i class="fa fa-arrow-up"></i> Since Last
+                                            Week</small>
+                                    </div>
+                                    <i class="fa fa-twitter text-white text-right fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="w_chart easy-dash-chart" data-percent="75">
+                                        <span class="w_percent"></span>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                        <h6 class="mb-0">Youtube Subscribers</h6>
+                                        <small class="mb-0">58.24% <i class="fa fa-arrow-up"></i> Since Last
+                                            Week</small>
+                                    </div>
+                                    <i class="fa fa-youtube text-white fa-2x"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!--End Row-->
+
+
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-6">
+                        <div class="card">
+                            <div class="card-header">World Selling Region
+                                <div class="card-action">
+                                    <div class="dropdown">
+                                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                            data-toggle="dropdown">
+                                            <i class="icon-options"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void();">Action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="dashboard-map" style="height: 275px;"></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover align-items-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>Income</th>
+                                            <th>Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="flag-icon flag-icon-ca mr-2"></i> USA</td>
+                                            <td>4,586$</td>
+                                            <td><span id="trendchart1"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="flag-icon flag-icon-us mr-2"></i>Canada</td>
+                                            <td>2,089$</td>
+                                            <td><span id="trendchart2"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="flag-icon flag-icon-in mr-2"></i>India</td>
+                                            <td>3,039$</td>
+                                            <td><span id="trendchart3"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="flag-icon flag-icon-gb mr-2"></i>UK</td>
+                                            <td>2,309$</td>
+                                            <td><span id="trendchart4"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><i class="flag-icon flag-icon-de mr-2"></i>Germany</td>
+                                            <td>7,209$</td>
+                                            <td><span id="trendchart5"></span></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-12 col-xl-6">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>Page Views</p>
+                                        <h4 class="mb-0">8,293 <small class="small-font">5.2% <i
+                                                    class="zmdi zmdi-long-arrow-up"></i></small></h4>
+                                    </div>
+                                    <div class="chart-container-3">
+                                        <canvas id="chart3"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>Total Clicks</p>
+                                        <h4 class="mb-0">7,493 <small class="small-font">1.4% <i
+                                                    class="zmdi zmdi-long-arrow-up"></i></small></h4>
+                                    </div>
+                                    <div class="chart-container-3">
+                                        <canvas id="chart4"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="mb-4">Total Downloads</p>
+                                        <input class="knob" data-width="175" data-height="175" data-readOnly="true"
+                                            data-thickness=".2" data-angleoffset="90" data-linecap="round"
+                                            data-bgcolor="rgba(255, 255, 255, 0.14)" data-fgcolor="#fff"
+                                            data-max="15000" value="8550" />
+                                        <hr>
+                                        <p class="mb-0 small-font text-center">3.4% <i
+                                                class="zmdi zmdi-long-arrow-up"></i> since yesterday</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p>Device Storage</p>
+                                        <h4 class="mb-3">42620/50000</h4>
+                                        <hr>
+                                        <div class="progress-wrapper mb-4">
+                                            <p>Documents <span class="float-right">12GB</span></p>
+                                            <div class="progress" style="height:5px;">
+                                                <div class="progress-bar" style="width:80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-wrapper mb-4">
+                                            <p>Images <span class="float-right">10GB</span></p>
+                                            <div class="progress" style="height:5px;">
+                                                <div class="progress-bar" style="width:60%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-wrapper mb-4">
+                                            <p>Mails <span class="float-right">5GB</span></p>
+                                            <div class="progress" style="height:5px;">
+                                                <div class="progress-bar" style="width:40%"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--End Row-->
+
+
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Total Earning</p>
+                                <h4 class="mb-0">287,493$</h4>
+                                <small>1.4% <i class="zmdi zmdi-long-arrow-up"></i> Since Last Month</small>
+                                <hr>
+                                <p>Total Sales</p>
+                                <h4 class="mb-0">87,493</h4>
+                                <small>5.43% <i class="zmdi zmdi-long-arrow-up"></i> Since Last Month</small>
+                                <div class="mt-5">
+                                    <div class="chart-container-4">
+                                        <canvas id="chart5"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-6 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">Customer Review
+                                <div class="card-action">
+                                    <div class="dropdown">
+                                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                            data-toggle="dropdown">
+                                            <i class="icon-options"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void();">Action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent">
+                                    <div class="media align-items-center">
+                                        <img src="https://via.placeholder.com/110x110" alt="user avatar"
+                                            class="customer-img rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-0">iPhone X <small class="ml-4">08.34 AM</small></h6>
+                                            <p class="mb-0 small-font">Sara Jhon : This i svery Nice phone in low
+                                                budget.</p>
+                                        </div>
+                                        <div class="star">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="media align-items-center">
+                                        <img src="https://via.placeholder.com/110x110" alt="user avatar"
+                                            class="customer-img rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-0">Air Pod <small class="ml-4">05.26 PM</small></h6>
+                                            <p class="mb-0 small-font">Danish Josh : The brand apple is original !</p>
+                                        </div>
+                                        <div class="star">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="media align-items-center">
+                                        <img src="https://via.placeholder.com/110x110" alt="user avatar"
+                                            class="customer-img rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-0">Mackbook Pro <small class="ml-4">06.45 AM</small></h6>
+                                            <p class="mb-0 small-font">Jhon Doe : Excllent product and awsome quality
+                                            </p>
+                                        </div>
+                                        <div class="star">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="media align-items-center">
+                                        <img src="https://via.placeholder.com/110x110" alt="user avatar"
+                                            class="customer-img rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-0">Air Pod <small class="ml-4">08.34 AM</small></h6>
+                                            <p class="mb-0 small-font">Christine : The brand apple is original !</p>
+                                        </div>
+                                        <div class="star">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item bg-transparent">
+                                    <div class="media align-items-center">
+                                        <img src="https://via.placeholder.com/110x110" alt="user avatar"
+                                            class="customer-img rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <h6 class="mb-0">Mackbook <small class="ml-4">08.34 AM</small></h6>
+                                            <p class="mb-0 small-font">Michle : The brand apple is original !</p>
+                                        </div>
+                                        <div class="star">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star text-light"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row-->
+
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">Recent Order Tables
+                                <div class="card-action">
+                                    <div class="dropdown">
+                                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret"
+                                            data-toggle="dropdown">
+                                            <i class="icon-options"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void();">Action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Photo</th>
+                                            <th>Product ID</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Shipping</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Iphone 5</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405822</td>
+                                            <td>$ 1250.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 90%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Earphone GL</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405820</td>
+                                            <td>$ 1500.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 60%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>HD Hand Camera</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405830</td>
+                                            <td>$ 1400.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 70%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Clasic Shoes</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405825</td>
+                                            <td>$ 1200.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Hand Watch</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405840</td>
+                                            <td>$ 1800.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 40%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Clasic Shoes</td>
+                                            <td><img src="https://via.placeholder.com/110x110" class="product-img"
+                                                    alt="product img"></td>
+                                            <td>#9405825</td>
+                                            <td>$ 1200.00</td>
+                                            <td>03 Aug 2017</td>
+                                            <td>
+                                                <div class="progress shadow" style="height: 3px;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Row-->
+
+                <!--End Dashboard Content-->
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+
             </div>
+            <!-- End container-fluid-->
+
         </div>
-    </div>
-    <div class="author-area-pro">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="personal-info-wrap">
-                        <div class="widget-head-info-box">
-                            <div class="persoanl-widget-hd">
-                                <h2>Jon Royita</h2>
-                                <p>Founder of Uttara It Park</p>
-                            </div>
-                            <img src="/backend/dashboard/img/notification/5.jpg" class="img-circle circle-border m-b-md"
-                                alt="profile">
-                            <div class="social-widget-result">
-                                <span>100 Tweets</span> |
-                                <span>350 Following</span> |
-                                <span>610 Followers</span>
-                            </div>
-                        </div>
-                        <div class="widget-text-box">
-                            <h4>Jhon Royita</h4>
-                            <p>To all the athaists attacking me right now, I can't make you believe in God, you have
-                                to have faith.</p>
-                            <div class="text-right like-love-list">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="author-widgets-single res-mg-t-30">
-                        <div class="author-wiget-inner">
-                            <div class="perso-img">
-                                <img src="/backend/dashboard/img/notification/6.jpg" class="img-circle circle-border m-b-md"
-                                    alt="profile">
-                            </div>
-                            <div class="persoanl-widget-hd persoanl1-widget-hd">
-                                <h2>Fire Foxy</h2>
-                                <p>Founder of Uttara It House</p>
-                            </div>
-                            <div class="social-widget-result social-widget1-result">
-                                <span>100 Tweets</span> |
-                                <span>350 Following</span> |
-                                <span>610 Followers</span>
-                            </div>
-                        </div>
-                        <div class="widget-text-box">
-                            <h4>Fire Foxy</h4>
-                            <p>To all the athaists attacking me right now, I can't make you believe in God, you have
-                                to have faith.</p>
-                            <div class="text-right like-love-list">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="personal-info-wrap personal-info-ano res-mg-t-30">
-                        <div class="widget-head-info-box">
-                            <div class="persoanl-widget-hd">
-                                <h2>Jon Royita</h2>
-                                <p>Founder of Uttara It Park</p>
-                            </div>
-                            <img src="/backend/dashboard/img/contact/2.jpg" class="img-circle circle-border m-b-md"
-                                alt="profile">
-                            <div class="social-widget-result">
-                                <span>100 Tweets</span> |
-                                <span>350 Following</span> |
-                                <span>610 Followers</span>
-                            </div>
-                        </div>
-                        <div class="widget-text-box">
-                            <h4>Jhon Royita</h4>
-                            <p>To all the athaists attacking me right now, I can't make you believe in God, you have
-                                to have faith.</p>
-                            <div class="text-right like-love-list">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="calender-area mg-tb-30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="calender-inner">
-                        <div id='calendar'></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

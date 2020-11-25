@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Product;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,
+        SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -42,5 +45,10 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Producy::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class);
     }
 }

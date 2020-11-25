@@ -60,7 +60,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                     <ul class="nav navbar-nav ">
-                        <li class=" active"><a href="index.html" class="hyper "><span>Trang chủ</span></a></li>
+                        <li class=" active"><a href="{{ route('frontend.index') }}" class="hyper "><span>Trang chủ</span></a></li>
 
                         <li class="dropdown ">
                             <a href="" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Danh mục<b
@@ -225,8 +225,8 @@
                             </ul>
                         </li>
 
-                        <li><a href="{{ route('frontend.lookup') }}" class="hyper"> <span>Tra cứu đơn hàng</span></a></li>
-                        <li><a href="contact.html" class="hyper"><span>Liên hệ</span></a></li>
+                        <li><a href="{{ route('frontend.tracking') }}" class="hyper"> <span>Tra cứu đơn hàng</span></a></li>
+                        <li><a href="{{ route('frontend.contact') }}" class="hyper"><span>Liên hệ</span></a></li>
                     </ul>
                 </div>
             </nav>
