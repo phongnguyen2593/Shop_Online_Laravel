@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'name' =>   'Phong',
             'gender'    => 1,
             'password'  => bcrypt('123123123'),
+            'email_verified_at' => '2020-10-28 07:11:00',
             'created_at' => '2020-10-28 07:11:00',
             'updated_at' => '2020-10-28 07:11:00',
         ]);
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
                 'name'      => Str::random(10),
                 'gender'    => 1,
                 'password'  => bcrypt('123123123'),
+                'email_verified_at' => '2020-10-28 07:11:00',
                 'created_at' => '2020-10-28 07:11:00',
                 'updated_at' => '2020-10-28 07:11:00',
             ]);
