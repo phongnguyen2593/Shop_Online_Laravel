@@ -16,7 +16,7 @@
         </div>
         <div id="user-dropdown" class="collapse">
             <ul class="user-setting-menu">
-                <li><a href="javaScript:void();"><i class="icon-user"></i> Thông tin</a></li>
+                <li><a href=""><i class="icon-user"></i> Thông tin</a></li>
                 <li><a href="javaScript:void();"><i class="icon-settings"></i> Cài đặt</a></li>
                 <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"><i class="icon-power"></i> Đăng xuất</a></li>
@@ -27,12 +27,12 @@
         </div>
     </div>
     <ul class="sidebar-menu">
-        <li>
+        <li class="active">
             <a href="{{ route('backend.index') }}" class="waves-effect">
-
                 <i class="zmdi zmdi-view-dashboard"></i> <span>Thống kê</span>
             </a>
         </li>
+        <li class="sidebar-header">QUẢN LÝ NGƯỜI DÙNG</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-layers"></i>
@@ -41,9 +41,15 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.user.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh sách</a></li>
                 <li><a href="{{ route('backend.user.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
-                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>
+                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
             </ul>
         </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-calendar-check"></i> <span>Phân Quyền</span>
+            </a>
+        </li>
+        <li class="sidebar-header">QUẢN LÝ SẢN PHẨM</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-card-travel"></i>
@@ -51,9 +57,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="sidebar-submenu">
-                <li><a href="components-range-slider.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
-                <li><a href="components-image-carousel.html"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm mới</a></li>
-                <li><a href="components-grid-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>
+                <li><a href="{{ route('backend.category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="{{ route('backend.category.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm mới</a></li>
+                <li><a href="{{ route('backend.category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
             </ul>
         </li>
         <li>
@@ -62,9 +68,9 @@
                 <i class="fa fa-angle-left float-right"></i>
             </a>
             <ul class="sidebar-submenu">
-                <li><a href="charts-chartjs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
-                <li><a href="charts-apex.html"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
-                <li><a href="charts-sparkline.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Xóa</a></li>
+                <li><a href="{{ route('backend.product.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="{{ route('backend.product.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
+                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
             </ul>
         </li>
         <li>
@@ -73,14 +79,16 @@
                 <i class="fa fa-angle-left float-right"></i>
             </a>
             <ul class="sidebar-submenu">
-                <li><a href="widgets-static.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a>
+                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a>
                 </li>
-                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Xác Nhận</a></li>
-                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đang Giao</a></li>
-                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Hoàn Thành</a></li>
-                <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Hủy</a></li>
+                <li><a href="{{ route('backend.order.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
+                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Xác Nhận</a></li>
+                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đang Giao</a></li>
+                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Hoàn Thành</a></li>
+                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Hủy</a></li>
             </ul>
         </li>
+        <li class="sidebar-header">QUẢN LÝ BÀI VIẾT</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-format-list-bulleted"></i> <span>Bình Luận</span>
@@ -90,19 +98,14 @@
                 <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
                 <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Duyệt</a>
                 </li>
-                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Xóa</a></li>
+                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> ...</a></li>
             </ul>
         </li>
+        <li class="sidebar-header">QUẢN LÝ HÌNH ẢNH</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-lock"></i> <span>Slider</span>
             </a>
         </li>
-        <li>
-            <a href="calendar.html" class="waves-effect">
-                <i class="zmdi zmdi-calendar-check"></i> <span>Phân Quyền</span>
-            </a>
-        </li>
     </ul>
-
 </div>

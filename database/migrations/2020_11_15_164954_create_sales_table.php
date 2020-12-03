@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->integer('sale_price');
             $table->integer('discount_percent')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

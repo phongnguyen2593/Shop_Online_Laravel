@@ -18,31 +18,31 @@ class HomeController extends Controller
 { 
     public function index()
     {
+        // return view('frontend.home');
         // $year =Carbon::now()->year;
         // $day = Carbon::now()->day;
         // $dt= $day . $year . '-' . 'hsdgfhgsd';
         // return $dt;
         
-        // $categories = Category::get();
-        $categories = Cache::remember('categories', 60*60, function () {
-            $categories = Category::get();
-            return $categories;
-        });
+        
+        // $category = Category::with('child')->get();
+        // dd($category);
+        // $categories = Cache::remember('categories', 60*60, function () {
+        //     $categories = Category::get();
+        //     return $categories;
+        // });
         $products = Product::with('sale')->get();
+
+        // $newProducts = Product::orderBy('created_at', 'DESC')->take(4)->get();
         return view('frontend.home', [
-            'products' => $products,
-            'categories' => $categories
+            'products'      => $products,
+            // 'newProducts'   => $newProducts,
             ]);
     }
 
     public function category()
     {
         dd('category');
-    }
-
-    public function product()
-    {
-        dd('product');
     }
 
     public function tracking()

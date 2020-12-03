@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Product;
 
 class Sale extends Model
 {
-    use Notifiable;
+    use Notifiable, 
+        SoftDeletes;
 
     protected $table = 'sales';
 

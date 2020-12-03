@@ -3050,11 +3050,12 @@ label {
     z-index: 1;
     height: calc(2.25rem + 2px);
     padding: .375rem .75rem;
-    line-height: 1.5;
+    line-height: 2.4;
     color: #ffffff;
     background-color: rgba(255, 255, 255, 0.2);
     border: 0px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 .custom-file-label::after{

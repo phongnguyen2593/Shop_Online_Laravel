@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             SalesTableSeeder::class,
             OrdersTableSeeder::class,
             RolesTableSeeder::class,
+            BrandsTableSeeder::class,
         ]);
     }
 }

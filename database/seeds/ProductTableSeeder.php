@@ -22,6 +22,7 @@ class ProductTableSeeder extends Seeder
                 'quantity' => 200,
                 'user_id' => 1,
                 'category_id' => 5,
+                'brand_id'  => 1,
                 'status' => 1,
                 'updated_at' => '2020-10-28 07:11:00'
             ],
@@ -31,6 +32,7 @@ class ProductTableSeeder extends Seeder
                 'quantity' => 200,
                 'user_id' => 1,
                 'category_id' => 5,
+                'brand_id'  => 1,
                 'status' => 1,
                 'updated_at' => '2020-10-28 08:11:00'
             ],
@@ -40,6 +42,7 @@ class ProductTableSeeder extends Seeder
                 'quantity' => 200,
                 'user_id' => 1,
                 'category_id' => 3,
+                'brand_id'  => 1,
                 'status' => 1,
                 'updated_at' => '2020-10-28 08:15:00'
             ],
@@ -49,6 +52,7 @@ class ProductTableSeeder extends Seeder
                 'quantity' => 200,
                 'user_id' => 1,
                 'category_id' => 3,
+                'brand_id'  => 1,
                 'status' => 1,
                 'updated_at' => '2020-10-28 08:16:00'
             ]

@@ -1,129 +1,120 @@
 @extends('backend.layouts.master')
 
-@section('title')
-    <div class="breadcome-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcome-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="fa fa-cube"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2 style="margin-top: 16px">Quản Lý Danh Mục</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('head')
+    <link href="/backend/dashboard/assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        type="text/css">
+    <link href="/backend/dashboard/assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css" rel="stylesheet"
+        type="text/css">
 @endsection
 
 @section('content')
-    <div class="product-status mg-b-30">
+    <div class="content-wrapper">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="product-status-wrap">
-                        <h4>Danh sách danh mục</h4>
-                        <div class="add-product">
-                            <a href="{{ route('backend.category.create') }}">Thêm danh mục mới</a>
+            <!-- Breadcrumb-->
+            <div class="row pt-2 pb-2">
+                <div class="col-sm-9">
+                    <h4 class="page-title">Data Tables</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('backend.index') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">Danh mục</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+                    </ol>
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn-group float-sm-right">
+                        <button type="button" class="btn btn-light waves-effect waves-light"><i class="fa fa-cog mr-1"></i>
+                            Setting</button>
+                        <button type="button"
+                            class="btn btn-light dropdown-toggle dropdown-toggle-split waves-effect waves-light"
+                            data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="javaScript:void();" class="dropdown-item">Action</a>
+                            <a href="javaScript:void();" class="dropdown-item">Another action</a>
+                            <a href="javaScript:void();" class="dropdown-item">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javaScript:void();" class="dropdown-item">Separated link</a>
                         </div>
-                        <div>
-                            <div id="toolbar">
-                                <label for="#sort-by" style="color: #fff">Sắp xếp theo</label>
-                                <select class="form-control" id="sort-by">
-                                    <option value="all" selected>Tên danh mục</option>
-                                    <option value="selected">Thời gian cập nhật</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <table>
-                            <tr>
-                                <th>Ảnh nhỏ</th>
-                                <th>Tên</th>
-                                <th>Danh mục cha</th>
-                                <th></th>
-                            </tr>
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <td><img src="/backend/dashboard/img/new-product/5-small.jpg" alt="" /></td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>
-                                        @foreach ($categories as $cate)
-                                            @if ($category->parent_id == $cate->id)
-                                                {{ $cate->name }}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('backend.category.edit', $category->id) }}"
-                                            style="color: white"><button title="Chỉnh sửa" class="pd-setting-ed"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                        <button title="Xóa" class="pd-setting-ed btn-delete"
-                                            data-id="{{ $category->id }}"><i class="fa fa-trash-o"
-                                                aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
                     </div>
                 </div>
             </div>
+            <!-- End Breadcrumb-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header"><i class="fa fa-table"></i> Data Table Example</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="categories-datatable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Ảnh</th>
+                                            <th>Tên danh mục</th>
+                                            <th>Danh mục cha</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Row-->
+
+            <!--start overlay-->
+            <div class="overlay toggle-menu"></div>
+            <!--end overlay-->
         </div>
-    </div>
-@endsection
+    @endsection
 
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    @section('script')
+        <!--Data Tables js-->
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
 
-            $('.btn-delete').click(function(e) {
-                e.preventDefault();
-                let id = $(this).attr('data-id');
-                Swal.fire({
-                    title: 'Bạn có chắc chắn muốn xóa không ?',
-                    text: "Dữ liệu bị xóa không thể phục hồi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Xóa',
-                    cancelButtonText: 'Đóng',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: 'delete',
-                            url: '/admin/category/' + id,
-                            success: function(res) {
-                                if (!res.error) {
-                                    Swal.fire(
-                                        'Đã xóa!',
-                                        res.message,
-                                        'success'
-                                    );
-                                    location.reload();
-                                } else {
-                                    console.log(res.message);
-                                }
-                            }
-                        });
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            });
-        });
+                //Default data table
+                $('#categories-datatable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('backend.category.data') }}",
+                    columns: [{
+                            data: 'thumbnail',
+                            name: 'thumbnail',
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'parent',
+                            name: 'parent'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: true,
+                            searchable: true
+                        },
+                    ]
+                });
 
-    </script>
-@endsection
+            });
+
+        </script>
+    @endsection

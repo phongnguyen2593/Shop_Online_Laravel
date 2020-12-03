@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Sale;
@@ -12,7 +13,8 @@ use App\Models\Brand;
 
 class Product extends Model
 {
-    use Notifiable;
+    use Notifiable, 
+        SoftDeletes;
 
     protected $table = "products";
 

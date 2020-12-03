@@ -1,49 +1,46 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    @include('frontend.includes.head')
-    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Junko - Electronics eCommerce HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/frontend/assets/img/favicon.ico">
+
+    <!-- CSS 
+========================= -->
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/frontend/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/frontend/assets/css/style.css">
+
     @yield('css')
 </head>
 
 <body>
-    {{-- <a href="offer.html"><img src="/frontend/shop/images/download.png"
-            class="img-head" alt=""></a> --}}
 
+    <!--header area start-->
     @include('frontend.includes.header')
-    <!---->
 
-    @yield('video')
-
-    <!-- Carousel
-    ================================================== -->
-    @yield('carousel')
-    <!-- /.carousel -->
-
-    <!--content-->
-    @yield('banner')
-
-    <!--content-->
+    @yield('slider')
+    
     @yield('content')
-    <!--content-->
 
-    <!--content-->
-    @yield('product')
-
+    <!--footer area start-->
     @include('frontend.includes.footer')
+
+    <!-- JS
+============================================ -->
 
     @include('frontend.includes.script')
     
-    @yield('modal')
-
     @yield('script')
-
 </body>
 
 </html>

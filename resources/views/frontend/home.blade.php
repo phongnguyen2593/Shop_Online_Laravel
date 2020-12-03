@@ -1,700 +1,2315 @@
 @extends('frontend.layouts.master')
 
-@section('video')
-    <div data-vide-bg="/frontend/shop/video/video">
-        <div class="container">
-            <div class="banner-info">
-                <h3>Mặt hàng đa dạng - Giá cả ưu đãi </h3>
-                <div class="search-form">
-                    <form action="#" method="post">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm ..." name="search">
-                        <input type="submit" value=" ">
-                    </form>
+@section('slider')
+    <!--slider area start-->
+    <section class="slider_section slider_section_three mb-70">
+        <div class="slider_area owl-carousel">
+            <div class="single_slider d-flex align-items-center" data-bgimg="/frontend/assets/img/slider/slider4.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <h1>best skin</h1>
+                                <h2>qled 75 inch q7f</h2>
+                                <p>exclusive offer <span> 20% off </span> this week</p>
+                                <a class="button" href="shop.html">shopping now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="single_slider d-flex align-items-center" data-bgimg="/frontend/assets/img/slider/slider3.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <h1>Hurry Up!</h1>
+                                <h2>IN THE WORD 2019</h2>
+                                <p>exclusive offer <span> 20% off </span> this week</p>
+                                <a class="button" href="shop.html">shopping now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
-
-@section('carousel')
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <a href="kitchen.html"> <img src="/frontend/shop/images/ba.jpg" alt="First slide"></a>
-
-            </div>
-            <div class="item">
-                <a href="care.html"> <img src="/frontend/shop/images/ba1.jpg" alt="Second slide"></a>
-            </div>
-            <div class="item">
-                <a href="hold.html"><img src="/frontend/shop/images/ba2.jpg" alt="Third slide"></a>
-            </div>
-        </div>
-    </div>
+    </section>
+    <!--slider area end-->
 @endsection
 
 @section('content')
-    <div class="content-top ">
-        <div class="container ">
-            <div class="spec ">
-                <h3>Giá sốc hôm nay</h3>
-                <div class="ser-t">
-                    <b></b>
-                    <span><i></i></span>
-                    <b class="line"></b>
+    <!--banner area start-->
+    <div class="banner_area mb-36">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner1.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner2.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner3.jpg" alt=""></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="tab-head ">
-                <nav class="nav-sidebar">
-                    <ul class="nav tabs ">
-                        @php
-                            $i = 1;
-                        @endphp
-                        @foreach ($categories as $category)
-                        <li class="active"><a href="#tab{{ $i }}" data-toggle="tab">{{ $category->name }}</a></li>
+        </div>
+    </div>
+    <!--banner area end-->
+
+    <!--product area start-->
+    <div class="product_area mb-46">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_tab_btn3">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a class="active" data-toggle="tab" href="#Bestseller" role="tab" aria-controls="Bestseller"
+                                    aria-selected="true">
+                                    Sản Phẩm Bán Chạy
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Products3" role="tab" aria-controls="Products3"
+                                    aria-selected="false">
+                                    Sản Phẩm Mới
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Sale3" role="tab" aria-controls="Sale3" aria-selected="false">
+                                    Sản Phẩm Giảm Giá
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="Bestseller" role="tabpanel">
+                    <div class="product_carousel product_column5 owl-carousel">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="" title="add to cart">Add to cart</a>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa
+                                            commodo sit</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Products3" role="tabpanel">
+                    <div class="product_carousel product_column5 owl-carousel">
+                        @foreach ($newProducts as $product)
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product23.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product24.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                            class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-toggle="modal"
+                                                        data-target="#modal_box" title="quick view"> <span
+                                                            class="ion-ios-search-strong"></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="{{ route('frontend.cart.add', $product->id) }}" title="add to cart">Thêm vào giỏ hàng</a>
+                                        </div>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">{{ number_format($product->sale->origin_price) }} đ</span>
+                                            <span class="current_price">{{ number_format($product->sale->sale_price) }} đ</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="{{ route('frontend.detail', $product->slug) }}">{{ $product->name }}</a></h3>
+                                    </figcaption>
+                                </figure>
+                            </article>
                         @endforeach
-                        {{-- <li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
-                        <li class=""><a href="#tab2" data-toggle="tab">Snacks</a></li>
-                        <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>
-                        <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li> --}}
-                    </ul>
-                </nav>
-                <div class=" tab-content tab-content-t ">
-                    <div class="tab-pane active text-style" id="tab1">
-                        <div class=" con-w3l">
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-                                        <img src="/frontend/shop/images/of.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Moong</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$2.00</label><em class="item_price">$1.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b " data-id="1"
-                                                data-name="Moong" data-summary="summary 1" data-price="1.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of.png">Add to
-                                                Cart</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal2" class="offer-img">
-                                        <img src="/frontend/shop/images/of1.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Sunflower Oil</a>(5 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$10.00</label><em class="item_price">$9.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="2"
-                                                data-name="Sunflower Oil" data-summary="summary 2" data-price="9.00"
-                                                data-quantity="1" data-image="/frontend/shop/images/of1.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal3" class="offer-img">
-                                        <img src="/frontend/shop/images/of2.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Kabuli Chana</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$3.00</label><em class="item_price">$2.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="3"
-                                                data-name="Kabuli Chana" data-summary="summary 3" data-price="2.00"
-                                                data-quantity="1" data-image="/frontend/shop/images/of2.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal4" class="offer-img">
-                                        <img src="/frontend/shop/images/of3.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Soya Chunks</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="4"
-                                                data-name="Soya Chunks" data-summary="summary 4" data-price="3.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of3.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                     </div>
-                    <div class="tab-pane  text-style" id="tab2">
-                        <div class=" con-w3l">
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal5" class="offer-img">
-                                        <img src="/frontend/shop/images/of4.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Lays</a>(100 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$1.00</label><em class="item_price">$0.70</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="5"
-                                                data-name="Lays" data-summary="summary 5" data-price="0.70"
-                                                data-quantity="1" data-image="/frontend/shop/images/of4.png">Add to
-                                                Cart</button>
-                                        </div>
+                </div>
+                <div class="tab-pane fade" id="Sale3" role="tabpanel">
+                    <div class="product_carousel product_column5 owl-carousel">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal6" class="offer-img">
-                                        <img src="/frontend/shop/images/of5.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Kurkure</a>(100 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$1.00</label><em class="item_price">$0.70</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="6"
-                                                data-name="Kurkure" data-summary="summary 6" data-price="0.70"
-                                                data-quantity="1" data-image="/frontend/shop/images/of5.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa
+                                            commodo sit</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal7" class="offer-img">
-                                        <img src="/frontend/shop/images/of6.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Popcorn</a>(250 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$2.00</label><em class="item_price">$1.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="7"
-                                                data-name="Popcorn" data-summary="summary 7" data-price="1.00"
-                                                data-quantity="1" data-image="/frontend/shop/images/of6.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Itaque earum velit elementum</a>
+                                    </h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal8" class="offer-img">
-                                        <img src="/frontend/shop/images/of7.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Nuts</a>(250 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="8"
-                                                data-name="Nuts" data-summary="summary 8" data-price="3.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of7.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Mauris tincidunt eros posuere
+                                            placerat</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane  text-style" id="tab3">
-                        <div class=" con-w3l">
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal9" class="offer-img">
-                                        <img src="/frontend/shop/images/of8.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Banana</a>(6 pcs)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$2.00</label><em class="item_price">$1.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="9"
-                                                data-name="Banana" data-summary="summary 9" data-price="1.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of8.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Morbi ornare vestibulum
+                                            massa</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal10" class="offer-img">
-                                        <img src="/frontend/shop/images/of9.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Onion</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$1.00</label><em class="item_price">$0.70</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="10"
-                                                data-name="Onion" data-summary="summary 10" data-price="0.70"
-                                                data-quantity="1" data-image="/frontend/shop/images/of9.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat
+                                            pretium</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product15.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product16.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal11" class="offer-img">
-                                        <img src="/frontend/shop/images/of10.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html"> Bitter Gourd</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$2.00</label><em class="item_price">$1.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="11"
-                                                data-name="Bitter Gourd" data-summary="summary 11" data-price="1.00"
-                                                data-quantity="1" data-image="/frontend/shop/images/of10.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">Laudantium enim fringilla
+                                            dignissim ipsum primis</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product17.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="/frontend/assets/img/product/product18.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">sale</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="quick_button"><a href="#" data-toggle="modal"
+                                                    data-target="#modal_box" title="quick view"> <span
+                                                        class="ion-ios-search-strong"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="add to cart">Add to cart</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal12" class="offer-img">
-                                        <img src="/frontend/shop/images/of11.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Apples</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="12"
-                                                data-name="Apples" data-summary="summary 12" data-price="3.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of11.png">Add to
-                                                Cart</button>
-                                        </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        <span class="old_price">$86.00</span>
+                                        <span class="current_price">$79.00</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane text-style" id="tab4">
-                        <div class=" con-w3l">
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal13" class="offer-img">
-                                        <img src="/frontend/shop/images/of12.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Honey</a>(500 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$7.00</label><em class="item_price">$6.00</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="13"
-                                                data-name="Honey" data-summary="summary 13" data-price="6.00"
-                                                data-quantity="1" data-image="/frontend/shop/images/of12.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m ">
-                                    <a href="#" data-toggle="modal" data-target="#myModal14" class="offer-img">
-                                        <img src="/frontend/shop/images/of13.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Chocos</a>(250 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$5.00</label><em class="item_price">$4.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="14"
-                                                data-name="Chocos" data-summary="summary 14" data-price="4.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of13.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m ">
-                                    <a href="#" data-toggle="modal" data-target="#myModal15" class="offer-img">
-                                        <img src="/frontend/shop/images/of14.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Oats</a>(1 kg)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$4.00</label><em class="item_price">$3.50</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="15"
-                                                data-name="Oats" data-summary="summary 15" data-price="3.50"
-                                                data-quantity="1" data-image="/frontend/shop/images/of14.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-wthree">
-                                <div class="col-m">
-                                    <a href="#" data-toggle="modal" data-target="#myModal16" class="offer-img">
-                                        <img src="/frontend/shop/images/of15.png" class="img-responsive" alt="">
-                                        <div class="offer">
-                                            <p><span>Offer</span></p>
-                                        </div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="women">
-                                            <h6><a href="single.html">Bread</a>(500 g)</h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p><label>$1.00</label><em class="item_price">$0.80</em></p>
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="add">
-                                            <button class="btn btn-danger my-cart-btn my-cart-b" data-id="16"
-                                                data-name="Bread" data-summary="summary 16" data-price="0.80"
-                                                data-quantity="1" data-image="/frontend/shop/images/of15.png">Add to
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+                                    <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa
+                                            commodo sit</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <div class="content-mid">
+    <!--product area end-->
+
+    <!--banner area start-->
+    <div class="banner_area banner_two mb-40">
         <div class="container">
-
-            <div class="col-md-4 m-w3ls">
-                <div class="col-md1 ">
-                    <a href="kitchen.html">
-                        <img src="/frontend/shop/images/co1.jpg" class="img-responsive img" alt="">
-                        <div class="big-sa">
-                            <h3>Sản phẩm<span> mới </span></h3>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority </p>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner4.jpg" alt=""></a>
                         </div>
-                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner5.jpg" alt=""></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 m-w3ls1">
-                <div class="col-md ">
-                    <a href="hold.html">
-                        <img src="/frontend/shop/images/co.jpg" class="img-responsive img" alt="">
-                        <div class="big-sale">
-                            <div class="big-sale1">
-                                <h3><span>Giảm giá</span></h3>
-                                <p>It is a long established fact that a reader </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 m-w3ls">
-                <div class="col-md2 ">
-                    <a href="kitchen.html">
-                        <img src="/frontend/shop/images/co2.jpg" class="img-responsive img1" alt="">
-                        <div class="big-sale2">
-                            <h3>Cooking <span>Oil</span></h3>
-                            <p>It is a long established fact that a reader </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md3 ">
-                    <a href="hold.html">
-                        <img src="/frontend/shop/images/co3.jpg" class="img-responsive img1" alt="">
-                        <div class="big-sale3">
-                            <h3>Vegeta<span>bles</span></h3>
-                            <p>It is a long established fact that a reader </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
         </div>
     </div>
-    <div class="product">
+    <!--banner area end-->
+
+    <!--product area start-->
+    <section class="product_area product_deals_three mb-68">
         <div class="container">
-            <div class="spec ">
-                <h3>Mua nhiều</h3>
-                <div class="ser-t">
-                    <b></b>
-                    <span><i></i></span>
-                    <b class="line"></b>
+            <div class="row">
+                <div class="col-lg-2 col-md-12">
+                    <div class="deals_title_three">
+                        <h2>Hot Deals Products Off The Days</h2>
+                        <p>Aliquam eget consectetuer habitasse interdum.</p>
+                    </div>
                 </div>
-            </div>
-            <div class=" con-w3l">
-                @foreach ($products as $product)
-                    <div class="col-md-3 pro-1">
-                        <div class="col-m">
-                            <a href="#" data-toggle="modal" data-target="#myModal{{ $product->id }}" class="offer-img">
-                                <img src="/frontend/shop/images/of16.png" class="img-responsive" alt="">
-                            </a>
-                            <div class="mid-1">
-                                <div class="women">
-                                    <p><a href="single.html">{{ $product->name }}</a></p>
-                                </div>
-                                <div class="mid-2">
-                                    <p><label>{{ number_format($product->sale->origin_price) }}</label><em
-                                            class="item_price">{{ number_format($product->sale->sale_price) }}</em></p>
-                                    <div class="block">
-                                        <div class="starbox small ghosting"> </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="add add-2">
-                                    <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1"
-                                        data-summary="summary 1" data-price="6.00" data-quantity="1"
-                                        data-image="/frontend/shop/images/of16.png">Thêm vào giỏ hàng</button>
-                                </div>
+                <div class="col-lg-10 col-md-12">
+                    <div class="row">
+                        <div class="product_carousel product_deals_column4 owl-carousel">
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Natus erro at congue
+                                                    massa commodo sit</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Itaque earum velit
+                                                    elementum</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Mauris tincidunt eros
+                                                    posuere placerat</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Morbi ornare
+                                                    vestibulum massa</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Porro quisquam eget
+                                                    feugiat pretium</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Laudantium enim
+                                                    fringilla dignissim ipsum primis</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-countdown.html"><img
+                                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">sale</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="quick_button"><a href="#" data-toggle="modal"
+                                                            data-target="#modal_box" title="quick view"> <span
+                                                                class="ion-ios-search-strong"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <h3 class="product_name"><a href="product-countdown.html">Natus erro at congue
+                                                    massa commodo sit</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--product area end-->
 
-                <div class="clearfix"></div>
+    <!--product area start-->
+    <section class="product_area mb-46">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <a href=""><h2>Computer & Laptop</h2></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product_slick product_slick_column5">
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo
+                                    sit</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Itaque earum velit elementum</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Mauris tincidunt eros posuere
+                                    placerat</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Morbi ornare vestibulum massa</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium</a>
+                            </h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Laudantium enim fringilla dignissim
+                                    ipsum primis</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo
+                                    sit</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Mauris tincidunt eros posuere
+                                    placerat</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Morbi ornare vestibulum massa</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium</a>
+                            </h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Laudantium enim fringilla dignissim
+                                    ipsum primis</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="single_product">
+                    <figure>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img
+                                    src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">sale</span>
+                            </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
+                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="cart.html" title="add to cart">Add to cart</a>
+                            </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <div class="price_box">
+                                <span class="old_price">$86.00</span>
+                                <span class="current_price">$79.00</span>
+                            </div>
+                            <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo
+                                    sit</a></h3>
+                        </figcaption>
+                    </figure>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!--product area end-->
+
+    <!--banner area start-->
+    <div class="banner_area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="/frontend/assets/img/bg/banner8.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-@endsection
+    <!--banner area end-->
 
-@section('product')
-
-@endsection
-
-@section('modal')
-    @foreach ($products as $product)
-        <div class="modal fade" id="myModal{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content modal-info">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
+    <!--custom product area-->
+    <section class="custom_product_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <!--small product area-->
+                    <div class="small_product_area">
+                        <div class="section_title">
+                            <h2><span> New Arrivals </span></h2>
+                        </div>
+                        <div class="small_product_container small_product_active">
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Nullam maximus eget nisi
+                                                dignissim</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Natus erro at congue commodo
+                                                sit</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Convallis quam sit vitae
+                                                neque ornare</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Mirum est notare nibh
+                                                iaculis pretium</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Pellentesque ultricies
+                                                suscipit est</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product4.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Nullam maximus eget nisi
+                                                dignissim</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product6.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Natus erro at congue commodo
+                                                sit</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product7.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product8.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Convallis quam sit vitae
+                                                neque ornare</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product9.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Mirum est notare nibh
+                                                iaculis pretium</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Pellentesque ultricies
+                                                suscipit est</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
                     </div>
-                    <div class="modal-body modal-spa">
-                        <div class="col-md-5 span-2">
-                            <div class="item">
-                                <img src="/frontend/shop/images/of.png" class="img-responsive" alt="">
-                            </div>
+                    <!--small product end-->
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <!--small product area-->
+                    <div class="small_product_area">
+                        <div class="section_title">
+                            <h2><span> On sale Products </span></h2>
                         </div>
-                        <div class="col-md-7 span-1 ">
-                            <h3>{{ $product->name }}</h3>
-                            <div class="price_single">
-                                <span class="reducedfrom ">
-                                    {{ number_format($product->sale->sale_price) }}
-                                    <del>{{ number_format($product->sale->origin_price) }}</del>
-                                </span>
+                        <div class="small_product_container small_product_active">
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product13.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product14.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Eodem modo vel mattis
+                                                ante</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product15.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product16.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product17.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product18.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Laudantium dignissim ipsum
+                                                primis</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product19.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product20.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Cras neque honcus
+                                                consectetur</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product21.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product22.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Pellentesque ultricies
+                                                suscipit est</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product23.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product24.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product13.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product14.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Eodem modo vel mattis
+                                                ante</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product15.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product16.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product17.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product18.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Laudantium dignissim ipsum
+                                                primis</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product19.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product20.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Cras neque honcus
+                                                consectetur</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product21.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product22.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Pellentesque ultricies
+                                                suscipit est</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product23.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product24.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                    <!--small product end-->
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <!--small product area-->
+                    <div class="small_product_area">
+                        <div class="section_title">
+                            <h2><span> Top rated Products </span></h2>
+                        </div>
+                        <div class="small_product_container small_product_active">
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Auctor gravida enim quam ut
+                                                risus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product13.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Convallis quam sit neque
+                                                ornare</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product14.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product15.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product16.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product17.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Cras neque metus eugiat
+                                                felis sem</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product18.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product19.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Duis pulvinar obortis
+                                                elementum</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product20.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product21.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product10.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product11.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Auctor gravida enim quam ut
+                                                risus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product12.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product13.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Convallis quam sit neque
+                                                ornare</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product14.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product15.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product16.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product17.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Cras neque metus eugiat
+                                                felis sem</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product18.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product19.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Duis pulvinar obortis
+                                                elementum</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product20.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img
+                                                src="/frontend/assets/img/product/product21.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="product_content">
+                                        <div class="price_box">
+                                            <span class="old_price">$86.00</span>
+                                            <span class="current_price">$79.00</span>
+                                        </div>
+                                        <h3 class="product_name"><a href="product-details.html">Sit voluptatem rhoncus sem
+                                                lectus</a></h3>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                    <!--small product end-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--custom product end-->
 
-                                <div class="clearfix"></div>
+    <!--brand area start-->
+    <div class="brand_area brand_two mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="brand_container owl-carousel">
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand1.jpg" alt=""></a>
                             </div>
-                            <h4 class="quick">Mô tả:</h4>
-                            <p class="quick_desc">{{ $product->description }}</p>
-                            <div class="add-to">
-                                <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="1" data-name="Moong"
-                                    data-summary="summary 1" data-price="1.50" data-quantity="1"
-                                    data-image="/frontend/shop/images/of.png">Thêm vào giỏ hàng</button>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand2.jpg" alt=""></a>
                             </div>
                         </div>
-                        <div class="clearfix"> </div>
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand3.jpg" alt=""></a>
+                            </div>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand4.jpg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand5.jpg" alt=""></a>
+                            </div>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand6.jpg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand7.jpg" alt=""></a>
+                            </div>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand8.jpg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand9.jpg" alt=""></a>
+                            </div>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand10.jpg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="brand_items">
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand2.jpg" alt=""></a>
+                            </div>
+                            <div class="single_brand">
+                                <a href="#"><img src="/frontend/assets/img/brand/brand3.jpg" alt=""></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
+    <!--brand area end-->
 
-@endsection
+    <!-- modal area start-->
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <div class="modal_tab">
+                                    <div class="tab-content product-details-large">
+                                        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab4" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal_tab_button">
+                                        <ul class="nav product_navactive owl-carousel" role="tablist">
+                                            <li>
+                                                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"
+                                                    aria-controls="tab1" aria-selected="false"><img
+                                                        src="/frontend/assets/img/product/product1.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab"
+                                                    aria-controls="tab2" aria-selected="false"><img
+                                                        src="/frontend/assets/img/product/product2.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab"
+                                                    aria-controls="tab3" aria-selected="false"><img
+                                                        src="/frontend/assets/img/product/product3.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" data-toggle="tab" href="#tab4" role="tab"
+                                                    aria-controls="tab4" aria-selected="false"><img
+                                                        src="/frontend/assets/img/product/product5.jpg" alt=""></a>
+                                            </li>
 
-@section('css')
-    <style>
-        .item_price {
-            color: #fab005;
-            font-size: 1.5em;
-        }
-
-    </style>
-@endsection
-
-@section('script')
-    <script>
-        window.jQuery || document.write('<script src="/frontend/shop/js/vendor/jquery-1.11.1.min.js"><\/script>')
-
-    </script>
-    <script src="/frontend/shop/js/jquery.vide.min.js"></script>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                <div class="modal_right">
+                                    <div class="modal_title mb-10">
+                                        <h2>Handbag feugiat</h2>
+                                    </div>
+                                    <div class="modal_price mb-10">
+                                        <span class="new_price">$64.99</span>
+                                        <span class="old_price">$78.99</span>
+                                    </div>
+                                    <div class="modal_description mb-15">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum
+                                            ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui
+                                            nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae </p>
+                                    </div>
+                                    <div class="variants_selects">
+                                        <div class="variants_size">
+                                            <h2>size</h2>
+                                            <select class="select_option">
+                                                <option selected="" value="1">s</option>
+                                                <option value="1">m</option>
+                                                <option value="1">l</option>
+                                                <option value="1">xl</option>
+                                                <option value="1">xxl</option>
+                                            </select>
+                                        </div>
+                                        <div class="variants_color">
+                                            <h2>color</h2>
+                                            <select class="select_option">
+                                                <option selected="" value="1">purple</option>
+                                                <option value="1">violet</option>
+                                                <option value="1">black</option>
+                                                <option value="1">pink</option>
+                                                <option value="1">orange</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal_add_to_cart">
+                                            <form action="#">
+                                                <input min="0" max="100" step="2" value="1" type="number">
+                                                <button type="submit">add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal_social">
+                                        <h2>Share this product</h2>
+                                        <ul>
+                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal area end-->
 @endsection

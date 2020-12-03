@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function info($id)
+    public function index()
     {
-        dd('info user ' . $id);
+        return view('frontend.user.index');
     }
 
     public function edit($id)
@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function wishlist()
     {
-        dd('wish list ' . $id);
+        return view('frontend.user.wishlist');
     }
 
     public function form_change_password()

@@ -39,9 +39,9 @@ class StoreCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => ':attribute không được để trống',
-            'name.min' => ':attribute lớn hơn :min ký tự',
-            'name.max' => ':attribute nhỏ hơn :max ký tự',
+            'required' => ':attribute không được để trống',
+            'min' => ':attribute lớn hơn :min ký tự',
+            'max' => ':attribute nhỏ hơn :max ký tự',
         ];
     }
 }
