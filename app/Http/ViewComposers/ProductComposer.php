@@ -24,7 +24,7 @@
       */
      public function compose(View $view)
      {
-        $allProducts = Product::all();
+        $allProducts = Product::orderBy('updated_at', 'DESC')->get();
         $newProducts = Product::orderBy('created_at', 'DESC')->take(10)->get();
         $view->with([
             'allProducts' => $allProducts,

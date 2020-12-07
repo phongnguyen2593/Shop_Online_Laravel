@@ -25,23 +25,27 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:6', 'max:25' ],
+            'name'      => ['required', 'min:6', 'max:25' ],
+            'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:400'],
         ];
     }
 
     public function attributes()
     {
         return [
-            'name' => 'Tên danh mục',
+            'name'      => 'Tên danh mục',
+            'thumbnail' => 'Ảnh đại diện sản phẩm'
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => ':attribute không được để trống',
-            'min' => ':attribute lớn hơn :min ký tự',
-            'max' => ':attribute nhỏ hơn :max ký tự',
+            'required'  => ':attribute không được để trống',
+            'min'       => ':attribute lớn hơn :min ký tự',
+            'name.max'  => ':attribute nhỏ hơn :max ký tự',
+            'mimes'     => ':attribute không đúng định dạng',
+            'thumbnail.max'  => ':attribute phải nhỏ hơn :max KB',
         ];
     }
 }

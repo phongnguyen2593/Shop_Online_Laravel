@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('quantity');
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail');
             $table->text('description')->nullable();
             $table->integer('user_id')->referenced('id')->on('users');
             $table->integer('category_id')->referenced('id')->on('categories');

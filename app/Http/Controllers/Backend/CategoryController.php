@@ -58,16 +58,22 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         $this->authorize('create', Auth::user());
-        
+        $parent = Category::find($request->get('parent_id'));
         $category = new Category();
         $category->name = $request->get('name');
         $category->slug = Str::slug($request->get('name'));
-        $category->parent_id = $request->get('parent_id');
+        if (isset($parent)) {
+            $category->depth = $parent->depth + 1;
+        } else {
+            $category->depth = 1;
+        }
+
+
         $file = $request->file('thumbnail');
-        $path = Storage::disk('public')->putFileAs('category_thumbnail', $file, $file->getClientOriginalName());
+        $path = Storage::disk('public')->putFileAs('uploads/products/images', $file, $file->getClientOriginalName());
         $category->thumbnail = $path;
         $category->save();
 
@@ -134,32 +140,35 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {   
-        $user = Auth::user();
+        $category = Category::find($id);
+        dd($category);
+    //     $user = Auth::user();
 
-        if ($user->can('delete', $category)) {
-            try {
-                $success = $category->delete();
+    //     if ($user->can('delete', $category)) {
+    //         try {
+    //             $category = Category::find($id);
+    //             $success = $category->delete();
     
-                if($success){
-                    return response()->json([
-                        'error'=>false,
-                        'message'=>"Đã xóa",
-                    ]);
-                    location.reload();
-                }
+    //             if($success){
+    //                 return response()->json([
+    //                     'error'=>false,
+    //                     'message'=>"Đã xóa",
+    //                 ]);
+    //                 location.reload();
+    //             }
     
-            }catch (\Exception $e){
-                $message = "Xóa không thành công";
-                return response()->json([
-                    'error'=>true,
-                    'message'=>$e->getMessage(),
-                ]);
-            }
-        } else {
-            return redirect()->route('backend.category.index');
-        }
+    //         }catch (\Exception $e){
+    //             $message = "Xóa không thành công";
+    //             return response()->json([
+    //                 'error'=>true,
+    //                 'message'=>$e->getMessage(),
+    //             ]);
+    //         }
+    //     } else {
+    //         return redirect()->route('backend.category.index');
+    //     }
     }
 
     public function getData()
@@ -169,7 +178,7 @@ class CategoryController extends Controller
 
         return DataTables::of($categories)
                 ->addColumn('thumbnail', function($category){
-                    $thumbnail = ' <img  src="'. asset('storage/' . $category->thumbnail) .'" width="70%">';
+                    $thumbnail = '<img  src="'. asset($category->thumbnail) .'" width="70%">';
                     return $thumbnail;
                 })
                 ->addColumn('parent', function($category){

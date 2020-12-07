@@ -2172,7 +2172,7 @@
                                 <a href="#"><img src="/frontend/assets/img/brand/brand9.jpg" alt=""></a>
                             </div>
                             <div class="single_brand">
-                                <a href="#"><img src="/frontend/assets/img/brand/brand10.jpg" alt=""></a>
+                                <a href="#"><img src="{{ asset('frontend/assets/img/brand/brand10.jpg') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="brand_items">

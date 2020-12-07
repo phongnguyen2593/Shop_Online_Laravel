@@ -40,6 +40,17 @@ File: app-style
 /* Google Font*/
 @import url('https://fonts.googleapis.com/css?family=Mukta|Roboto');
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /* General */
 html {
 	font-family: 'Mukta', sans-serif;
@@ -6175,8 +6186,6 @@ table.grid td {
   .topbar-nav .navbar {
     padding: 0px 10px 0 5px;
   }
-
-
 }
 
 

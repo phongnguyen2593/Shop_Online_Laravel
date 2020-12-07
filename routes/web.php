@@ -16,6 +16,8 @@ use App\Http\Controllers;
 */
 
 Auth::routes();
+Route::get('/test/{id}', 'Backend\ProductController@test');
+
 Route::get('/district/{id}', 'AddressController@districts')->name('district');
 // Backend
 Route::group([
@@ -35,9 +37,14 @@ Route::group([
         Route::get('/create', 'ProductController@create')->name('create');
         Route::post('/store', 'ProductController@store')->name('store');
         Route::get('/edit/{product}', 'ProductController@edit')->name('edit');
-        Route::match(['put', 'patch'], '/{product}', 'ProductController@update')->name('update');
+        Route::match(['put', 'patch'], 'update/{product}', 'ProductController@update')->name('update');
         Route::get('/show/{product}', 'ProductController@show')->name('show');
         Route::delete('/{product}', 'ProductController@destroy')->name('delete');
+        Route::get('/trash', 'ProductController@trash')->name('trash');
+        Route::post('/restore/{id}', 'ProductController@restoreProduct')->name('restore');
+        Route::delete('/force-delete/{product}', 'ProductController@forceDeleteProduct')->name('forceDelete');
+        Route::get('/data', 'ProductController@getData')->name('data');
+        Route::get('/trash-data', 'ProductController@trashData')->name('trashData');
     });
 
     //Category Controller
@@ -53,6 +60,21 @@ Route::group([
         Route::delete('/{category}', 'CategoryController@destroy')->name('delete');
         Route::get('/show/{category}', 'CategoryController@show')->name('show');
         Route::get('/data', 'CategoryController@getData')->name('data');
+    });
+
+    //Brand Controller
+    Route::group([
+        'prefix'    => 'brand',
+        'as'        => 'brand.'
+    ], function () {
+        Route::get('/', 'BrandController@index')->name('index');
+        Route::get('/create', 'BrandController@create')->name('create');
+        Route::post('/store', 'BrandController@store')->name('store');
+        Route::get('/edit/{brand}', 'BrandController@edit')->name('edit');
+        Route::match(['put', 'patch'], 'update/{brand}', 'BrandController@update')->name('update');
+        Route::delete('/{brand}', 'BrandController@destroy')->name('delete');
+        Route::get('/show/{brand}', 'BrandController@show')->name('show');
+        Route::get('/list', 'BrandController@getData')->name('data');
     });
 
     //User Controller

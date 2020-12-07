@@ -10,8 +10,7 @@ use App\Models\Product;
 
 class Brand extends Model
 {
-    use Notifiable, 
-        SoftDeletes;
+    use Notifiable;
     
     protected $table = 'brands';
 

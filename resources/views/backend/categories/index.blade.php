@@ -69,6 +69,9 @@
     @endsection
 
     @section('script')
+        <!--Sweetarlert-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="sweetalert2.all.min.js"></script>
         <!--Data Tables js-->
         <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
         <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
@@ -112,6 +115,14 @@
                             searchable: true
                         },
                     ]
+                });
+                $(document).on('click', '.btn-delete', function(e) {
+                    const id = $(e.currentTarget).data('id');
+                    $.ajax({
+                                type: 'delete',
+                                url: '/admin/category/delete/' + id,
+                               
+                            });
                 });
 
             });

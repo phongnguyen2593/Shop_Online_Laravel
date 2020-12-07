@@ -39,7 +39,7 @@
                         <div class="card-header"><i class="fa fa-table"></i> Data Table Example</div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="default-datatable" class="table table-bordered">
+                                <table id="product-datatable" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Ảnh</th>
@@ -48,28 +48,6 @@
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($products as $product)
-                                            <tr>
-                                                <td>{{ $product->thumbnail }}</td>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->category->name }}</td>
-                                                <td>
-                                                    <a href="{{ route('backend.product.show', $product->id) }}"><button
-                                                        title="Chi tiết"
-                                                        class="btn btn-light waves-effect waves-light m-1"> <i
-                                                            class="fa fa-info-circle"></i> </button></a>
-                                                    <a href="{{ route('backend.product.edit', $product->id) }}"><button
-                                                            title="Chỉnh sửa"
-                                                            class="btn btn-light waves-effect waves-light m-1"> <i
-                                                                class="fa fa-pencil-square-o"></i> </button></a>
-
-                                                    <button title="Xóa" class="btn btn-light waves-effect waves-light m-1">
-                                                        <i class="fa fa-trash-o"></i> </button>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -83,35 +61,70 @@
         </div>
     @endsection
 
-@section('script')
-    <!--Data Tables js-->
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
-    <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
+    @section('script')
+        <!--Sweet Alerts -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="sweetalert2.all.min.js"></script>
+        <!--Data Tables js-->
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
+        <script src="/backend/dashboard/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            //Default data table
-            $('#default-datatable').DataTable();
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                //Default data table
+                $('#product-datatable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('backend.product.data') }}",
+                    columns: [
+                        { data: 'thumbnail', name: 'thumbnail' },
+                        { data: 'name', name: 'name' },
+                        { data: 'category', name: 'category' },
+                        { data: 'action', name: 'action' },
+                    ]
+                });
 
-
-            var table = $('#example').DataTable({
-                lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+                $(document).on('click', '.btn-delete', function(e) {
+                    const id = $(e.currentTarget).data('id');
+                    Swal.fire({
+                        title: 'Bạn có chắc chắn muốn xóa không ?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Đồng ý',
+                        cancelButtonText: "Hủy",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: 'delete',
+                                url: '/admin/product/' + id,
+                                success: function(res) {
+                                    if (!res.error) {
+                                        toastr.success('Xóa sản phẩm thành công');
+                                    $('#product-datatable').DataTable().ajax.reload(null, false);
+                                    } else {
+                                        toastr.error('Xóa thất bại');
+                                    }
+                                }
+                            });
+                        }
+                    })
+                });
             });
 
-            table.buttons().container()
-                .appendTo('#example_wrapper .col-md-6:eq(0)');
-
-        });
-
-    </script>
-@endsection
-
+        </script>
+    @endsection

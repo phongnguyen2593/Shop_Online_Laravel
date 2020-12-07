@@ -87,7 +87,9 @@ class ProductPolicy
      */
     public function restore(User $user, Product $product)
     {
-        //
+        if($user->role->role == 1){
+            return true;
+        }
     }
 
     /**
@@ -99,6 +101,15 @@ class ProductPolicy
      */
     public function forceDelete(User $user, Product $product)
     {
-        //
+        if($user->role->role == 1){
+            return true;
+        }
+    } 
+
+    public function trash(User $user)
+    {
+        if($user->role->role == 1){
+            return true;
+        }
     }
 }

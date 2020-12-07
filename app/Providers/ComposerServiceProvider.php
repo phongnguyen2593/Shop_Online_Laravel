@@ -28,6 +28,8 @@ class ComposerServiceProvider extends ServiceProvider
             [
                 'frontend.includes.header',
                 'backend.products.show',
+                'backend.products.create',
+                'backend.products.edit',
                 'backend.categories.show',
                 'backend.categories.create',
                 'backend.categories.edit',
@@ -38,8 +40,19 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             [
                 'frontend.home',
+                'backend.products.index',
             ],
             'App\Http\ViewComposers\ProductComposer'
+        );
+
+        view()->composer(
+            [
+                'frontend.home',
+                'frontend.includes.header',
+                'backend.products.create',
+                'backend.products.show',
+            ],
+            'App\Http\ViewComposers\BrandComposer'
         );
     }
 }

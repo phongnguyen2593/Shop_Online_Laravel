@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->text('note')->nullable();
             $table->integer('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

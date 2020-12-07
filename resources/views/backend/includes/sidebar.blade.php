@@ -59,7 +59,9 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
                 <li><a href="{{ route('backend.category.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm mới</a></li>
-                <li><a href="{{ route('backend.category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
+                @if (Auth::user()->role->role==1)
+                <li><a href="{{ route('backend.category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>
+                @endif
             </ul>
         </li>
         <li>
@@ -70,7 +72,22 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.product.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
                 <li><a href="{{ route('backend.product.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
-                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
+                @if (Auth::user()->role->role==1)
+                <li><a href="{{ route('backend.product.trash') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>   
+                @endif
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-chart"></i> <span>Thương Hiệu</span>
+                <i class="fa fa-angle-left float-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('backend.brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="{{ route('backend.brand.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
+                @if (Auth::user()->role->role==1)
+                <li><a href="{{ route('backend.brand.trash') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>   
+                @endif
             </ul>
         </li>
         <li>
@@ -105,6 +122,7 @@
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-lock"></i> <span>Slider</span>
+                <i class="zmdi zmdi-lock"></i> <span>Banner</span>
             </a>
         </li>
     </ul>

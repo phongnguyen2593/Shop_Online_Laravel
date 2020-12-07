@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('content')
-@section('content')
     <div class="content-wrapper">
         <div class="container-fluid">
             <!-- Breadcrumb-->
@@ -16,9 +15,7 @@
                 </div>
             </div>
             <!-- End Breadcrumb-->
-
             <div class="row">
-
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -30,86 +27,44 @@
                                             chi tiết</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
-                                            class="icon-note"></i> <span class="hidden-xs">Chỉnh sửa</span></a>
+                                    <a href="javascript:void();" data-target="#images" data-toggle="pill"
+                                        class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Hình ảnh</span></a>
                                 </li>
                             </ul>
                             <div class="tab-content p-3">
                                 <div class="tab-pane active" id="profile">
-                                    <h5 class="mb-3"></h5>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h6>Tên sảm phẩm</h6>
-                                            <p>
-                                                {{ $product->name }}
-                                            </p>
-                                            <h6>Danh mục</h6>
-                                            <p>
-                                                {{ $product->category->name }}
-                                            </p>
-                                            <h6>Hãng sản xuất</h6>
-                                            <p>
-                                                {{-- {{ $product->brand()->name }}
-                                                --}}
-                                                -
-                                            </p>
-                                            <h6>Số lượng</h6>
-                                            <p>
-                                                {{ number_format($product->quantity) }}
-                                            </p>
-                                            <h6>Giá gốc</h6>
-                                            <p>
-                                                {{ number_format($product->sale->origin_price) }}
-                                            </p>
-                                            <h6>Giá bán</h6>
-                                            <p>
-                                                {{ number_format($product->sale->sale_price) }}
-                                            </p>
-                                            <h6>Mô tả</h6>
-                                            <p>
-                                                {{ $product->description ? $product->description : 'Không có mô tả' }}
-                                            </p>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h6>Hình ảnh</h6>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">react</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">codeply</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">angularjs</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">css3</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">jquery</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">bootstrap</a>
-                                            <a href="javascript:void();"
-                                                class="badge badge-dark badge-pill">responsive-design</a>
-                                            <hr>
-                                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900
-                                                Followers</span>
-                                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
-                                        </div>
-                                    </div>
-                                    <!--/row-->
-                                </div>
-                                <div class="tab-pane" id="edit">
-                                    <form method="POST" action="{{ route('backend.product.update', $product->id) }}">
+                                    <form id="form-update" action="{{ route('backend.product.update', $product->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Tên sản phẩm</label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" type="text" name="name"
+                                                <input class="form-control" type="text" name="name" id="name"
                                                     value="{{ $product->name }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="basic-select" class="col-sm-3 col-form-label">Danh mục</label>
+                                            <label for="category_id" class="col-sm-3 col-form-label">Danh mục</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" id="basic-select" name="category_id">
+                                                <select class="form-control" id="category_id" name="category_id">
                                                     @foreach ($allCategories as $category)
                                                         <option value="{{ $category->id }}"
                                                             {{ $product->category_id == $category->id ? 'selected' : '' }}>
-                                                            {{ $category->name }}</option>
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="brand" class="col-sm-3 col-form-label">Thương hiệu</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="brand" name="brand_id">
+                                                    @foreach ($allBrands as $value)
+                                                        <option value="{{ $value->id }}"
+                                                            {{ $product->brand_id == $value->id ? 'selected' : '' }}>
+                                                            {{ $value->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -136,24 +91,42 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Ảnh hiển thị</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="file" name="thumbnail">
+                                            <label class="col-lg-3 col-form-label form-control-label">Phần trăm giảm
+                                                giá</label>
+                                            <div class="col-lg-3">
+                                                <input class="form-control" type="text" name="discount_percent"
+                                                    value="{{ $product->sale->discount_percent }}">
                                             </div>
                                         </div>
-                                        
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Ảnh sản phẩm</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="file" name="images">
+                                            <label for="status" class="col-lg-3 col-form-label form-control-label">Trạng
+                                                thái sản phẩm</label>
+                                            <div class="col-lg-3">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Còn hàng
+                                                    </option>
+                                                    <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Hết hàng
+                                                    </option>
+                                                    <option value="-1" {{ $product->status == -1 ? 'selected' : '' }}>Ngừng
+                                                        kinh doanh</option>
+                                                </select>
+                                                @error('status')
+                                                    <label for="status" class="error">&nbsp {{ $message }}</label>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label"></label>
                                             <div class="col-lg-9">
-                                                <input type="submit" class="btn btn-primary" value="Lưu">
+                                                <input type="submit" class="btn btn-primary" id="btn-update"
+                                                    data-id="{{ $product->id }}" value="Lưu">
                                             </div>
                                         </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="images">
+                                    <form action="" method="POST">
+
                                     </form>
                                 </div>
                             </div>
@@ -173,4 +146,15 @@
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
 @endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+    <script>
+        @if (Session::has('success')) 
+            toastr.success('{{ Session::get('success') }}');
+        
+        @endif 
+    </script>
 @endsection

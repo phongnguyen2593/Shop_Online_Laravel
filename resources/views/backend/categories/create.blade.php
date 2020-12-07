@@ -40,12 +40,13 @@
                         <div class="card-body">
                             <div class="card-title">Thêm mới danh mục</div>
                             <hr>
-                            <form method="POST" action="{{ route('backend.category.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('backend.category.store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-2 col-form-label">Tên danh mục</label>
+                                    <label for="category_name" class="col-sm-2 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-rounded" id="name"
+                                        <input type="text" class="form-control form-control-rounded" id="category_name"
                                             placeholder="Nhập tên danh mục" name="name" value="{{ old('name') }}">
                                         @error('name')
                                             <label for="name" class="error">&nbsp {{ $message }}</label>
@@ -54,13 +55,14 @@
 
                                 </div>
                                 <div class="form-group row">
-                                    <label for="basic-select" class="col-sm-2 col-form-label">Danh mục cha</label>
+                                    <label for="category_parent_id" class="col-sm-2 col-form-label">Danh mục cha</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control form-control-rounded" id="basic-select"
-                                            name="category_id">
+                                        <select class="form-control form-control-rounded" id="category_parent_id"
+                                            name="parent_id">
                                             <option value="0">-- Chọn danh mục cha --</option>
                                             @foreach ($allCategories as $value)
-                                                <option value="{{ $value->id }}">
+                                                <option value="{{ $value->id }}"
+                                                    {{ old('parent_id') == $value->id ? 'selected' : '' }}>
                                                     {{ $value->name }}
                                                 </option>
                                             @endforeach
@@ -68,14 +70,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="password" class="col-sm-2 col-form-label">Hình ảnh hiển thị</label>
+                                    <label for="category_thumbnail" class="col-sm-2 col-form-label">Hình ảnh hiển
+                                        thị</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group mb-3">
+                                        <div class="input-group mb-3" id="thumbnail">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="thumbnail">
-                                                <label class="custom-file-label" for="inputGroupFile02">Chọn ảnh</label>
+                                                <input type="file" class="custom-file-input" id="category_thumbnail"
+                                                    name="thumbnail">
+                                                <label class="custom-file-label" for="category_thumbnail">Chọn ảnh</label>
                                             </div>
                                         </div>
+                                        @error('thumbnail')
+                                            <label for="thumbnail" class="error">&nbsp {{ $message }}</label>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -100,4 +107,24 @@
         </div>
         <!-- End container-fluid-->
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function previewThumbnail(input){
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                // console.log('input.files');
+                reader.onload = function(event){
+                    $('#thumbnail + img').remove();
+                    $('#thumbnail').after('<img src="'+ event.target.result +'" alt="" height="200px">');
+                };
+                reader.readAsDataURL(input.files[0]);
+            };
+        }
+
+        $('#category_thumbnail').change(function (){
+            previewThumbnail(this);
+        });
+    </script>
 @endsection

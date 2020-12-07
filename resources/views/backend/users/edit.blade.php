@@ -9,8 +9,8 @@
                     <h4 class="page-title">Quản lý người dùng</h4>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('backend.index') }}">Trang chủ</a></li>
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Người dùng</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
+                        <li class="breadcrumb-item"><a href="{{ route('backend.user.index') }}">Người dùng</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa</li>
                     </ol>
                 </div>
                 <div class="col-sm-3">
@@ -38,7 +38,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Thêm mới người dùng</div>
+                            <div class="card-title">Chỉnh sửa người dùng</div>
                             <hr>
                             <form method="POST" action="{{ route('backend.user.update', $user->id) }}">
                                 @csrf

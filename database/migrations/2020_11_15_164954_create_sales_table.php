@@ -18,7 +18,7 @@ class CreateSalesTable extends Migration
             $table->integer('product_id')->referenced('id')->on('products');
             $table->integer('origin_price');
             $table->integer('sale_price');
-            $table->integer('discount_percent')->nullable();
+            $table->integer('discount_percent')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

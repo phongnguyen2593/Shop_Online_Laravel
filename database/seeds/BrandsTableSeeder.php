@@ -16,39 +16,69 @@ class BrandsTableSeeder extends Seeder
         DB::table('brands')->insert([
             [
                 'name'      =>  'Acecook',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/acecook-2015-img.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Heineken',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/Heineken-Logo.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Coca Cola',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/Coca-Cola-Logo-wine.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Vinamilk',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/00a2d11ed2dcb900592725a851bd8371.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Trung Nguyên Legend',
-                'thumbnail' =>  'aaaa'
-            ],
-            [
-                'name'      =>  'Lai Phú',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/logotapdoan0803.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Mentos',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/Mentos-Logo.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Oishi',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/logo-oishi-1.jpg',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
             [
                 'name'      =>  'Orion',
-                'thumbnail' =>  'aaaa'
+                'thumbnail' =>  'uploads/brands/orion-logo-png.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'name'      =>  'OREO',
+                'thumbnail' =>  'uploads/brands/png-transparent-oreo-logo-logo-oreo-cdr-encapsulated-postscript-oreo-miscellaneous-text-sticker.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'name'      =>  'Chupa Chups',
+                'thumbnail' =>  'uploads/brands/Chupa-chups_logo.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'name'      =>  'Alpenliebe',
+                'thumbnail' =>  'uploads/brands/alpenliebe-logo.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
             ],
         ]);
     }
