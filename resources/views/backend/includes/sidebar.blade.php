@@ -85,9 +85,6 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
                 <li><a href="{{ route('backend.brand.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
-                @if (Auth::user()->role->role==1)
-                <li><a href="{{ route('backend.brand.trash') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã xóa</a></li>   
-                @endif
             </ul>
         </li>
         <li>
