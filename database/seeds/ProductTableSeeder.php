@@ -17,45 +17,18 @@ class ProductTableSeeder extends Seeder
         DB::table('products')->truncate();
         DB::table('products')->insert([
             [
-                'name' => 'Thùng 24 Lon Nước Tăng Lực Red Bull (250ml x24 Lon)',
-                'slug' => 'thung-24-lon-nuoc-tang-luc-red-bull-250ml-x24-lon',
+                'name' => 'Thùng 24 Lon Nước Ngọt Có Gas Pepsi Vị Chanh',
+                'slug' => 'dau-dau-nanh-simply-2l-chai',
                 'quantity' => 200,
+                'thumbnail' => 'uploads/products/thumbnail/e0e91ed65ef8a5661bd0a0c2bc8cb0f8.jpeg',
                 'user_id' => 1,
-                'category_id' => 5,
-                'brand_id'  => 1,
+                'category_id' => 6,
+                'brand_id'  => 12,
                 'status' => 1,
-                'updated_at' => '2020-10-28 07:11:00'
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
             ],
-            [
-                'name' => 'Thùng 24 Lon Nước ngọt có gas Sprite lon Mi nhon (250ml x24)',
-                'slug' => 'thung-24-lon-nuoc-ngot-co-gas-sprite-lon-mi-nhon-250ml-x24',
-                'quantity' => 200,
-                'user_id' => 1,
-                'category_id' => 5,
-                'brand_id'  => 1,
-                'status' => 1,
-                'updated_at' => '2020-10-28 08:11:00'
-            ],
-            [
-                'name' => 'Bánh Trứng tươi - Chà Bông KARO Richy',
-                'slug' => 'banh-tuoi-karo',
-                'quantity' => 200,
-                'user_id' => 1,
-                'category_id' => 3,
-                'brand_id'  => 1,
-                'status' => 1,
-                'updated_at' => '2020-10-28 08:15:00'
-            ],
-            [
-                'name' => 'Túi 12 Thanh Socola KitKat',
-                'slug' => 'tui-12-thanh-socola-kitkat',
-                'quantity' => 200,
-                'user_id' => 1,
-                'category_id' => 3,
-                'brand_id'  => 1,
-                'status' => 1,
-                'updated_at' => '2020-10-28 08:16:00'
-            ]
+            
         ]);
     }
 }

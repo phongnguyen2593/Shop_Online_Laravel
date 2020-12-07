@@ -80,6 +80,12 @@ class BrandsTableSeeder extends Seeder
                 'created_at' => '2020-10-28 07:11:00',
                 'updated_at' => '2020-10-28 07:11:00',
             ],
+            [
+                'name'      =>  'Pepsi',
+                'thumbnail' =>  'uploads/brands/kisspng-pepsi-max-cola-diet-pepsi-fizzy-drinks-pepsi-logo-5acc3df9920a68.9939404015233346495982.png',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
+            ],
         ]);
     }
 }
