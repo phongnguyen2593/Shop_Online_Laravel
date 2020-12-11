@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
-// use Carbon\Carbon;
+use App\Models\Brand;
+use App\Models\Order;
+use Carbon\Carbon;
+use Session;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -18,36 +21,57 @@ class HomeController extends Controller
 { 
     public function index()
     {
-        // return view('frontend.home');
-        // $year =Carbon::now()->year;
-        // $day = Carbon::now()->day;
-        // $dt= $day . $year . '-' . 'hsdgfhgsd';
-        // return $dt;
-        
-        
-        // $category = Category::with('child')->get();
-        // dd($category);
-        // $categories = Cache::remember('categories', 60*60, function () {
-        //     $categories = Category::get();
-        //     return $categories;
-        // });
-        $products = Product::with('sale')->get();
-
-        // $newProducts = Product::orderBy('created_at', 'DESC')->take(4)->get();
+        $products = Product::all();
+        $brands = Brand::inRandomOrder()->limit(10)->get();
         return view('frontend.home', [
-            'products'      => $products,
-            // 'newProducts'   => $newProducts,
+            'products'  => $products,
+            'brands'    => $brands,        
             ]);
     }
 
+    public function search(Request $request)
+    {
+        $key = $request->key;
+        $products = Product::where('name', 'like', '%'.$key.'%')->get();
+        return view('frontend.pages.search-result', [
+            'key'       => $key,
+            'products'  => $products,
+        ]);
+    }
     public function category()
     {
         dd('category');
     }
 
-    public function tracking()
+    public function tracking(Request $request)
     {
-        return view('frontend.pages.tracking');
+        $order_code = $request->code;
+        $order = Order::where('code', 'like', $order_code)->first();
+        $total = 0;
+        foreach ($order->products as $product) {
+            $total += $product->pivot->quantity * $product->pivot->sale_price;
+        }
+        switch ($order->status) {
+            case '1':
+                Session::flash('success', 'Đơn hàng đang chờ xác nhận.');
+                break;
+            case '2':
+                Session::flash('success', 'Đơn hàng đã được xác nhận.');
+                break;
+            case '3':
+                Session::flash('success', 'Đơn hàng đã được hoàn thành.');
+                break;
+        }
+        if ($order==null) {
+            Session::flash('error', 'Vui lòng kiểm tra lại mã đơn hàng');
+        }elseif ($order->status == 0) {
+            Session::flash('error', 'Đơn hàng đã bị hủy bới người đặt hoặc cửa hàng.');
+        }
+        
+        return view('frontend.pages.tracking', [
+            'order'     => $order,
+            'total'     => $total,
+        ]);
     }
 
     public function contact()
@@ -61,42 +85,8 @@ class HomeController extends Controller
         return view('frontend.pages.shipping');
     }
 
-    
-
     public function test(Request $request)
     {
-        // Storage::put('file2.txt', 'Contents');
-
-        // Storage::disk('public')->put('file5.txt', 'File5');
-
-        // $url = Storage::url('file5.txt');
-        // dd($url);
-
-        // $cookie = cookie('hello', '123123123', 1);
-        // Cookie::queue('lalala', '23232323', 30);
-        // return 1;
-        // $value = $request->cookie('lalala');
-        // $value = Cookie::get('lalala');
-        // return response('Helloworld')->cookie($cookie);
-        // dd($value);
-        
-        // Cache::put('categories', 'ahahaha', 30);
-        
-        // $value = Cache::get('categories');
-        // dd($value);
-        // return 1;
-
-        // $categories = Category::get();
-        // dd($categories);
-        // Cache::put('categories', $categories, 300);
-        // $categories = Cache::get('categories');
-        // dd($categories);
-
-        if (!Cache::has('categories')) {
-            $categories = Category::get();
-            Cache::put('categories', $categories, 1);
-        }
-        $categories = Cache::get('categories');
-        dd($categories);
+        // 
     }
 }

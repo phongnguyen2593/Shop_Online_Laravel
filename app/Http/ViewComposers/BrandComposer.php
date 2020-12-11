@@ -28,8 +28,11 @@
         $allBrands = Cache::remember('allBrands', 10, function () {
             return Brand::all();
         });
+
+        $randBrands = Brand::inRandomOrder()->limit(8)->get();
         $view->with([
-            'allBrands' => $allBrands,
+            'allBrands'     => $allBrands,
+            'randBrands'    => $randBrands,
             ]);
      }
  }

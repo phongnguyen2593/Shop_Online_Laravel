@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\UserInfo;
 use App\Models\Product;
 use App\Models\Role;
 
@@ -21,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'phone', 'address', 'gender'
+        'email', 'password'
     ];
 
     /**
@@ -41,6 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function info()
+    {
+        return $this->hasOne(UserInfo::class);
+    }
 
     public function products()
     {

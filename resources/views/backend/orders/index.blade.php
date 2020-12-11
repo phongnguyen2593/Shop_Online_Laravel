@@ -48,7 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th>Mã đơn hàng</th>
-                                            <th>Người xác nhận</th>
+                                            <th>Thời gian cập nhật</th>
                                             <th>Trạng thái</th>
                                             <th>Hành động</th>
                                         </tr>
@@ -92,29 +92,13 @@
                 $('#order-datatable').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('backend.user.list') }}",
+                    ajax: "{{ route('backend.order.data') }}",
                     columns: [{
-                            data: 'name',
-                            name: 'name'
+                            data: 'code',
+                            name: 'code'
                         },
-                        {
-                            data: 'email',
-                            name: 'email'
-                        },
-                        {
-                            data: 'gender',
-                            name: 'gender'
-                        },
-                        {
-                            data: 'role',
-                            name: 'role'
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            orderable: true,
-                            searchable: true
-                        },
+                        { data: 'updated_at', name: 'updated_at' },
+                        { data: 'status', name: 'status'},
                     ]
                 });
 

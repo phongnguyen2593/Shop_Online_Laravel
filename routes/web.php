@@ -16,10 +16,10 @@ use App\Http\Controllers;
 */
 
 Auth::routes();
-Route::get('/test/{id}', 'Backend\ProductController@test');
+Route::get('/test', 'Frontend\HomeController@test');
 
-Route::get('/district/{id}', 'AddressController@districts')->name('district');
-// Backend
+
+//================================ Backend ================================
 Route::group([
     'namespace'     => 'Backend',
     'prefix'        => 'admin',
@@ -86,7 +86,7 @@ Route::group([
         Route::get('/create', 'UserController@create')->name('create');
         Route::post('/store', 'UserController@store')->name('store');
         Route::get('/edit/{user}', 'UserController@edit')->name('edit');
-        Route::match(['put', 'patch'], 'update/{user}', 'UserController@update')->name('update');
+        Route::put( '/update/{user}', 'UserController@update')->name('update');
         Route::match(['put', 'patch'], '/{user}', 'UserController@lock')->name('lock');
         Route::delete('/{user}', 'UserController@destroy')->name('delete');
         Route::get('/show/{user}', 'UserController@show')->name('show');
@@ -99,55 +99,61 @@ Route::group([
         'as'        => 'order.'
     ], function () {
         Route::get('/', 'OrderController@index')->name('index');
-        Route::get('/create', 'OrderController@create')->name('create');
-        Route::post('/store', 'OrderController@store')->name('store');
         Route::get('/edit/{order}', 'OrderController@edit')->name('edit');
         Route::match(['put', 'patch'], '/{order}', 'OrderController@update')->name('update');
         Route::delete('/{order}', 'OrderController@destroy')->name('delete');
         Route::get('/show/{order}', 'OrderController@show')->name('show');
-        Route::get('/district/{id}', 'AddressController@districts')->name('district');
-        Route::get('/ward/{id}', 'AddressController@wards')->name('ward');
+        Route::get('/data', 'OrderController@getData')->name('data');
     });
 });
 
-//Frontend
+
+//================================ Frontend ================================
 Route::group([
     'namespace' => 'Frontend',
     'as'        => 'frontend.',
     'prefix'    => ''
 ], function () {
     Route::get('/', 'HomeController@index')->name('index');
+    Route::post('/tim-kiem', 'HomeController@search')->name('search');
+    Route::post('/tra-cuu', 'HomeController@tracking')->name('tracking');
     Route::get('/danh-muc', 'HomeController@category')->name('category');
-    Route::get('/tra-cuu', 'HomeController@tracking')->name('tracking');
     Route::get('/lien-he', 'HomeController@contact')->name('contact');
     Route::get('/shipping', 'HomeController@shipping')->name('shipping');
-    Route::get('/chi-tiet/{slug}.html', 'HomeController@detail')->name('detail');
 
     //cart
     Route::group([
         'prefix'        => 'gio-hang',
         'as'            => 'cart.',
     ], function () {
-        Route::get('/danh-sach', 'CartController@index' )->name('index');
+        Route::get('', 'CartController@index' )->name('index');
         Route::get('/add/{id}', 'CartController@add')->name('add');
         Route::get('/remove/{id}', 'CartController@remove')->name('remove');
+        Route::post('/update', 'CartController@update')->name('update');
+        Route::get('/thanh-toan', 'CheckoutController@index')->name('check-out');
     });
+    
+    Route::post('/store', 'CheckoutController@store')->name('order.store');
 
     //product
     Route::group([
         'prefix'        => 'san-pham',
         'as'            => 'product.',
     ], function () {
-        Route::get('/danh-sach', 'ProductController@index' )->name('index');
+        Route::get('', 'ProductController@index' )->name('index');
+        Route::get('/{slug}', 'ProductController@detail' )->name('detail');
     });
 
     //User
     Route::group([
-        'prefix'        => 'user',
+        'prefix'        => 'tai-khoan',
         'middleware'    => 'auth',
         'as'            => 'user.',
     ], function () {
-        Route::get('/index', 'UserController@index' )->name('index');
+        Route::get('', 'UserController@index' )->name('index');
+        Route::match(['put', 'patch'], 'update', 'UserController@update')->name('update');
         Route::get('/wishlist', 'UserController@wishlist')->name('wishlist');
+        Route::get('/mat-khau', 'UserController@changePasswordForm')->name('password');
+        Route::post('/change-password', 'UserController@changePassword')->name('change-password');
     });
 });

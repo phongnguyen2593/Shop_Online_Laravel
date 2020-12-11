@@ -80,14 +80,14 @@
                                             <label class="col-lg-3 col-form-label form-control-label">Giá gốc</label>
                                             <div class="col-lg-3">
                                                 <input class="form-control" type="text" name="origin_price"
-                                                    value="{{ $product->sale->origin_price }}">
+                                                    value="{{ $product->origin_price }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label form-control-label">Giá bán</label>
                                             <div class="col-lg-3">
                                                 <input class="form-control" type="text" name="sale_price"
-                                                    value="{{ $product->sale->sale_price }}">
+                                                    value="{{ $product->sale_price }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -95,7 +95,7 @@
                                                 giá</label>
                                             <div class="col-lg-3">
                                                 <input class="form-control" type="text" name="discount_percent"
-                                                    value="{{ $product->sale->discount_percent }}">
+                                                    value="{{ $product->discount_percent }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">

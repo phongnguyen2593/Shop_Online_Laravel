@@ -87,6 +87,7 @@
                 <li><a href="{{ route('backend.brand.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm Mới</a></li>
             </ul>
         </li>
+        <li class="sidebar-header">QUẢN LÝ ĐƠN HÀNG</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-widgets"></i> <span>Đơn Hàng</span>
@@ -95,7 +96,6 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a>
                 </li>
-                <li><a href="{{ route('backend.order.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
                 <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Xác Nhận</a></li>
                 <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đang Giao</a></li>
                 <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Hoàn Thành</a></li>
@@ -103,6 +103,18 @@
             </ul>
         </li>
         <li class="sidebar-header">QUẢN LÝ BÀI VIẾT</li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-format-list-bulleted"></i> <span>Blog</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Duyệt</a>
+                </li>
+                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> ...</a></li>
+            </ul>
+        </li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-format-list-bulleted"></i> <span>Bình Luận</span>
@@ -119,6 +131,10 @@
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-lock"></i> <span>Slider</span>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-lock"></i> <span>Banner</span>
             </a>
         </li>

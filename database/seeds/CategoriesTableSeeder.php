@@ -107,6 +107,15 @@ class CategoriesTableSeeder extends Seeder
                 'created_at'    => '2020-10-28 07:11:22',
                 'updated_at'    => '2020-10-28 18:11:22',
             ],
+            [
+                'name'          => 'Thực phẩm ăn liền',
+                'slug'          => 'thuc-pham-an-lien',
+                'thumbnail'     => 'uploads/categories/cham-soc-thu-cung.png',
+                'parent_id'     => 1,
+                'depth'         => 2,
+                'created_at'    => '2020-10-28 07:11:22',
+                'updated_at'    => '2020-10-28 18:11:22',
+            ],
         ]);
     }
 }

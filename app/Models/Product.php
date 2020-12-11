@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Category;
 use App\Models\Image;
-use App\Models\Sale;
 use App\Models\User;
 use App\Models\Brand;
 
@@ -31,11 +30,6 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
-    }
-
-    public function sale()
-    {
-        return $this->hasOne(Sale::class);
     }
 
     public function user()

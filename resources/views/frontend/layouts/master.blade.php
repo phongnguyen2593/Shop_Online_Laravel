@@ -29,7 +29,7 @@
     @include('frontend.includes.header')
 
     @yield('slider')
-    
+
     @yield('content')
 
     <!--footer area start-->
@@ -38,8 +38,12 @@
     <!-- JS
 ============================================ -->
 
-    @include('frontend.includes.script')
-    
+    <!-- Plugins JS -->
+    <script src="/frontend/assets/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="/frontend/assets/js/main.js"></script>
+
     @yield('script')
 </body>
 

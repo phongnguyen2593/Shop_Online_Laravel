@@ -76,13 +76,19 @@ class BrandsTableSeeder extends Seeder
             ],
             [
                 'name'      =>  'Alpenliebe',
-                'thumbnail' =>  'uploads/brands/alpenliebe-logo.png',
+                'thumbnail' =>  'uploads/brands/alpenliebe-logo.jpg',
+                'created_at' => '2020-10-28 07:11:00',
+                'updated_at' => '2020-10-28 07:11:00',
+            ], 
+            [
+                'name'      =>  'Pepsi',
+                'thumbnail' =>  'uploads/brands/kisspng-pepsi-max-cola-diet-pepsi-fizzy-drinks-pepsi-logo-5acc3df9920a68.9939404015233346495982.png',
                 'created_at' => '2020-10-28 07:11:00',
                 'updated_at' => '2020-10-28 07:11:00',
             ],
             [
-                'name'      =>  'Pepsi',
-                'thumbnail' =>  'uploads/brands/kisspng-pepsi-max-cola-diet-pepsi-fizzy-drinks-pepsi-logo-5acc3df9920a68.9939404015233346495982.png',
+                'name'      =>  'Me-O',
+                'thumbnail' =>  'uploads/brands/meo-0-logo.jpeg',
                 'created_at' => '2020-10-28 07:11:00',
                 'updated_at' => '2020-10-28 07:11:00',
             ],

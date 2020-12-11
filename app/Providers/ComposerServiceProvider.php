@@ -40,6 +40,7 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             [
                 'frontend.home',
+                'frontend.products.detail',
                 'backend.products.index',
             ],
             'App\Http\ViewComposers\ProductComposer'

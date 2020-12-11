@@ -166,7 +166,7 @@
                 $('#districts').append(`<option value="0" disabled>-- Chọn Quận/Huyện --</option>`);
                 $.ajax({
                     type: 'GET',
-                    url: 'district/' + id,
+                    url: "{{ url('admin/order/district',"+id+") }}",
                     success: function(res) {
                         var res = JSON.parse(res);
                         console.log(res);

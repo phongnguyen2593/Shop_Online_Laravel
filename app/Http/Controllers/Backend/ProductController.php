@@ -14,7 +14,6 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image;
-use App\Models\Sale;
 use App\Models\User;
 use File;
 use Session;
@@ -64,8 +63,15 @@ class ProductController extends Controller
         $this->authorize('create', Auth::user());
         $product = new Product();
         $product->name = ucwords($request->get('name'));
-        $product->slug = Str::slug($request->get('name'));
+        $product->slug = Str::slug($request->get('name')).'-'.rand();
         $product->quantity = $request->get('quantity');
+        $product->origin_price = $request->get('origin_price');
+        $product->sale_price = $request->get('sale_price');
+        if(empty($request->discount_percent)){
+            $product->discount_percent = 0;
+        }else{
+            $product->discount_percent = $request->get('discount_percent');
+        }
         $product->category_id = $request->get('category_id');
         $product->brand_id = $request->get('brand_id');
         $file = $request->file('thumbnail');
@@ -86,17 +92,6 @@ class ProductController extends Controller
                 $image->save();
             }
         }
-
-        $sale = new Sale();
-        $sale->product_id = 12;
-        $sale->origin_price = $request->get('origin_price');
-        $sale->sale_price = $request->get('sale_price');
-        if(empty($request->discount_percent)){
-            $sale->discount_percent = 0;
-        }else{
-            $sale->discount_percent = $request->get('discount_percent');
-        }
-        $sale->save();
         Session::flash('success', 'Tạo mới thành công !');
         return redirect()->route('backend.product.index');
         
@@ -135,10 +130,8 @@ class ProductController extends Controller
         $user = Auth::user();
 
         if ($user->can('update', $product)) {
-            $sale = $product->sale;
             return view('backend.products.edit', [
                 'product'       => $product,
-                'sale'          => $sale,
                 ]);
         }else {
             return redirect()->route('backend.product.index');
@@ -157,19 +150,17 @@ class ProductController extends Controller
         $this->authorize('update', Auth::user());
         $product = Product::find($id);
         $product->name = ucwords($request->get('name'));
-        $product->slug = Str::slug($request->get('name'));
+        $product->slug = Str::slug($request->get('name')).'-'.rand();
         $product->quantity = $request->get('quantity');
+        $product->origin_price = $request->get('origin_price');
+        $product->sale_price = $request->get('sale_price');
+        $product->discount_percent = $request->get('discount_percent');
         $product->category_id = $request->get('category_id');
         $product->description = $request->get('description');
         $product->status = $request->get('status');
         $product->user_id = Auth::user()->id;
         $product->save();
 
-        $sale = Sale::where('product_id', $id)->first();
-        $sale->origin_price = $request->get('origin_price');
-        $sale->sale_price = $request->get('sale_price');
-        $sale->discount_percent = $request->get('discount_percent');
-        $sale->save();
         Session::flash('success', 'Cập nhật thành công !');
         return redirect()->route('backend.product.show', $id);
     }
@@ -216,7 +207,6 @@ class ProductController extends Controller
         $this->authorize('delete', Auth::user());
         try {
             $product = Product::onlyTrashed()->find($id);
-            $sale = $product->sale;
             if(!empty($product->images)){
                 $images = Image::where('product_id', $id)->get();
                 foreach ($images as $image) {
@@ -224,7 +214,6 @@ class ProductController extends Controller
                     $image->forceDelete();
                 }
             }
-            $sale->forceDelete();
             File::delete($product->thumbnail);
             $success = $product->forceDelete();
             if($success){
@@ -284,7 +273,12 @@ class ProductController extends Controller
             })
             ->rawColumns(['action', 'thumbnail'])
             ->make(true);
+    }
 
-        
+    public function test()
+    {
+        $name = 'nguyen ngoc phong';
+        $s = Str::slug($name) .'-'.rand();
+        dd($s);
     }
 }

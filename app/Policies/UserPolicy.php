@@ -58,7 +58,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        if ($user->role->role == 1 | $user->role->role == $model->id){
+        if ($user->role->role == 1 | $user->role->role == 2 & $model->role->role!=1 & $model->role->role !=2){
             return true;
         }
     }
@@ -72,7 +72,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if ($user->role->role == 1 | $user->role->role == 2 ){
+        if ($user->role->role == 1){
             return true;
         }
     }

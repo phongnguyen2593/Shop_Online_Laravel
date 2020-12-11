@@ -12,22 +12,34 @@ class CartController extends Controller
 {
     public function index()
     {
-        $item = Cart::content();
-        // dd($item);
+        $items = Cart::instance('shopping')->content();
         return view('frontend.pages.cart', [
-            'item'  => $item,
+            'items'  => $items,
         ]);
     }
 
-    public function add($id)
+    public function add(Request $request, $id)
     {
+        if($request->quantity){
+            $qty = $request->quantity;
+        }else{
+            $qty = 1;
+        }
         $product = Product::find($id);
-        Cart::add($product->id, $product->name, 1, $product->sale->sale_price, 0);
+        Cart::instance('shopping')->add($product->id, $product->name, $qty, $product->sale_price, 0, ['thumbnail' => $product->thumbnail]);
         return redirect(route('frontend.index'));
     }
 
+    public function update(Request $request)
+    {
+        $id = $request->id_item;
+        $qty = $request->quantity_item;
+        Cart::instance('shopping')->update($id, $qty);
+        return redirect(route('frontend.cart.index'));
+    }
+
     public function remove($id){
-        Cart::remove($id);
+        Cart::instance('shopping')->remove($id);
         return redirect(route('frontend.cart.index'));
     }
 }

@@ -78,7 +78,7 @@
                                         khẩu</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control form-control-rounded"
-                                            id="password_confirmation" placeholder="Xác nhận mật khẩu">
+                                            id="password_confirmation" placeholder="Xác nhận mật khẩu" name="password_confirmation">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -87,13 +87,13 @@
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text" style="border-radius: 30px;">
-                                                    <input type="radio" id="male" name="gender" value="1">&nbsp
+                                                    <input type="radio" id="male" name="gender" value="1" {{ (old('gender')==1)? 'checked' : '' }}>&nbsp
                                                     Nam
                                                 </div>
 
                                                 <div class="input-group-text"
                                                     style="border-radius: 30px; margin-left: 20px">
-                                                    <input type="radio" id="input-addon-radio" name="gender" value="0">&nbsp
+                                                    <input type="radio" id="input-addon-radio" name="gender" value="0" {{ (old('gender')==0)? 'checked' : '' }}>&nbsp
                                                     Nữ
                                                 </div>
                                             </div>

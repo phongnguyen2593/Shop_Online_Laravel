@@ -28,6 +28,36 @@ class ImagesProductSeeder extends Seeder
                 'updated_at' => '2020-10-28 07:11:00',
                 'created_at' => '2020-10-28 07:11:00',
             ],
+            [
+                'path' => 'uploads/products/images/3e2ee9c7ddf665a2233229fba7e0baee.jpeg',
+                'product_id' => 2,
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'path' => 'uploads/products/images/2e48945a8c46643cbb8a2afe8a299cdd.jpg',
+                'product_id' => 6,
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'path' => 'uploads/products/images/0592743e6c6fcf94dd86d846efe34098.jpg',
+                'product_id' => 6,
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'path' => 'uploads/products/images/0d0c65ea30cd8dec6a7b50234484b6e7.jpg',
+                'product_id' => 6,
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
+            ],
+            [
+                'path' => 'uploads/products/images/8709f0fa7ac0d5e85d3f4ecfc5c0f35e.jpg',
+                'product_id' => 8,
+                'updated_at' => '2020-10-28 07:11:00',
+                'created_at' => '2020-10-28 07:11:00',
+            ],
             
         ]);
     }

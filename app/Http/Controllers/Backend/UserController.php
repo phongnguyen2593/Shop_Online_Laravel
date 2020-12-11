@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use App\Models\UserInfo;
+use App\Models\Role;
+use File;
+use Session;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,15 +57,32 @@ class UserController extends Controller
         $this->authorize('create', Auth::user());
 
         $user = new User();
-        $user->name     = $request->get('name');
         $user->email    = $request->get('email');
         $user->password = Hash::make($request->get('password'));
-        $user->gender   = $request->get('gender');
-        $user->role     = 3;
-        $user->phone    = $request->get('phone');
-        $user->address  = $request->get('address');
         $user->save();
+
+        $info = new UserInfo();
+        $info->user_id  = $user->id;
+        $info->name     = ucwords($request->get('name'));
+        $info->gender   = $request->get('gender');
+        $info->phone    = $request->get('phone');
+        $info->address  = $request->get('address');
+        if($request->hasFile('avatar')){
+            $file = $request->file('avatar');
+            $path = Storage::disk('public')->putFileAs('uploads/users/avatars', $file, $file->getClientOriginalName());
+            $info->avatar = $path;
+        }else{
+            $info->avatar = 'uploads/users/avatar/usdcvhvbsb82345637846534.png';
+        }
+        $info->save();
+
+        $role = new Role();
+        $role->user_id = $user->id;
+        $role->save();
+        Session::flash('success', 'Tạo mới thành công !');
+
         return redirect()->route('backend.user.index');
+
 
     }
 
@@ -107,13 +128,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->authorize('update', Auth::user());
-        $user = User::find($id);
-        $user->name = $request->get('name');
-        $user->email    = $request->get('email');
-        $user->gender   = $request->get('gender');
-        $user->phone    = $request->get('phone');
-        $user->address  = $request->get('address');
-        $user->save();
+        try {
+            
+            $user = User::find($id);
+
+            if ($user->status == 1) {
+                $user->status = 0;
+            } else{
+                $user->status = 1;
+            }
+            $success = $user->save();
+            if($success){
+                return response()->json([
+                    'error'=>false,
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'error'=>true,
+            ]);
+        }
+        
         return \redirect()->route('backend.user.index');
     }
 
@@ -126,10 +161,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->authorize('delete', Auth::user());
-        $model = User::find($id);
+        $user = User::find($id);
 
          try {
-            $success = $model->delete();
+            $success = $user->delete();
     
         }catch (\Exception $e){
             $message = "Xóa không thành công";
@@ -140,12 +175,17 @@ class UserController extends Controller
             }
     }
 
+    
+
     public function getData()
     {
         $users = User::orderBy('updated_at', 'DESC')
                         ->with('role')
                         ->get();
         return Datatables::of($users)
+            ->addColumn('name', function(User $user){
+                return $user->info->name;
+            })
             ->addColumn('role', function(User $user){
                 if ($user->role->role == 1) {
                     return 'Admin';
@@ -156,7 +196,7 @@ class UserController extends Controller
                 }
             })
             ->addColumn('gender', function(User $user){
-                if ($user->gender == 1) {
+                if ($user->info->gender == 1) {
                     return 'Nam';
                 } else {
                     return 'Nữ';
@@ -172,14 +212,4 @@ class UserController extends Controller
             ->make(true);
         
     }
-
-
-    // public function lock($id)
-    // {
-    //     $this->authorize('update', Auth::user());
-    //     $user = User::find($id);
-    //     $user->role = 0;
-    //     $user->save();
-    //     return \redirect()->route('backend.user.index');
-    // }
 }

@@ -20,7 +20,6 @@ class OrderProductTableSeeder extends Seeder
             'product_id'    => 1,
             'quantity'      => 2,
             'sale_price'    => '30000',
-            'total'         => '60000',  
         ]);
     }
 }

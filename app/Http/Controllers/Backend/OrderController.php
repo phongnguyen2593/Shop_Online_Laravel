@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 use App\Models\Order;
+use App\Models\Customer;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -27,8 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $data = DB::table('provinces')->get();
-        return view('backend.orders.create')->with('data', $data);
+        //
     }
 
     /**
@@ -39,7 +41,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd('oke order');
+        $customer = new Customer();
+        
     }
 
     /**
@@ -89,6 +92,25 @@ class OrderController extends Controller
 
     public function getData()
     {
+        $orders = Order::all();
+
+        return DataTables::of($orders)
+        ->editColumn('status', function($order){
+            if ($order->status==1) {
+                return '<p class="text-warning">Chờ xác nhận</p>';
+            } elseif($order->status==2) {
+                return '<p class="text-primary">Đã xác nhận</p>';
+            }elseif($order->status==3){
+                return '<p class="text-success">Đã xác nhận</p>';
+            }elseif($order->status==0){
+                return '<p class="text-danger">Đã hủy</p>';
+            }
+        })
+        ->editColumn('updated_at', function($order){
+            return Carbon::parse($order->updated_at)->isoFormat('lll');
+        })
+        ->rawColumns(['status'])
+        ->make(true);
 
     }
 }

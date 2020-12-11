@@ -133,7 +133,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                type: 'delete',
+                                type: 'put',
                                 url: '/admin/user/0' + id,
                                 success: function(res) {
                                     if (!res.error) {
@@ -149,5 +149,10 @@
                 });
             });
 
+        </script>
+        <script>
+            @if(Session::has('success')) 
+                toastr.success('{{ Session::get('success') }}'); 
+            @endif
         </script>
     @endsection

@@ -13,6 +13,17 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('frontend.products.index');
+        $products = Product::all();
+        return view('frontend.products.index',['products' => $products]);
+    }
+
+    public function detail($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $relatedProduct = Product::where('category_id', $product->category_id)->get();
+        return view('frontend.products.detail', [
+            'product'   => $product,
+            'relatedProduct'   => $relatedProduct,
+        ]);
     }
 }

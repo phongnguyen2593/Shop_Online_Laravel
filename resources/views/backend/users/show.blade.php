@@ -27,128 +27,59 @@
                                             chi tiết</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
-                                            class="icon-note"></i> <span class="hidden-xs">Chỉnh sửa</span></a>
                                 </li>
                             </ul>
                             <div class="tab-content p-3">
                                 <div class="tab-pane active" id="profile">
-                                    <h5 class="mb-3">User Profile</h5>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <h6>Họ tên</h6>
-                                            <p>
-                                                {{ $user->name }}
-                                            </p>
-                                            <h6>Giới tính</h6>
-                                            <p>
-                                                {{ ($user->gender==1)? 'Nam' : 'Nữ' }}
-                                            </p>
-                                            <h6>Email</h6>
-                                            <p>
-                                                {{ $user->email }}
-                                            </p>
-                                            <h6>Số diện thoại</h6>
-                                            <p>
-                                                {{ empty($user->phone) ? '-' : $user->phone }}
-                                            </p>
-                                            <h6>Địa chỉ</h6>
-                                            <p>
-                                                {{ empty($user->address) ? '-' : $user->address }}
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
+                                        <div class="col-lg-3 text-center" >
                                             <h6>Ảnh đại diện</h6>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">react</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">codeply</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">angularjs</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">css3</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">jquery</a>
-                                            <a href="javascript:void();" class="badge badge-dark badge-pill">bootstrap</a>
-                                            <a href="javascript:void();"
-                                                class="badge badge-dark badge-pill">responsive-design</a>
-                                            <hr>
-                                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900
-                                                Followers</span>
-                                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                                            <img src="{{ asset($user->info->avatar) }}" alt="" style="border-radius: 50%; width:150px">
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <table>
+                                                <tr>
+                                                    <th>Họ tên:</th>
+                                                    <td>{{ $user->info->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email:</th>
+                                                    <td>{{ $user->email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Giới tính:</th>
+                                                    <td>{{ ($user->info->gender==1)? 'Nam':'Nữ' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Địa chỉ:</th>
+                                                    <td>{{ $user->info->address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Số điện thoại:</th>
+                                                    <td>{{ $user->info->phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Trạng thái:</th>
+                                                    @if ($user->status == 1)
+                                                        <td class="text-success">Hoạt động</td>
+                                                    @else
+                                                        <td class="text-danger">Đã khóa</td>
+                                                    @endif
+                                                </tr>
+                                            </table>
+                                            @can('update', Auth::user())
+                                            <div class="mt-3">
+                                                @if ($user->status == 1)
+                                                    <button class="btn btn-danger btn-lock" data-id="{{ $user->id }}">Khóa tài khoản</button>
+                                                @else
+                                                    <button class="btn btn-primary btn-lock" data-id="{{ $user->id }}">Mở khóa</button>
+                                                @endif
+                                            </div>
+                                            @endcan
+                                            
                                         </div>
                                     </div>
                                     <!--/row-->
-                                </div>
-                                <div class="tab-pane" id="edit">
-                                    <form method="POST" action="{{ route('backend.user.update', $user->id) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Họ tên</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" name="name"
-                                                    value="{{ $user->name }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="email" name="email"
-                                                    value="{{ $user->email }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Giới tính</label>
-                                            <div class="col-lg-9">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3">
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="gender" value="1"
-                                                                        {{ $user->gender == 1 ? 'checked' : '' }}>&nbsp Nam
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <div class="input-group-text">
-                                                                    <input type="radio" name="gender" value="0"
-                                                                        {{ $user->gender == 0 ? 'checked' : '' }}> &nbsp Nữ
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Số điện thoại</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" name="phone"
-                                                    value="{{ $user->phone }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Địa chỉ</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" name="address"
-                                                    value="{{ $user->address }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="" placeholder="Street">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                                            <div class="col-lg-9">
-                                                <input type="submit" class="btn btn-primary" value="Lưu">
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -166,4 +97,39 @@
     <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
+@endsection
+@section('head')
+    <style>
+        th {
+            width: 200px;
+        }
+    </style>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+             });
+            $('#profile').on('click', '.btn-lock',function(e){
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    type: 'put',
+                    url: '/admin/user/update/' + id,
+                    success: function(res) {
+                        if (!res.error) {
+                            toastr.success('Cập nhật thành công !');
+                            $('#profile').load(' #profile');
+                        } else {
+                            toastr.error('Cập nhật thất bại !');
+                        }
+                    }
+                });
+            });
+        });
+    </script>    
 @endsection
