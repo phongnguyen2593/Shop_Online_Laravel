@@ -41,7 +41,6 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.user.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh sách</a></li>
                 <li><a href="{{ route('backend.user.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
-                <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
             </ul>
         </li>
         <li class="sidebar-header">QUẢN LÝ SẢN PHẨM</li>

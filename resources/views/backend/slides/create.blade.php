@@ -22,23 +22,11 @@
                         <div class="card-body">
                             <div class="card-title">Thêm mới Slide</div>
                             <hr>
-                            <form method="POST" action="{{ route('backend.brand.store') }}"
+                            <form method="POST" action="{{ route('backend.slide.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="brand_name" class="col-sm-2 col-form-label">Tên thương hiệu</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-rounded" id="brand_name"
-                                            placeholder="Nhập tên danh mục" name="name" value="{{ old('name') }}">
-                                        @error('name')
-                                            <label for="name" class="error">&nbsp {{ $message }}</label>
-                                        @enderror
-                                    </div>
-
-                                </div>
-                                <div class="form-group row">
-                                    <label for="brand_thumbnail" class="col-sm-2 col-form-label">Hình ảnh hiển
-                                        thị</label>
+                                    <label for="brand_thumbnail" class="col-sm-2 col-form-label">Hình ảnh slide</label>
                                     <div class="col-sm-10">
                                         <div class="input-group mb-3" id="thumbnail">
                                             <div class="custom-file">

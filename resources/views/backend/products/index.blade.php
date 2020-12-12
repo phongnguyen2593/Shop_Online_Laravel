@@ -88,6 +88,7 @@
                 $('#product-datatable').DataTable({
                     processing: true,
                     serverSide: true,
+                    "order": [[ 3, "desc" ]], 
                     ajax: "{{ route('backend.product.data') }}",
                     columns: [
                         { data: 'thumbnail', name: 'thumbnail' },

@@ -48,9 +48,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($slides as $item)
                                         <tr>
+                                            <td><img src="{{ asset($item->path) }}" width="200px"></td>
+                                            <@if ($item->status == 1)
+                                                <td class="text-success">Hiển thị</td>
+                                            @else
+                                                <td class="text-danger">Không hiển thị</td>
+                                            @endif
                                             <td></td>
                                         </tr>
+                                        @endforeach
+                                        <td>
+                                            
+                                        </td>
                                     </tbody>
                                 </table>
                             </div>
