@@ -50,6 +50,7 @@
                                             <th>Mã đơn hàng</th>
                                             <th>Thời gian cập nhật</th>
                                             <th>Trạng thái</th>
+                                            <th>Người xác nhận</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
@@ -92,6 +93,7 @@
                 $('#order-datatable').DataTable({
                     processing: true,
                     serverSide: true,
+                    "order": [[ 3, "desc" ]], 
                     ajax: "{{ route('backend.order.data') }}",
                     columns: [{
                             data: 'code',
@@ -99,6 +101,8 @@
                         },
                         { data: 'updated_at', name: 'updated_at' },
                         { data: 'status', name: 'status'},
+                        { data: 'approver'},
+                        { data: 'action' },
                     ]
                 });
 

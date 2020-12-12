@@ -9,7 +9,8 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
-                            <li>Sản phẩm</li>
+                            <li ><a href="{{ route('frontend.brand') }}">Thương hiệu</a></li>
+                            <li>{{ $brand->name }}</li>
                         </ul>
                     </div>
                 </div>
@@ -47,7 +48,7 @@
                                 <article class="single_product">
                                     <figure>
                                         <div class="product_thumb">
-                                            <a class="primary_img" href="{{ route('frontend.product.detail', $product->slug) }}"><img
+                                            <a class="primary_img" href="product-details.html"><img
                                                     src="{{ asset($product->thumbnail) }}" alt=""></a>
                                             <div class="label_product">
                                                 @if ($product->discount_percent != 0)
@@ -93,7 +94,7 @@
                                                 </ul>
                                             </div>
                                             <h3 class="product_name grid_name"><a
-                                                    href="{{ route('frontend.product.detail', $product->slug) }}">{{ $product->name }}</a></h3>
+                                                    href="product-details.html">{{ $product->name }}</a></h3>
                                         </div>
                                     </figure>
                                 </article>

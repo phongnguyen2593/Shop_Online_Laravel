@@ -91,7 +91,7 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="2">Tổng tiền</th>
-                                        <td colspan="2"><strong>{{ number_format($total) }} đ</strong></td>
+                                        <td colspan="2"><strong>{{ $total }} đ</strong></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2">Trạng thái</th>

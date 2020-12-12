@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -44,22 +45,24 @@ class LoginController extends Controller
         return view('frontend.auth.login');
     }
 
-    protected function loggedOut(Request $request)
+    public function login(Request $request)
     {
-        return redirect('login');
+        $email = $request->get('email');
+        $password = $request->get('password');
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            if (Auth::user()->role->role == 1 || Auth::user()->role->role == 2) {
+                return redirect()->intended('admin/dashboard');
+            } else {
+                return redirect()->intended('/');
+            }
+        }else{
+            return redirect()->route('login')->with('fail', 'Email hoặc mật khẩu không chính xác');
+        }
     }
 
-    public function authenticated($request , $user){
-        switch ($user->role->role){
-          case '1':
-            return redirect(route('backend.index')) ;
-          case '2':
-            return redirect(route('backend.index')) ;
-          case '3':
-            return redirect(route('frontend.index')) ;
-          default:
-            return redirect(route('login'));
-        }
-      }
-    
+    protected function logged()
+    {
+        Auth::logout();
+        return redirect(route('login'));
+    }
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Validator;
 
-class StoreCategoryRequest extends FormRequest
+class StoreOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +24,21 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => ['required', 'min:3', 'max:25' ],
-            'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:400'],
+            'name'      => ['required', 'min:6', 'max:50'],
+            'phone'     => ['required','numeric', 'regex:/(0)[0-9]{9}/'],
+            'gender'    => ['required'],
+            'address'   => ['required','min:6'],
         ];
     }
 
     public function attributes()
     {
         return [
-            'name'      => 'Tên danh mục',
-            'thumbnail' => 'Ảnh đại diện sản phẩm'
+            'name'      => 'Họ tên',
+            'email'     => 'Email',
+            'gender'    => 'Giới tính',
+            'phone'     => 'Số điện thoại',
+            'address'   => 'Địa chỉ'
         ];
     }
 
@@ -43,9 +47,9 @@ class StoreCategoryRequest extends FormRequest
         return [
             'required'  => ':attribute không được để trống',
             'min'       => ':attribute lớn hơn :min ký tự',
-            'name.max'  => ':attribute nhỏ hơn :max ký tự',
-            'mimes'     => ':attribute không đúng định dạng',
-            'thumbnail.max'  => ':attribute phải nhỏ hơn :max KB',
+            'max'       => ':attribute ít hơn :max ký tự',
+            'regex'     => ':attribute không đúng định dạng',
+            'numeric'   => ':attribute chỉ chứa số'
         ];
     }
 }

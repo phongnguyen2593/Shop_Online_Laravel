@@ -48,33 +48,36 @@
                         <!-- Tab panes -->
                         <div class="tab-content dashboard_content">
                             <div class="tab-pane fade" id="orders">
-                                <h3>Orders</h3>
+                                <h3>Đơn hàng</h3>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Order</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Actions</th>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Thời gian tạo</th>
+                                                <th>Trạng thái</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach (Auth::user()->orders as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="success">Completed</span></td>
-                                                <td>$25.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
+                                                <td>{{ $item->order->code }}</td>
+                                                <td>{{  date_format($item->order->created_at, 'g:ia \o\n jS F Y')}}</td>
+                                                <td>
+                                                    @if ($item->order->status == 1)
+                                                    <span class="text-warning">Chờ xác nhận</span>
+                                                    @elseif ($item->order->status == 2)
+                                                    <span class="text-primary">Đã xác nhận - Đang giao</span>
+                                                    @elseif ($item->order->status == 3)
+                                                    <span class="text-success">Đã giao xong</span>
+                                                    @elseif ($item->order->status == 0)
+                                                    <span class="text-danger">Đã hủy</span>
+                                                    @endif
+                                                </td>
+                                                <td><a href="cart.html" class="view">Chi tiết</a></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>May 10, 2018</td>
-                                                <td>Processing</td>
-                                                <td>$17.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -90,10 +93,10 @@
                                                 <label>Giới tính</label>
                                                 <div class="input-radio">
                                                     <span class="custom-radio"><input type="radio" value="1" name="gender"
-                                                            {{ Auth::user()->info->gender == 1 ? 'checked' : '' }}>
+                                                        {{ Auth::user()->info->gender == 1 ? 'checked' : '' }}>
                                                         Nam</span>
                                                     <span class="custom-radio"><input type="radio" value="0" name="gender"
-                                                            {{ Auth::user()->info->gender == 0 ? 'checked' : '' }}>
+                                                        {{ Auth::user()->info->gender == 0 ? 'checked' : '' }}>
                                                         Nữ</span>
                                                 </div>
                                                 @error('gender')

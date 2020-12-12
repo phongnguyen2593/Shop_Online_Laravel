@@ -74,6 +74,22 @@ class HomeController extends Controller
         ]);
     }
 
+    public function brand()
+    {
+        $brands = Brand::paginate(8);
+        return view('frontend.brands.index', ['brands' => $brands]);
+    }
+
+    public function brandProduct($id)
+    {
+        $brand = Brand::where('id', $id)->first();
+        $products = Product::where('brand_id', $id)->paginate(12);
+        return view('frontend.brands.product', [
+            'products' => $products,
+            'brand' => $brand
+            ]);
+    }
+
     public function contact()
     {
         $user = Auth::user();

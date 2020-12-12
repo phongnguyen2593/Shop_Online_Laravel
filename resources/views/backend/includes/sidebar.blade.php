@@ -1,8 +1,8 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="{{ route('frontend.index') }}">
             <img src="/backend/dashboard/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-            <h5 class="logo-text">The Big Store</h5>
+            <h5 class="logo-text">JUNKO</h5>
         </a>
     </div>
     <div class="user-details">
@@ -43,11 +43,6 @@
                 <li><a href="{{ route('backend.user.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Tạo mới</a></li>
                 <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i> Đã khóa</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="javaScript:void();" class="waves-effect">
-                <i class="zmdi zmdi-calendar-check"></i> <span>Phân Quyền</span>
-            </a>
         </li>
         <li class="sidebar-header">QUẢN LÝ SẢN PHẨM</li>
         <li>
@@ -96,25 +91,9 @@
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a>
                 </li>
-                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Xác Nhận</a></li>
-                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đang Giao</a></li>
-                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Hoàn Thành</a></li>
-                <li><a href="{{ route('backend.order.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Đã Hủy</a></li>
             </ul>
         </li>
         <li class="sidebar-header">QUẢN LÝ BÀI VIẾT</li>
-        <li>
-            <a href="javaScript:void();" class="waves-effect">
-                <i class="zmdi zmdi-format-list-bulleted"></i> <span>Blog</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu">
-                <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
-                <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Duyệt</a>
-                </li>
-                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> ...</a></li>
-            </ul>
-        </li>
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-format-list-bulleted"></i> <span>Bình Luận</span>
@@ -122,9 +101,7 @@
             </a>
             <ul class="sidebar-submenu">
                 <li><a href="form-inputs.html"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
-                <li><a href="form-input-group.html"><i class="zmdi zmdi-dot-circle-alt"></i> Chờ Duyệt</a>
                 </li>
-                <li><a href="form-layouts.html"><i class="zmdi zmdi-dot-circle-alt"></i> ...</a></li>
             </ul>
         </li>
         <li class="sidebar-header">QUẢN LÝ HÌNH ẢNH</li>
@@ -132,11 +109,12 @@
             <a href="javaScript:void();" class="waves-effect">
                 <i class="zmdi zmdi-lock"></i> <span>Slider</span>
             </a>
-        </li>
-        <li>
-            <a href="javaScript:void();" class="waves-effect">
-                <i class="zmdi zmdi-lock"></i> <span>Banner</span>
-            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('backend.slide.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Danh Sách</a></li>
+                </li>
+                <li><a href="{{ route('backend.slide.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Thêm mới</a></li>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

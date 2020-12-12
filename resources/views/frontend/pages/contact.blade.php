@@ -8,8 +8,8 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>about us</li>
+                            <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
+                            <li>Liên hệ</li>
                         </ul>
                     </div>
                 </div>

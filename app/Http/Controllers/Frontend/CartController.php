@@ -27,7 +27,7 @@ class CartController extends Controller
         }
         $product = Product::find($id);
         Cart::instance('shopping')->add($product->id, $product->name, $qty, $product->sale_price, 0, ['thumbnail' => $product->thumbnail]);
-        return redirect(route('frontend.index'));
+        return redirect()->back();
     }
 
     public function update(Request $request)

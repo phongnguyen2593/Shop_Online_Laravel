@@ -72,12 +72,18 @@
                                             </div>
                                         @endif
                                     </div>
+                                    @error('gender')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Họ tên <span>*</span></label>
                                     <input type="text" name="name"
                                         value="{{ Auth::user() != null ? Auth::user()->info->name : '' }}"
                                         placeholder="Nhập họ tên">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Email</label>
@@ -89,12 +95,17 @@
                                     <label>Địa chỉ <span>*</span></label>
                                     <input placeholder="Nhập địa chỉ giao hàng" type="text" name="address"
                                         value="{{ Auth::user() != null ? Auth::user()->info->address : '' }}">
+                                    @error('address')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-6 mb-20">
                                     <label>Số điện thoại<span>*</span></label>
                                     <input type="text" placeholder="Nhập số điện thoại" name="phone"
                                         value="{{ Auth::user() != null ? Auth::user()->info->phone : '' }}">
-
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-12 mb-20">
                                     <div class="order-notes">

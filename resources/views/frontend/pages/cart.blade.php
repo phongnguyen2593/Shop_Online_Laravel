@@ -9,7 +9,6 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
-                            <li><a href="">Sản phẩm</a></li>
                             <li>Giỏ hàng</li>
                         </ul>
                     </div>

@@ -20,11 +20,10 @@
                             <ul>
                                 @guest
                                     <li><a href="{{ route('login') }}"> Đăng nhập </a></li>
+                                    <li><a href="{{ route('register') }}"> Đăng ký </a></li>
                                 @else
                                     <li><a href="{{ route('frontend.user.index') }}"> Tài khoản </a></li>
                                 @endguest
-
-                                <li><a href="{{ route('frontend.cart.check-out') }}"> Thanh toán </a></li>
                             </ul>
                         </div>
                         <div class="search_container">
@@ -44,11 +43,11 @@
                             </div>
                             <div class="mini_cart_wrapper">
                                 <a href="javascript:void(0)"><i class="fa fa-shopping-bag"
-                                        aria-hidden="true"></i>{{ Cart::total() }} <i class="fa fa-angle-down"></i></a>
-                                <span class="cart_quantity">{{ Cart::count() }}</span>
+                                        aria-hidden="true"></i>{{ Cart::instance('shopping')->total() }}<i class="fa fa-angle-down"></i></a>
+                                <span class="cart_quantity">{{ Cart::instance('shopping')->count() }}</span>
                                 <!--mini cart-->
                                 <div class="mini_cart">
-                                    @if (isset($items))
+                                    @if (Cart::instance('shopping')->count()!=0)
                                         <p>hahaha</p>
                                     @else
                                         <p>Không có sản phẩm</p>
@@ -56,11 +55,11 @@
                                     <div class="mini_cart_table">
                                         <div class="cart_total">
                                             <span>Tạm tính:</span>
-                                            <span class="price">{{ Cart::total() }} VND</span>
+                                            <span class="price">{{ Cart::instance('shopping')->total() }} đ</span>
                                         </div>
                                         <div class="cart_total mt-10">
                                             <span>Tổng tiền:</span>
-                                            <span class="price">{{ Cart::total() }} VND</span>
+                                            <span class="price">{{ Cart::instance('shopping')->total() }} đ</span>
                                         </div>
                                     </div>
 
@@ -69,7 +68,7 @@
                                             <a href="{{ route('frontend.cart.index') }}">View cart</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="{{ route('frontend.cart.check-out') }}">Checkout</a>
                                         </div>
 
                                     </div>
@@ -118,17 +117,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                        <li><a href="blog-sidebar.html">blog left sidebar</a></li>
-                                        <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                                    </ul>
-
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">pages </a>
@@ -226,12 +214,12 @@
                                     </div>
                                     <div class="mini_cart_wrapper">
                                         <a href="javascript:void(0)"><i class="fa fa-shopping-bag"
-                                                aria-hidden="true"></i>{{ Cart::count() }} <i class="fa fa-angle-down"></i></a>
-                                        <span class="cart_quantity">0</span>
+                                                aria-hidden="true">{{ Cart::instance('shopping')->total() }}đ</i><i class="fa fa-angle-down"></i></a>
+                                        <span class="cart_quantity">{{ Cart::instance('shopping')->count() }}</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
-                                            @if (isset($items))
-                                                @foreach ($items as $item)
+                                            @if (Cart::instance('shopping')->count() != 0)
+                                                @foreach (Cart::instance('shopping')->content() as $item)
                                                     <div class="cart_item">
                                                         <div class="cart_img">
                                                             <a href="#"><img
@@ -240,7 +228,7 @@
                                                         </div>
                                                         <div class="cart_info">
                                                             <a href="#">{{ $item->name }}</a>
-                                                            <p>SL: {{ $item->qty }} X <span> {{ number_format($item->price) }} VND</span></p>
+                                                            <p>SL: {{ $item->qty }} X <span> {{ number_format($item->price) }} đ</span></p>
                                                         </div>
                                                         <div class="cart_remove">
                                                             <a href="{{ route('frontend.cart.remove', $item->rowId) }}"><i class="ion-android-close"></i></a>
@@ -253,11 +241,11 @@
                                             <div class="mini_cart_table">
                                                 <div class="cart_total">
                                                     <span>Tạm tính:</span>
-                                                    <span class="price">{{ Cart::total() }} VND</span>
+                                                    <span class="price">{{ Cart::total() }} đ</span>
                                                 </div>
                                                 <div class="cart_total mt-10">
                                                     <span>Tổng tiền:</span>
-                                                    <span class="price">{{ Cart::total() }} VND</span>
+                                                    <span class="price">{{ Cart::total() }} đ</span>
                                                 </div>
                                             </div>
 
@@ -266,7 +254,7 @@
                                                     <a href="{{ route('frontend.cart.index') }}">Xem giỏ hàng</a>
                                                 </div>
                                                 <div class="cart_button">
-                                                    <a href="checkout.html">thanh toán</a>
+                                                    <a href="{{ route('frontend.cart.check-out') }}">thanh toán</a>
                                                 </div>
 
                                             </div>
@@ -314,10 +302,10 @@
                                     <ul>
                                         <li><a class="active" href="{{ route('frontend.index') }}">Trang chủ</a></li>
                                         <li><a href="{{ route('frontend.product.index') }}">Sản Phẩm</i></a></li>
-                                        <li><a href="#">thương hiệu <i class="fa fa-angle-down"></i></a>
+                                        <li><a href="{{ route('frontend.brand') }}">thương hiệu <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                 @foreach ($randBrands as $item)
-                                                    <li><a href="about.html">{{ $item->name }}</a></li>
+                                                    <li><a href="{{ route('frontend.brand.product', $item->id) }}">{{ $item->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -334,7 +322,6 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="blog.html">blog</a> </li>
 
                                         <li><a href="contact.html"> Liên hệ</a></li>
                                     </ul>
@@ -366,15 +353,14 @@
                                     </li>
                                     <li class="mega_items"><a href="{{ route('frontend.product.index') }}">sản phẩm</a>
                                     </li>
-                                    <li><a href="blog.html">thương hiệu<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{ route('frontend.brand') }}">thương hiệu<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             @foreach ($randBrands as $item)
-                                                <li><a href="">{{ $item->name }}</a></li>
+                                                <li><a href="{{ route('frontend.brand.product', $item->id) }}">{{ $item->name }}</a></li>
                                             @endforeach
 
                                         </ul>
                                     </li>
-                                    <li><a href="#">blog </i></a></li>
                                     <li><a href="contact.html"> liên hệ</a></li>
                                 </ul>
                             </nav>
@@ -386,13 +372,13 @@
                             </div>
                             <div class="mini_cart_wrapper">
                                 <a href="javascript:void(0)"><i class="fa fa-shopping-bag"
-                                        aria-hidden="true"></i>{{ Cart::total() }}<i class="fa fa-angle-down"></i></a>
-                                <span class="cart_quantity">{{ Cart::count() }}</span>
+                                        aria-hidden="true"></i>{{ Cart::instance('shopping')->total() }} đ<i class="fa fa-angle-down"></i></a>
+                                <span class="cart_quantity">{{ Cart::instance('shopping')->count() }}</span>
                                 <!--mini cart-->
                                 <div class="mini_cart">
                                     <div class="mini_cart_table">
-                                        @if (isset($items))
-                                                @foreach ($items as $item)
+                                        @if (Cart::count()!=0)
+                                                @foreach (Cart::content() as $item)
                                                     <div class="cart_item">
                                                         <div class="cart_img">
                                                             <a href="#"><img
@@ -401,7 +387,7 @@
                                                         </div>
                                                         <div class="cart_info">
                                                             <a href="#">{{ $item->name }}</a>
-                                                            <p>SL: {{ $item->qty }} X <span> {{ number_format($item->price) }} VND</span></p>
+                                                            <p>SL: {{ $item->qty }} X <span> {{ number_format($item->price) }} đ</span></p>
                                                         </div>
                                                         <div class="cart_remove">
                                                             <a href="{{ route('frontend.cart.remove', $item->rowId) }}"><i class="ion-android-close"></i></a>
@@ -413,11 +399,11 @@
                                             @endif
                                         <div class="cart_total">
                                             <span>Tạm tính:</span>
-                                            <span class="price">{{ Cart::total() }} VND</span>
+                                            <span class="price">{{ Cart::total() }} đ</span>
                                         </div>
                                         <div class="cart_total mt-10">
                                             <span>Tổng tiền:</span>
-                                            <span class="price">{{ Cart::total() }} VND</span>
+                                            <span class="price">{{ Cart::total() }} đ</span>
                                         </div>
                                     </div>
 

@@ -53,26 +53,32 @@
                                     <div class="product_thumb">
                                         <a class="primary_img" href="product-details.html"><img
                                                 src="{{ asset($product->thumbnail) }}" alt=""></a>
+                                        @if ($product->discount_percent!=0)
                                         <div class="label_product">
-                                            <span class="label_sale">sale</span>
+                                            <span class="label_sale">{{ $product->discount_percent }}%</span>
                                         </div>
+                                        @endif
                                         <div class="action_links">
                                             <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                <li class="wishlist"><a href="wishlist.html" title="Yêu thích"><i
                                                             class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                                 <li class="quick_button"><a href="#" data-toggle="modal"
-                                                        data-target="#new_{{ $product->id }}" title="quick view"> <span
+                                                        data-target="#new_{{ $product->id }}" title="Xem nhanh"> <span
                                                             class="ion-ios-search-strong"></span></a></li>
                                             </ul>
                                         </div>
                                         <div class="add_to_cart">
-                                            <a href="{{ route('frontend.cart.add', $product->id) }}" title="add to cart">Thêm vào giỏ hàng</a>
+                                            <a href="{{ route('frontend.cart.add', $product->id) }}">Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                     <figcaption class="product_content">
                                         <div class="price_box">
+                                            @if ($product->origin_price==$product->sale_price)
+                                            <span class="current_price">{{ number_format($product->sale_price) }} đ</span>
+                                            @else
                                             <span class="old_price">{{ number_format($product->origin_price) }} đ</span>
                                             <span class="current_price">{{ number_format($product->sale_price) }} đ</span>
+                                            @endif
                                         </div>
                                         <h3 class="product_name"><a href="{{ route('frontend.product.detail', $product->slug) }}">{{ $product->name }}</a></h3>
                                     </figcaption>
@@ -110,17 +116,17 @@
                             <article class="single_product">
                                 <figure>
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
+                                        <a class="primary_img" href="{{ route('frontend.product.detail', $product->slug) }}"><img
                                                 src="{{ asset($product->thumbnail) }}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">{{ $product->discount_percent }}%</span>
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                <li class="wishlist"><a href="wishlist.html" title="Yêu thích"><i
                                                             class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                                 <li class="quick_button"><a href="#" data-toggle="modal"
-                                                        data-target="#sale_{{ $product->id }}" title="quick view"> <span
+                                                        data-target="#sale_{{ $product->id }}" title="Xem nhanh"> <span
                                                             class="ion-ios-search-strong"></span></a></li>
                                             </ul>
                                         </div>
@@ -154,7 +160,7 @@
                         @foreach ($brands as $brand)
                         <div class="brand_items">
                             <div class="single_brand">
-                                <a href="#"><img src="{{ asset($brand->thumbnail) }}" alt=""></a>
+                                <a href="{{ route('frontend.brand.product', $brand->id) }}"><img src="{{ asset($brand->thumbnail) }}" alt=""></a>
                             </div>
                         </div>
                         @endforeach

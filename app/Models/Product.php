@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\User;
 use App\Models\Brand;
+use App\Models\Comment;
 
 class Product extends Model
 {
@@ -40,5 +41,10 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

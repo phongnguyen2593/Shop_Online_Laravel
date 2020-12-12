@@ -27,7 +27,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form register">
                         <h2>Đăng ký</h2>
-                        <form action="{{ route('register') }}" method="POST">
+                        <form action="{{ route('register.user') }}" method="POST">
                             @csrf
                             <p>
                                 <label>Họ tên <span>*</span></label>

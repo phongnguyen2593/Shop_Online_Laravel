@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+use App\Models\Product;
 use App\Models\User;
 
-class UserInfo extends Model
+class Comment extends Model
 {
-    protected $table = 'user_info';
-
-    protected $fillable = [
-        'name', 'phone', 'address', 'gender', 'avatar', 'user_id'
-    ];
+    use Notifiable;
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

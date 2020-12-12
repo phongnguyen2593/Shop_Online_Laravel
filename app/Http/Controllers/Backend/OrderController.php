@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Order;
 use App\Models\Customer;
@@ -24,28 +25,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $customer = new Customer();
-        
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -53,7 +32,15 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        $total = 0;
+        foreach ($order->products as $product) {
+            $total += $product->pivot->quantity * $product->pivot->sale_price;
+        }
+        return view('backend.orders.show', [
+            'order' => $order,
+            'total' => $total,
+        ]);
     }
 
     /**
@@ -76,7 +63,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->status = $request->status;
+        $order->approver_id = Auth::user()->id;
+        $order->save();
+
+        return \redirect(route('backend.order.show', $order->id));
     }
 
     /**
@@ -109,7 +101,19 @@ class OrderController extends Controller
         ->editColumn('updated_at', function($order){
             return Carbon::parse($order->updated_at)->isoFormat('lll');
         })
-        ->rawColumns(['status'])
+        ->addColumn('action', function($order){
+            $actionBtn = '<a href="' . route('backend.order.show', $order->id) .'"><button title="Chi tiết" class="btn btn-light waves-effect waves-light m-1"> <i class="fa fa-info-circle"></i> ';
+                return $actionBtn;
+        })
+        ->addColumn('approver', function($order){
+            if ($order->approver_id == 0) {
+                return '-';
+            } else {
+                return $order->approver->info->name;
+            }
+            
+        })
+        ->rawColumns(['status', 'action', 'approver'])
         ->make(true);
 
     }

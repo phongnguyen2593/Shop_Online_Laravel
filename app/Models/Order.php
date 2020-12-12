@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\User;
 
 class Order extends Model
 {
@@ -27,5 +28,10 @@ class Order extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function approver()
+    {
+        return $this->hasOne(User::class, 'id', 'approver_id');
     }
 }

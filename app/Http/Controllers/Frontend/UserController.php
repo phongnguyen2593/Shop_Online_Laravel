@@ -10,12 +10,12 @@ use App\Http\Requests\UpdateUserRequest;
 
 use App\Models\UserInfo;
 use App\Models\User;
+use App\Models\Comment;
 
 class UserController extends Controller
 {
     public function index()
     {
-
         return view('frontend.user.index');
     }
 
@@ -64,5 +64,16 @@ class UserController extends Controller
     public function wishlist()
     {
         return view('frontend.user.wishlist');
+    }
+
+    public function storeComment(Request $request, $id)
+    {   
+        $comment = new Comment();
+        $comment->product_id = $id;
+        $comment->user_id = Auth::user()->id;
+        $comment->comment = $request->get('comment');
+        $product = $comment->product;
+        $success = $comment->save();
+        return redirect()->route('frontend.product.detail',$product->slug);
     }
 }

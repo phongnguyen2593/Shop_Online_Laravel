@@ -15,7 +15,12 @@ use App\Http\Controllers;
 |
 */
 
-Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login/user', 'Auth\LoginController@login')->name('login.user');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register.user');
+
 Route::get('/test', 'Frontend\HomeController@test');
 
 
@@ -99,11 +104,21 @@ Route::group([
         'as'        => 'order.'
     ], function () {
         Route::get('/', 'OrderController@index')->name('index');
-        Route::get('/edit/{order}', 'OrderController@edit')->name('edit');
         Route::match(['put', 'patch'], '/{order}', 'OrderController@update')->name('update');
         Route::delete('/{order}', 'OrderController@destroy')->name('delete');
         Route::get('/show/{order}', 'OrderController@show')->name('show');
         Route::get('/data', 'OrderController@getData')->name('data');
+    });
+
+    //Slide
+    Route::group([
+        'prefix'    => 'slide',
+        'as'        => 'slide.'
+    ], function () {
+        Route::get('/', 'SlideController@index')->name('index');
+        Route::get('/create', 'SlideController@create')->name('create');
+        Route::post('/store', 'SlideController@store')->name('store');
+        Route::delete('/{id}', 'SlideController@destroy')->name('delete');
     });
 });
 
@@ -118,6 +133,8 @@ Route::group([
     Route::post('/tim-kiem', 'HomeController@search')->name('search');
     Route::post('/tra-cuu', 'HomeController@tracking')->name('tracking');
     Route::get('/danh-muc', 'HomeController@category')->name('category');
+    Route::get('/thuong-hieu', 'HomeController@brand')->name('brand');
+    Route::get('/thuong-hieu/{id}', 'HomeController@brandProduct')->name('brand.product');
     Route::get('/lien-he', 'HomeController@contact')->name('contact');
     Route::get('/shipping', 'HomeController@shipping')->name('shipping');
 
@@ -155,5 +172,6 @@ Route::group([
         Route::get('/wishlist', 'UserController@wishlist')->name('wishlist');
         Route::get('/mat-khau', 'UserController@changePasswordForm')->name('password');
         Route::post('/change-password', 'UserController@changePassword')->name('change-password');
+        Route::post('/store-comment/{comment}', 'UserController@storeComment')->name('store-comment');
     });
 });

@@ -8,8 +8,9 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>product details</li>
+                            <li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
+                            <li><a href="{{ route('frontend.product.index') }}">Sản phẩm</a></li>
+                            <li>Chi tiết sản phẩm</li>
                         </ul>
                     </div>
                 </div>
@@ -37,8 +38,8 @@
                                         <li>
                                             <a href="#" class="elevatezoom-gallery active" data-update=""
                                                 data-image="{{ asset($image->path) }}"
-                                                data-zoom-image="{{ asset($image->path) }}">
-                                                <img src="{{ asset($image->path) }}" alt="zo-th-1">
+                                                >
+                                                <img src="{{ asset($image->path) }}" >
                                             </a>
                                         </li>
                                     @endforeach
@@ -61,14 +62,13 @@
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     <li class="review"><a href="#"> (customer review ) </a></li>
                                 </ul>
-
                             </div>
                             <div class="price_box">
                                 @if ($product->sale_price == $product->origin_pice)
-                                    <span class="current_price">{{ number_format($product->sale_price) }} VND</span>
+                                    <span class="current_price">{{ number_format($product->sale_price) }} đ</span>
                                 @else
-                                    <span class="current_price">{{ number_format($product->sale_price) }} VND</span>
-                                    <span class="old_price">{{ number_format($product->origin_price) }} VND</span>
+                                    <span class="current_price">{{ number_format($product->sale_price) }} đ</span>
+                                    <span class="old_price">{{ number_format($product->origin_price) }} đ</span>
                                 @endif
                             </div>
                             <div class="product_variant quantity">
@@ -119,17 +119,11 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel">
                                 <div class="product_info_content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                                        tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
-                                        justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                        nulla.</p>
-                                    <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis
-                                        fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa.
-                                        Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed
-                                        commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan
-                                        elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam
-                                        gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+                                    @if ($product->description !=null)
+                                        {{ $product->description }}
+                                    @else
+                                        <p>Không có mô tả</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -160,57 +154,26 @@
                                     <h2>1 review for Donec eu furniture</h2>
                                     <div class="reviews_comment_box">
                                         <div class="comment_thmb">
-                                            <img src="assets/img/blog/comment2.jpg" alt="">
+                                            <img src="/frontend/assets/img/blog/comment2.jpg" alt="">
                                         </div>
                                         <div class="comment_text">
                                             <div class="reviews_meta">
-                                                <div class="star_rating">
-                                                    <ul>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                    </ul>
-                                                </div>
                                                 <p><strong>admin </strong>- September 12, 2018</p>
                                                 <span>roadthemes</span>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="comment_title">
-                                        <h2>Add a review </h2>
-                                        <p>Your email address will not be published. Required fields are marked </p>
-                                    </div>
-                                    <div class="product_ratting mb-10">
-                                        <h3>Your rating</h3>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
                                     <div class="product_review_form">
-                                        <form action="#">
+                                        <form action="{{ route('frontend.user.store-comment', $product->id) }}" method="POST">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label for="review_comment">Your review </label>
+                                                    <label for="review_comment">Gửi bình luận </label>
                                                     <textarea name="comment" id="review_comment"></textarea>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <label for="author">Name</label>
-                                                    <input id="author" type="text">
-
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <label for="email">Email </label>
-                                                    <input id="email" type="text">
-                                                </div>
                                             </div>
-                                            <button type="submit">Submit</button>
+                                            <button type="submit">Gửi</button>
                                         </form>
                                     </div>
                                 </div>

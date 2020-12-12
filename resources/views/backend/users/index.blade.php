@@ -93,6 +93,7 @@
                 $('#user-datatable').DataTable({
                     processing: true,
                     serverSide: true,
+                    "order": [[ 3, "desc" ]], 
                     ajax: "{{ route('backend.user.data') }}",
                     columns: [{
                             data: 'name',

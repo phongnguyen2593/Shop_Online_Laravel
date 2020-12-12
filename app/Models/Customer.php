@@ -9,8 +9,8 @@ class Customer extends Model
 {
     use Notifiable; 
 
-    public function orders()
+    public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Order::class);
     }
 }

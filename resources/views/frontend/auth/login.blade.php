@@ -27,11 +27,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form">
                         <h2>Đăng nhập</h2>
-                        <form action="{{ route('login') }}" method="POST">
+                        <form action="{{ route('login.user') }}" method="POST">
                             @csrf
                             <p>
                                 <label>Email <span>*</span></label>
                                 <input type="text" name="email">
+                                @if (Session::has('fail'))
+                                    <span class="text-danger">{{ Session('fail') }}</span>
+                                @endif
                             </p>
                             <p>
                                 <label>Mật khẩu <span>*</span></label>

@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserInfo;
 use App\Models\Product;
 use App\Models\Role;
+use App\Models\Comment;
+use App\Models\Order;
+use App\Models\Customer;
 
 class User extends Authenticatable
 {
@@ -50,11 +53,21 @@ class User extends Authenticatable
 
     public function products()
     {
-        return $this->hasMany(Producy::class);
+        return $this->hasMany(Product::class);
     }
 
     public function role()
     {
         return $this->hasOne(Role::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Customer::class);
     }
 }
